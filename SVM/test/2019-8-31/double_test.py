@@ -1,4 +1,4 @@
-from SVM.SVR import svr, ReadProblem
+from SVM.SVC import svr, ReadProblem
 from numpy import mat
 
 index = 1

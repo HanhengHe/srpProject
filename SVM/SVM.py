@@ -1,4 +1,4 @@
-from SVM.SVR import svr
+from SVM.SVC import svr
 
 #   这是一个不成熟的svr多分类器
 

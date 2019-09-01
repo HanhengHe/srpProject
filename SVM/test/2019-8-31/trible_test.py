@@ -1,4 +1,4 @@
-from SVM.SVR import svr
+from SVM.SVC import svr
 from numpy import mat
 
 #  三分类
