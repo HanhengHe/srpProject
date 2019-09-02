@@ -20,7 +20,7 @@ class SVC:
         elif len(cWeight) != self.m:
             raise NameError("Error on C weight")
         else:
-            self.cWeight = cWeight
+            self.cWeight = cWeight * self.m
 
         self.K = np.mat(np.zeros((self.m, self.m)))
         for i in range(self.m):

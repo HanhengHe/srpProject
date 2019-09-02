@@ -1,75 +1,78 @@
 # -*- coding: UTF-8 -*-
 import numpy as np
-from sklearn import tree
+from SVM.SVC import svr
 
+#   parameter全是list
+#   返回训练后的模型
+#   TrainS 原训练样本
+#   TrainA 辅助训练样本
+#   LabelS 原训练样本标签
+#   LabelA 辅助训练样本标签
+#   DataT  测试样本
+#   LabelT 测试样本标签
+#   N 迭代次数
+#   param=[C, tol, maxIter, kTup]
 
-# H 测试样本分类结果
-# TrainS 原训练样本 np数组
-# TrainA 辅助训练样本
-# LabelS 原训练样本标签
-# LabelA 辅助训练样本标签
-# Test  测试样本
-# N 迭代次数
-def trAdaBoost(trans_S, trans_A, label_S, label_A, test, N):
-    trans_data = np.concatenate((trans_A, trans_S), axis=0)
-    trans_label = np.concatenate((label_A, label_S), axis=0)
+def trAdaBoost(trans_S, trans_A, label_S, label_A, test, N, errorRate, param):
+    trans_data = trans_S + trans_A
+    trans_label = label_S + label_A
 
-    row_A = trans_A.shape[0]
-    row_S = trans_S.shape[0]
-    row_T = test.shape[0]
+    row_A = len(trans_A)
+    row_S = len(trans_S)
+    row_T = len(test)
 
-    test_data = np.concatenate((trans_data, test), axis=0)
+    predict = np.zeros(row_T, 1)
 
     # 初始化权重
-    weights_A = np.ones([row_A, 1]) / row_A
-    weights_S = np.ones([row_S, 1]) / row_S
-    weights = np.concatenate((weights_A, weights_S), axis=0)
+    # 权重C：C越大系统越重视对应样本
+    weights_A = [1 / row_A] * row_A
+    weights_S = [1 / row_S] * row_S
+    weights = np.mat(weights_A + weights_S)
 
     beta = 1 / (1 + np.sqrt(2 * np.log(row_A / N)))
 
-    # 存储每次迭代的标签和beta值？
     beta_T = np.zeros([1, N])
-    result_label = np.ones([row_A + row_S + row_T, N])
-
-    predict = np.zeros([row_T])
+    result = np.ones([row_A + row_S, N])
 
     print('params initial finished.')
-    trans_data = np.asarray(trans_data, order='C')
-    trans_label = np.asarray(trans_label, order='C')
-    test_data = np.asarray(test_data, order='C')
+
+    # s是预测器
+    s = None
 
     for i in range(N):
-        P = calculate_P(weights, trans_label)  # 归一化权重
 
-        result_label[:, i] = train_classify(trans_data, trans_label,
-                                            test_data, P)  # 训练决策树并进行预测
-        print('result,', result_label[:, i], row_A, row_S, i, result_label.shape)
+        # 归一化权重
+        P = calculate_P(weights)
 
-        error_rate = calculate_error_rate(label_S, result_label[row_A:row_A + row_S, i],
-                                          weights[row_A:row_A + row_S, :])  # 计算错误率
+        # 训练分类器并返回预测结果
+        result[:, i], s = train_classify(trans_data, trans_label, trans_S, param, P)
+
+        # 计算错误率
+        error_rate = calculate_error_rate(label_S, result, weights[row_A:row_A + row_S, :])
         print('Error rate:', error_rate)
         if error_rate > 0.5:
             error_rate = 0.5  # 确保eta大于0.5
-        if error_rate == 0:  # 在100%正确的情况下退出循环
+        if error_rate <= errorRate:
             N = i
+            print("Error rate: "+str(error_rate))
             break  # 防止过拟合
-            # error_rate = 0.001
 
         beta_T[0, i] = error_rate / (1 - error_rate)
 
         # 调整源域样本权重
         for j in range(row_S):
             weights[row_A + j] = weights[row_A + j] * np.power(beta_T[0, i],
-                                                               np.abs(result_label[row_A + j, i] - label_S[j]))
+                                                               np.abs(result[row_A + j, i] - label_S[j]))
 
         # 调整辅域样本权重
         for j in range(row_A):
-            weights[j] = weights[j] * np.power(beta, (-np.abs(result_label[j, i] - label_A[j])))
+            weights[j] = weights[j] * np.power(beta, (-np.abs(result[j, i] - label_A[j])))
+
     # print beta_T
     for i in range(row_T):
         # 跳过训练数据的标签
         left = np.sum(
-            result_label[row_A + row_S + i, int(np.ceil(N / 2)):N] * np.log(1 / beta_T[0, int(np.ceil(N / 2)):N]))
+            result[row_A + row_S + i, int(np.ceil(N / 2)):N] * np.log(1 / beta_T[0, int(np.ceil(N / 2)):N]))
         right = 0.5 * np.sum(np.log(1 / beta_T[0, int(np.ceil(N / 2)):N]))
 
         if left >= right:
@@ -81,15 +84,19 @@ def trAdaBoost(trans_S, trans_A, label_S, label_A, test, N):
     return predict
 
 # 归一化权重
-def calculate_P(weights, label):
+def calculate_P(weights):
     total = np.sum(weights)
     return np.asarray(weights / total, order='C')
 
+#  训练分类器，返回对源数据集的分类结果以及分类器
+def train_classify(trans_data, trans_label, trans_S, param, P):
 
-def train_classify(trans_data, trans_label, test_data, P):
-    clf = tree.DecisionTreeClassifier(criterion="gini", max_features="log2", splitter="random")  # 调用决策树
-    clf.fit(trans_data, trans_label, sample_weight=P[:, 0])  # 训练数据
-    return clf.predict(test_data)  # 返回预测值
+    s = svr(trans_data, trans_label, param[0], param[1], param[2], param[3], cWeight=P)
+
+    result = np.zeros(1, len(trans_S))
+    for i in range(len(trans_S)):
+        result[0, i] = s.predict(trans_S[i])
+    return result, s
 
 # 计算错误率
 def calculate_error_rate(label_R, label_H, weight):
