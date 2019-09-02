@@ -4,7 +4,7 @@ import numpy as np
 
 
 class SVC:
-    def __init__(self, dataMat, labelMat, kTup, tol, C):
+    def __init__(self, dataMat, labelMat, kTup, tol, C, cWeight):
         self.dataMat = dataMat
         self.labelMat = labelMat
         self.C = C
@@ -14,6 +14,14 @@ class SVC:
         self.m, self.n = np.shape(dataMat)
         self.alphas = np.mat(np.zeros((self.m, 1)))
         self.ay = np.mat(np.zeros((self.m, 1)))
+
+        if cWeight is None:
+            self.cWeight = [1]*self.m
+        elif len(cWeight) != self.m:
+            raise NameError("Error on C weight")
+        else:
+            self.cWeight = cWeight
+
         self.K = np.mat(np.zeros((self.m, self.m)))
         for i in range(self.m):
             self.K[:, i] = self.kernelTrans(self.dataMat[i, :])
@@ -37,7 +45,7 @@ class SVC:
         bs = 0.0
         counter = 0
         for k in range(self.m):
-            if 0 < self.alphas[k] < self.C:
+            if 0 < self.alphas[k] < self.C*self.cWeight[k]:
                 bs += (self.labelMat[k, 0] - ay.T * self.K[:, k])
                 counter += 1
 
@@ -72,10 +80,10 @@ class SVC:
         # get L and H
         if yI != yJ:
             L = max(0, alphaJ - alphaI)
-            H = min(self.C, self.C + alphaJ - alphaI)
+            H = min(self.C*self.cWeight[j], self.C*self.cWeight[j] + alphaJ - alphaI)
         else:
-            L = max(0, alphaJ + alphaI - self.C)
-            H = min(self.C, alphaJ + alphaI)
+            L = max(0, alphaJ + alphaI - self.C*self.cWeight[j])
+            H = min(self.C*self.cWeight[j], alphaJ + alphaI)
         if L == H:
             print("H==L!")
             return False
@@ -94,17 +102,6 @@ class SVC:
 
         alphaI += yJ.T * yI * (alphaJOld - alphaJ)
 
-        """b1 = self.b - Ei - yI * (alphaI - alphaIOld) * self.K[i, i] - \
-            yJ * (alphaJ - alphaJOld) * self.K[i, j]
-        b2 = self.b - Ej + yI * (alphaI - alphaIOld) * self.K[i, j] - \
-            yJ * (alphaJ - alphaJOld) * self.K[j, j]
-        if 0 < alphaI < self.C:
-            self.b = b1
-        elif 0 < alphaJ < self.C:
-            self.b = b2
-        else:
-            self.b = (b1 + b2) / 2.0"""
-
         self.alphas[i] = alphaI
         self.alphas[j] = alphaJ
 
@@ -116,7 +113,7 @@ class SVC:
         Ej = 0
         varList = []
         for i in range(self.m):
-            if 0 < self.alphas[i] < self.C:
+            if 0 < self.alphas[i] < self.C*self.cWeight[i]:
                 varList.append(i)
 
         if (len(varList)) > 1:
@@ -139,7 +136,7 @@ class SVC:
         y = self.labelMat[i]
         Ei = self.calcEk(i)
         r = Ei * y
-        if (r < -self.tol and self.alphas[i] < self.C) or (r > self.tol and self.alphas[i] > 0):
+        if (r < -self.tol and self.alphas[i] < self.C*self.cWeight[i]) or (r > self.tol and self.alphas[i] > 0):
             j, Ej = self.selectJ(i, Ei)
             if self.takeStep(i, Ei, j, Ej):
                 return 1
@@ -163,8 +160,8 @@ def selectJRand(i, m):
     return j
 
 # main loop
-def svr(dataMat, labelMat, C, tol, maxIter, kTup):
-    s = SVC(np.mat(dataMat), np.mat(labelMat).T, kTup, tol, C)
+def svr(dataMat, labelMat, C, tol, maxIter, kTup, cWeight=None):
+    s = SVC(np.mat(dataMat), np.mat(labelMat).T, kTup, tol, C, cWeight)
     numChange = 0
     examineAll = True
     m, n = np.shape(dataMat)

@@ -10,7 +10,7 @@ Type = ('DAG', 'ECOC')
 #   List格式：[data,...,data,label]
 #   label从0开始，请不要跳过数字
 
-def Classifier(dataList, labelList, C, tol, maxIter, kTup=('lin', 0), classifierType=Type[0]):
+def Classifier(dataList, labelList, C, tol, maxIter, kTup=('lin', 0), cWeight=0, classifierType=Type[0]):
 
     #   check type
     if not isinstance(dataList, list):
