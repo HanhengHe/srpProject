@@ -1,17 +1,17 @@
 7.26
-发现Platt-SMO对setosa与versicolor进行二分类时表现良好（参数设置C=0.9; toler=0.001; maxIter=20; 正确率0.95，即有一个分类错误）
-涉及virginica的二分类时测试集有多于一半错误（参数设置C=0.8; toler=0.001; maxIter=20; 正确率0.45）
+发现Platt-SMO对setosa与versicolor进行二分类时表现良好（参数设置C=0.9; tol=0.001; maxIter=20; 正确率0.95，即有一个分类错误）
+涉及virginica的二分类时测试集有多于一半错误（参数设置C=0.8; tol=0.001; maxIter=20; 正确率0.45）
 
-三分类时：参数设置: C=0.0001; toler=0.1; maxIter=40；正确率0.87
+三分类时：参数设置: C=0.0001; tol=0.1; maxIter=40；正确率0.87
 
 7.27
 引入高斯核函数之后，涉及virginica的二分类时测试准确度大幅提高
 发现virginica与setosa的测试中kTup越小，测试准确率越高
-（参数设置C=0.9; toler=0.001; maxIter=20; kTup=0.5;正确率0.95，即有一个分类错误）
+（参数设置C=0.9; tol=0.001; maxIter=20; kTup=0.5;正确率0.95，即有一个分类错误）
 
 三分类时
-kTup=('rbf',2.6);C=0.8;toler=0.001;maxIter=40
-kTup1=('rbf',1.3);C1=0.9;toler1=0.001;maxIter1=20
+kTup=('rbf',2.6);C=0.8;tol=0.001;maxIter=40
+kTup1=('rbf',1.3);C1=0.9;tol1=0.001;maxIter1=20
 预测正确率大概为0.77(0.73~0.9，不知道为什么会出现0.9)
 sklearn的测试正确率为0.867（C=2,gamma=10）
 Platt-SMO具有随机性，sklearn的SVM不具有随机性

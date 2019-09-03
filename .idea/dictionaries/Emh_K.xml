@@ -2,7 +2,12 @@
   <dictionary name="Emh K">
     <words>
       <w>ecoc</w>
+      <w>platt</w>
+      <w>setosa</w>
+      <w>sklearn</w>
       <w>svcs</w>
+      <w>versicolor</w>
+      <w>virginica</w>
     </words>
   </dictionary>
 </component>

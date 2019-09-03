@@ -4,7 +4,7 @@
     <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Emh_K.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Emh_K.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/trAdaBoost.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/trAdaBoost.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/log" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -235,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567440411204</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="update trAdaBoost">
+      <created>1567515262323</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1567515262323</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -264,22 +271,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="2019-9-2" />
-    <option name="LAST_COMMIT_MESSAGE" value="2019-9-2" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SVM/trAdaBoost.py</url>
-          <line>59</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SVM/trAdaBoost.py</url>
-          <line>90</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="update trAdaBoost" />
+    <option name="LAST_COMMIT_MESSAGE" value="update trAdaBoost" />
   </component>
 </project>
