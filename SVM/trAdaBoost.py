@@ -1,6 +1,9 @@
 # -*- coding: UTF-8 -*-
+from math import log
+
 import numpy as np
 from SVM.SVC import svr
+
 
 #   parameter全是list
 #   返回训练后的模型
@@ -13,15 +16,31 @@ from SVM.SVC import svr
 #   N 迭代次数
 #   param=[C, tol, maxIter, kTup]
 
+class Classifier:
+    def __init__(self, svcs, beta_Ts):
+        self.svcs = svcs
+        #   构造一个队列减少计算量
+        self.core = []
+        for i in range(len(svcs)):
+            self.core.append(log(1/beta_Ts[i]))
+
+    def predict(self, x):
+        right = 0
+        left = 0
+        for i in range(self.svcs):
+            right += self.core[i]*self.svcs[i].predict(x)
+            left += self.core[i]/2
+        if right >= left:
+            return 1
+        else:
+            return -1
+
 def trAdaBoost(trans_S, trans_A, label_S, label_A, test, N, errorRate, param):
     trans_data = trans_S + trans_A
     trans_label = label_S + label_A
 
     row_A = len(trans_A)
     row_S = len(trans_S)
-    row_T = len(test)
-
-    predict = np.zeros(row_T, 1)
 
     # 初始化权重
     # 权重C：C越大系统越重视对应样本
@@ -31,7 +50,8 @@ def trAdaBoost(trans_S, trans_A, label_S, label_A, test, N, errorRate, param):
 
     beta = 1 / (1 + np.sqrt(2 * np.log(row_A / N)))
 
-    beta_T = np.zeros([1, N])
+    svcs = []
+    beta_Ts = []
     result = np.ones([row_A + row_S, N])
 
     print('params initial finished.')
@@ -54,49 +74,46 @@ def trAdaBoost(trans_S, trans_A, label_S, label_A, test, N, errorRate, param):
             error_rate = 0.5  # 确保eta大于0.5
         if error_rate <= errorRate:
             N = i
-            print("Error rate: "+str(error_rate))
+            print("Error rate: " + str(error_rate))
             break  # 防止过拟合
 
-        beta_T[0, i] = error_rate / (1 - error_rate)
+        beta_T = error_rate / (1 - error_rate)
 
         # 调整源域样本权重
         for j in range(row_S):
-            weights[row_A + j] = weights[row_A + j] * np.power(beta_T[0, i],
+            weights[row_A + j] = weights[row_A + j] * np.power(beta_T,
                                                                np.abs(result[row_A + j, i] - label_S[j]))
 
         # 调整辅域样本权重
         for j in range(row_A):
             weights[j] = weights[j] * np.power(beta, (-np.abs(result[j, i] - label_A[j])))
 
-    # print beta_T
-    for i in range(row_T):
-        # 跳过训练数据的标签
-        left = np.sum(
-            result[row_A + row_S + i, int(np.ceil(N / 2)):N] * np.log(1 / beta_T[0, int(np.ceil(N / 2)):N]))
-        right = 0.5 * np.sum(np.log(1 / beta_T[0, int(np.ceil(N / 2)):N]))
+        # 记录后N/2个分类器和betaT, 向下取整
+        if i > int(N/2):
+            svcs.append(s)
+            beta_Ts.append(beta_T)
 
-        if left >= right:
-            predict[i] = 1
-        else:
-            predict[i] = 0
-            # print left, right, predict[i]
+    # 构造训练出来的集成分类器并返回
+    classifier = Classifier(svcs, beta_Ts)
 
-    return predict
+    return classifier
+
 
 # 归一化权重
 def calculate_P(weights):
     total = np.sum(weights)
     return np.asarray(weights / total, order='C')
 
+
 #  训练分类器，返回对源数据集的分类结果以及分类器
 def train_classify(trans_data, trans_label, trans_S, param, P):
-
     s = svr(trans_data, trans_label, param[0], param[1], param[2], param[3], cWeight=P)
 
     result = np.zeros(1, len(trans_S))
     for i in range(len(trans_S)):
         result[0, i] = s.predict(trans_S[i])
     return result, s
+
 
 # 计算错误率
 def calculate_error_rate(label_R, label_H, weight):
