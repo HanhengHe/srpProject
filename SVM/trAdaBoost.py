@@ -35,7 +35,7 @@ class Classifier:
         else:
             return -1
 
-def trAdaBoost(trans_S, trans_A, label_S, label_A, test, N, errorRate, param):
+def trAdaBoost(trans_S, trans_A, label_S, label_A, N, errorRate, param):
     trans_data = trans_S + trans_A
     trans_label = label_S + label_A
 
