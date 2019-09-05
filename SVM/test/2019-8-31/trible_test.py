@@ -6,7 +6,7 @@ from numpy import mat
 
 dataMat = []  # 训练集
 testMat = []  # 测试集
-file = open('D:\\WINTER\\Pycharm_project\\MachineLearning\\data\\iris')
+file = open('D:\\PycharmProjects\\srpProject\\data\\iris')
 counter = 0
 
 # 统一选取前40个作为训练集，后10个作为测试集
@@ -17,7 +17,7 @@ for line in file.readlines():
     dataMat.append([float(lineArr[1]), float(lineArr[2]), float(lineArr[3]), float(lineArr[4])])
 
 # 读取测试集
-fre = open('D:\\WINTER\\Pycharm_project\\MachineLearning\\data\\iris_test')
+fre = open('D:\\PycharmProjects\\srpProject\\data\\iris_test')
 
 for line in fre.readlines():
     data = line.strip().split(' ')
