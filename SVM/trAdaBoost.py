@@ -22,18 +22,19 @@ class Classifier:
         #   构造一个队列减少计算量
         self.core = []
         for i in range(len(svcs)):
-            self.core.append(log(1/beta_Ts[i]))
+            self.core.append(log(1 / beta_Ts[i]))
 
     def predict(self, x):
         right = 0
         left = 0
         for i in range(self.svcs):
-            right += self.core[i]*self.svcs[i].predict(x)
-            left += self.core[i]/2
+            right += self.core[i] * self.svcs[i].predict(x)
+            left += self.core[i] / 2
         if right >= left:
             return 1
         else:
             return -1
+
 
 def trAdaBoost(trans_S, trans_A, label_S, label_A, N, errorRate, param):
     trans_data = trans_S + trans_A
@@ -89,7 +90,7 @@ def trAdaBoost(trans_S, trans_A, label_S, label_A, N, errorRate, param):
             weights[j] = weights[j] * np.power(beta, (-np.abs(result[j, i] - label_A[j])))
 
         # 记录后N/2个分类器和betaT, 向下取整
-        if i > int(N/2):
+        if i > int(N / 2):
             svcs.append(s)
             beta_Ts.append(beta_T)
 

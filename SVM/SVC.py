@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 import random
 
 import numpy as np
@@ -16,7 +17,7 @@ class SVC:
         self.ay = np.mat(np.zeros((self.m, 1)))
 
         if cWeight is None:
-            self.cWeight = [1]*self.m
+            self.cWeight = [1] * self.m
         elif len(cWeight) != self.m:
             raise NameError("Error on C weight")
         else:
@@ -45,11 +46,11 @@ class SVC:
         bs = 0.0
         counter = 0
         for k in range(self.m):
-            if 0 < self.alphas[k] < self.C*self.cWeight[k]:
+            if 0 < self.alphas[k] < self.C * self.cWeight[k]:
                 bs += (self.labelMat[k, 0] - ay.T * self.K[:, k])
                 counter += 1
 
-        return bs/counter
+        return bs / counter
 
     def kernelTrans(self, A):
         K = np.mat(np.zeros((self.m, 1)))
@@ -80,10 +81,10 @@ class SVC:
         # get L and H
         if yI != yJ:
             L = max(0, alphaJ - alphaI)
-            H = min(self.C*self.cWeight[j], self.C*self.cWeight[j] + alphaJ - alphaI)
+            H = min(self.C * self.cWeight[j], self.C * self.cWeight[j] + alphaJ - alphaI)
         else:
-            L = max(0, alphaJ + alphaI - self.C*self.cWeight[j])
-            H = min(self.C*self.cWeight[j], alphaJ + alphaI)
+            L = max(0, alphaJ + alphaI - self.C * self.cWeight[j])
+            H = min(self.C * self.cWeight[j], alphaJ + alphaI)
         if L == H:
             print("H==L!")
             return False
@@ -113,7 +114,7 @@ class SVC:
         Ej = 0
         varList = []
         for i in range(self.m):
-            if 0 < self.alphas[i] < self.C*self.cWeight[i]:
+            if 0 < self.alphas[i] < self.C * self.cWeight[i]:
                 varList.append(i)
 
         if (len(varList)) > 1:
@@ -136,7 +137,7 @@ class SVC:
         y = self.labelMat[i]
         Ei = self.calcEk(i)
         r = Ei * y
-        if (r < -self.tol and self.alphas[i] < self.C*self.cWeight[i]) or (r > self.tol and self.alphas[i] > 0):
+        if (r < -self.tol and self.alphas[i] < self.C * self.cWeight[i]) or (r > self.tol and self.alphas[i] > 0):
             j, Ej = self.selectJ(i, Ei)
             if self.takeStep(i, Ei, j, Ej):
                 return 1
@@ -158,6 +159,7 @@ def selectJRand(i, m):
     while j == i:
         j = int(random.uniform(0, m))
     return j
+
 
 # main loop
 def svr(dataMat, labelMat, C, tol, maxIter, kTup, cWeight=None):
