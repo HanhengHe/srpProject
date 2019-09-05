@@ -2,7 +2,10 @@
   <dictionary name="Emh K">
     <words>
       <w>ecoc</w>
+      <w>matplotlib</w>
+      <w>mnist</w>
       <w>platt</w>
+      <w>pyplot</w>
       <w>setosa</w>
       <w>sklearn</w>
       <w>svcs</w>
