@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Emh_K.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Emh_K.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/iris" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/iris.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/iris_test" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/test" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/train" beforeDir="false" />
-    </list>
+    <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="transfer ubyte to txt(copied code..)" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567515417246</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="transfer ubyte to txt(copied code..)">
+      <created>1567689348432</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1567689348432</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -295,6 +294,7 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="2019-9-2" />
     <MESSAGE value="update trAdaBoost" />
-    <option name="LAST_COMMIT_MESSAGE" value="update trAdaBoost" />
+    <MESSAGE value="transfer ubyte to txt(copied code..)" />
+    <option name="LAST_COMMIT_MESSAGE" value="transfer ubyte to txt(copied code..)" />
   </component>
 </project>
