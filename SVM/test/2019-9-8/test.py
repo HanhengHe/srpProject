@@ -32,8 +32,16 @@ for line in fTrain.readlines():
 
 fTrain.close()
 
+print('Train set loaded.')
+
+print('Start training')
+
 #  训练分类器
-s = svr(trainSet, trainLabels, 0.8, 0.01, 20, kTup=['rbf', 0.8])
+s = svr(trainSet, trainLabels, 0.8, 0.01, 1000, kTup=['rbf', 0.8])
+
+print('Trained.')
+
+print('Start testing')
 
 #  读取测试集
 fTest = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\test')
