@@ -158,17 +158,17 @@ def run():
     test_images = load_test_images()
     test_labels = load_test_labels()
 
-    fTrain = open("./train", "w")
+    fTrain = open("D:/PycharmProjects/DataSet/Mnist/train", "w")
 
     for i in range(len(train_images)):
-        fTrain.writelines(str(train_images[i])+" "+str(train_labels[i]).split(".")[0]+"\n")
+        fTrain.writelines(str(train_images[i]).replace(' ', '')+str(train_labels[i]).split(".")[0]+"\n")
 
     fTrain.close()
 
-    fTest = open("./test", "w")
+    fTest = open("D:/PycharmProjects/DataSet/Mnist/test", "w")
 
     for i in range(len(test_images)):
-        fTest.writelines(str(test_images[i])+" "+str(test_labels[i]).split(".")[0]+"\n")
+        fTest.writelines(str(test_images[i]).replace(' ', '')+str(test_labels[i]).split(".")[0]+"\n")
 
     fTest.close()
 

@@ -1,11 +1,12 @@
 #  test on Mnist data set
 from SVM.SVC import svr
+import numpy as np
 
 #  this is a one v one classifier test
 #  my SVM.py is not finished up to now
 
 #  读取训练集
-fTrain = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\train')
+fTrain = open('D:\\PycharmProjects\\DataSet\\Mnist\\train')
 trainSet = []
 trainLabels = []
 for line in fTrain.readlines():
@@ -37,14 +38,14 @@ print('Train set loaded.')
 print('Start training')
 
 #  训练分类器
-s = svr(trainSet, trainLabels, 0.8, 0.01, 1000, kTup=['rbf', 0.8])
+s = svr(np.mat(trainSet), trainLabels, 0.8, 0.01, 50, kTup=['rbf', 0.8])
 
 print('Trained.')
 
 print('Start testing')
 
 #  读取测试集
-fTest = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\test')
+fTest = open('D:\\PycharmProjects\\DataSet\\Mnist\\test')
 testSet = []
 testLabels = []
 for line in fTest.readlines():
