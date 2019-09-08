@@ -155,14 +155,22 @@ def load_test_labels(idx_ubyte_file=test_labels_idx1_ubyte_file):
 def run():
     train_images = load_train_images()  # (num_rows*num_cols,num_images)
     train_labels = load_train_labels()
-    # test_images = load_test_images()
-    # test_labels = load_test_labels()
+    test_images = load_test_images()
+    test_labels = load_test_labels()
 
-    # 查看前十个数据及其标签以读取是否正确
-    for i in range(10):
-        print(train_labels[i])
-        print(train_images[i])
-    print('done')
+    fTrain = open("./train", "w")
+
+    for i in range(len(train_images)):
+        fTrain.writelines(str(train_images[i])+" "+str(train_labels[i]).split(".")[0]+"\n")
+
+    fTrain.close()
+
+    fTest = open("./test", "w")
+
+    for i in range(len(test_images)):
+        fTest.writelines(str(test_images[i])+" "+str(test_labels[i]).split(".")[0]+"\n")
+
+    fTest.close()
 
 
 if __name__ == '__main__':
