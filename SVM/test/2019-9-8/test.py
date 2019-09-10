@@ -9,6 +9,10 @@ import numpy as np
 fTrain = open('D:\\PycharmProjects\\DataSet\\Mnist\\train')
 trainSet = []
 trainLabels = []
+
+num0 = 0
+num1 = 1
+
 for line in fTrain.readlines():
 
     #  修改格式
@@ -16,8 +20,18 @@ for line in fTrain.readlines():
     label = line.split(')')[1].replace('\n', '')
 
     #  只分类0和1.这是一个2分类工具
+    # ********************************
     if label != '0' and label != '1':
         continue
+
+    if num0 + num1 == 600:
+        break
+
+    if label == '0':
+        num0 += 1
+    elif label == '1':
+        num1 += 1
+    # ********************************
 
     dataSets = dataSet.split(',')
     dataSets[0] = dataSets[0].replace('(', '')
@@ -29,7 +43,10 @@ for line in fTrain.readlines():
 
     #  置入数据结构中
     trainSet.append(temp)
-    trainLabels.append(int(label))
+    if label == '1':
+        trainLabels.append(1)
+    elif label == '0':
+        trainLabels.append(-1)
 
 fTrain.close()
 
@@ -38,7 +55,7 @@ print('Train set loaded.')
 print('Start training')
 
 #  训练分类器
-s = svr(np.mat(trainSet), trainLabels, 0.8, 0.01, 50, kTup=['rbf', 0.8])
+s = svr(np.mat(trainSet), trainLabels, 0.8, 0.01, 30, kTup=['lin', 0.8])
 
 print('Trained.')
 
@@ -48,6 +65,10 @@ print('Start testing')
 fTest = open('D:\\PycharmProjects\\DataSet\\Mnist\\test')
 testSet = []
 testLabels = []
+
+num0 = 0
+num1 = 1
+
 for line in fTest.readlines():
 
     #  修改格式
@@ -55,8 +76,18 @@ for line in fTest.readlines():
     label = line.split(')')[1].replace('\n', '')
 
     #  只分类0和1.这是一个2分类工具
+    # ********************************
     if label != '0' and label != '1':
         continue
+
+    if num0 + num1 == 200:
+        break
+
+    if label == '0':
+        num0 += 1
+    elif label == '1':
+        num1 += 1
+    # ********************************
 
     dataSets = dataSet.split(',')
     dataSets[0] = dataSets[0].replace('(', '')
@@ -68,7 +99,11 @@ for line in fTest.readlines():
 
     #  置入数据结构中
     testSet.append(temp)
-    testLabels.append(int(label))
+
+    if label == '1':
+        testLabels.append(1)
+    elif label == '0':
+        testLabels.append(-1)
 
 fTest.close()
 
@@ -89,4 +124,4 @@ for testArr in testSet:
 
     i += 1
 
-print(correct/len(testLabels))
+print(correct / len(testLabels))
