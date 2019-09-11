@@ -164,7 +164,7 @@ def selectJRand(i, m):
 
 
 # main loop
-def svr(dataMat, labelMat, C, tol, maxIter, kTup, cWeight=None):
+def svc(dataMat, labelMat, C, tol, maxIter, kTup, cWeight=None):
     s = SVC(np.mat(dataMat), np.mat(labelMat).T, kTup, tol, C, cWeight)
     numChange = 0
     examineAll = True

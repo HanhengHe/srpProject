@@ -2,7 +2,7 @@
 from math import log
 
 import numpy as np
-from SVM.SVC import svr
+from SVM.SVC import svc
 
 
 #   parameter全是list
@@ -108,7 +108,7 @@ def calculate_P(weights):
 
 #  训练分类器，返回对源数据集的分类结果以及分类器
 def train_classify(trans_data, trans_label, trans_S, param, P):
-    s = svr(trans_data, trans_label, param[0], param[1], param[2], param[3], cWeight=P)
+    s = svc(trans_data, trans_label, param[0], param[1], param[2], param[3], cWeight=P)
 
     result = np.zeros(1, len(trans_S))
     for i in range(len(trans_S)):

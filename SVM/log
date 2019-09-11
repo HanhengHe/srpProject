@@ -80,3 +80,7 @@ SVM.py是参照Platt给出的SMO伪代码写的，数据结构和部分逻辑参
     tol = 0.01,
     maxIter = 30,
     kTup=['lin', 0.8]
+
+9.12
+初步完成了SVM.py
+着重检查一下predict的while循环

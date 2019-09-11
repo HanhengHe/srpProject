@@ -1,5 +1,5 @@
 #  test on Mnist data set
-from SVM.SVC import svr
+from SVM.SVC import svc
 import numpy as np
 
 #  this is a one v one classifier test
@@ -55,7 +55,7 @@ print('Train set loaded.')
 print('Start training')
 
 #  训练分类器
-s = svr(np.mat(trainSet), trainLabels, 0.8, 0.01, 30, kTup=['lin', 0.8])
+s = svc(np.mat(trainSet), trainLabels, 0.8, 0.01, 30, kTup=['lin', 0.8])
 
 print('Trained.')
 

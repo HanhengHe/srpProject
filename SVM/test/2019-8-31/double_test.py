@@ -1,11 +1,11 @@
-from SVM.SVC import svr, ReadProblem
+from SVM.SVC import svc, ReadProblem
 from numpy import mat
 
 index = 1
 
 dataMat, labelMat = ReadProblem('D:\\WINTER\\Pycharm_project\\MachineLearning\\data\\train')
 
-s = svr(dataMat, labelMat, 0.8, 0.01, 20, kTup=['rbf', 0.8])
+s = svc(dataMat, labelMat, 0.8, 0.01, 20, kTup=['rbf', 0.8])
 
 testSet = []
 testLabels = 10 * [1] + 10 * [-1]

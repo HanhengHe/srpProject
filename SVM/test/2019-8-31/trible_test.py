@@ -1,4 +1,4 @@
-from SVM.SVC import svr
+from SVM.SVC import svc
 from numpy import mat
 
 #  三分类
@@ -32,13 +32,13 @@ maxIter = 30
 kTup = ['rbf', 0.5]
 
 #  setosa与versicolor
-svm_sve = svr(dataMat[0:80], [-1] * 40 + [1] * 40, C, tol, maxIter, kTup)
+svm_sve = svc(dataMat[0:80], [-1] * 40 + [1] * 40, C, tol, maxIter, kTup)
 
 #  setosa与virginica
-svm_svi = svr(dataMat[0:40] + dataMat[81:120], [-1] * 40 + [1] * 40, C, tol, maxIter, kTup)
+svm_svi = svc(dataMat[0:40] + dataMat[81:120], [-1] * 40 + [1] * 40, C, tol, maxIter, kTup)
 
 #  versicolor与virginica
-svm_vevi = svr(dataMat[41:120], [-1] * 40 + [1] * 40, C, tol, maxIter, kTup)
+svm_vevi = svc(dataMat[41:120], [-1] * 40 + [1] * 40, C, tol, maxIter, kTup)
 
 result = 0
 i = 0
