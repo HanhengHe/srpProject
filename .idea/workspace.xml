@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/log" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/test/2019-9-8/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/test/2019-9-8/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/SVM.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/SVM.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -213,7 +212,8 @@
       <updated>1567004770577</updated>
       <workItem from="1567949814085" duration="4923000" />
       <workItem from="1568038577620" duration="260000" />
-      <workItem from="1568090953345" duration="1102000" />
+      <workItem from="1568090953345" duration="1190000" />
+      <workItem from="1568177405642" duration="615000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1567316351254</created>
@@ -313,7 +313,21 @@
       <option name="project" value="LOCAL" />
       <updated>1567956379761</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="first try on Mnist(failed)">
+      <created>1568092062864</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1568092062864</updated>
+    </task>
+    <task id="LOCAL-00016" summary="600+200二分类器on Mnist">
+      <created>1568092120253</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1568092120253</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,7 +364,8 @@
     <MESSAGE value="transfer ubyte to txt(copied code..)" />
     <MESSAGE value="first try on Mnist" />
     <MESSAGE value="first try on Mnist(failed)" />
-    <option name="LAST_COMMIT_MESSAGE" value="first try on Mnist(failed)" />
+    <MESSAGE value="600+200二分类器on Mnist" />
+    <option name="LAST_COMMIT_MESSAGE" value="600+200二分类器on Mnist" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

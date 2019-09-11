@@ -18,15 +18,20 @@ def Classifier(dataList, labelList, C, tol, maxIter, kTup=('lin', 0), cWeight=0,
         raise NameError('error: dataList should be a list.')
 
     if not isinstance(labelList, list):
-        raise NameError('error: testList should be a list.')
+        raise NameError('error: labelList should be a list.')
 
+    # ***************这部分代码还可以进一步优化******************
     #   计算类别数
     counter = []
     for data in dataList:
         if data[len(data) - 1] not in counter:
-            counter.append(data[len(data) - 1])
+            counter.append((data[len(data) - 1], 1))
 
     num = len(counter)
+    #   按标签类型重新整理数据集
+    #   list嵌套list，这种方式的空间效率可能会很低，期待后续修正
+    neatDataSet = []
+
 
     #   按多分类类型派发任务
     if classifierType == 'DAG':
@@ -36,6 +41,8 @@ def Classifier(dataList, labelList, C, tol, maxIter, kTup=('lin', 0), cWeight=0,
     else:
         raise NameError('error: classifierType error .')
 
+    # ************************到这******************************
+
 
 #   有向无环图分类器
 def dagClassifier(dataList, labelList, num, C, tol, maxIter, kTup):
@@ -43,7 +50,13 @@ def dagClassifier(dataList, labelList, num, C, tol, maxIter, kTup):
     svrs = list()
     svrsName = list()
 
+    #  prepare for data
+
+    #  counter on label number
+    counter = 0
+
     index = 0
+    #  prepare for nameList
     for i in range(num):
         for j in range(i + 1, num):
             svrsName.append(str(i) + '&' + str(j))
