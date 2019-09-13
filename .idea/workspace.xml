@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/SVC.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/SVC.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/SVM.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/SVM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/test/2019-8-31/double_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/test/2019-8-31/double_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/test/2019-8-31/trible_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/test/2019-8-31/trible_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/test/2019-9-8/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/test/2019-9-8/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/trAdaBoost.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/trAdaBoost.py" afterDir="false" />
-    </list>
+    <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +211,7 @@
       <workItem from="1568038577620" duration="260000" />
       <workItem from="1568090953345" duration="1190000" />
       <workItem from="1568177405642" duration="802000" />
-      <workItem from="1568213222969" duration="6206000" />
+      <workItem from="1568213222969" duration="6302000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1567316351254</created>
@@ -340,7 +332,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568178065924</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="更新SVM.py(可重用多分类代码)">
+      <created>1568221215176</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1568221215176</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -379,7 +378,8 @@
     <MESSAGE value="first try on Mnist(failed)" />
     <MESSAGE value="600+200二分类器on Mnist" />
     <MESSAGE value="开始更新SVM.py(可重用多分类代码)" />
-    <option name="LAST_COMMIT_MESSAGE" value="开始更新SVM.py(可重用多分类代码)" />
+    <MESSAGE value="更新SVM.py(可重用多分类代码)" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新SVM.py(可重用多分类代码)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
