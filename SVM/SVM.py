@@ -109,7 +109,6 @@ class Classifier:
         #   I have no idea whether this will work
 
         index = 1
-        predict = ''
 
         firstStep = self.svcs[0].predict(x)
 
