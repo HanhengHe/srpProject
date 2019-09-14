@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/SVM/test/2019-9-14/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SVM/test/2019-9-14/test-SVM.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/SVC.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/SVC.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SVM/SVM.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/SVM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/test/2019-9-14/test.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,7 +60,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.test-SVM">
     <configuration name="MachineLearning" type="PythonConfigurationType" factoryName="Python">
       <module name="MachineLearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -103,7 +105,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="double_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="test-SVM" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MachineLearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -111,12 +113,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SVM/test" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SVM/test/2019-9-14" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\WINTER\Pycharm_project\MachineLearning\SVM\test\2019-8-31\double_test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SVM/test/2019-9-14/test-SVM.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -138,7 +139,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SVM/test/2019-9-8/test.py" />
+      <option name="SCRIPT_NAME" value="D:\WINTER\Pycharm_project\srpProject\SVM\test\2019-9-8\test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -193,11 +194,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test-SVM" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.transfrom" />
         <item itemvalue="Python.trible_test" />
         <item itemvalue="Python.double_test (1)" />
-        <item itemvalue="Python.double_test" />
       </list>
     </recent_temporary>
   </component>
@@ -343,7 +344,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568221215176</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="测试SVM.py(可重用多分类代码)">
+      <created>1568450951934</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1568450951934</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -383,15 +391,16 @@
     <MESSAGE value="600+200二分类器on Mnist" />
     <MESSAGE value="开始更新SVM.py(可重用多分类代码)" />
     <MESSAGE value="更新SVM.py(可重用多分类代码)" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新SVM.py(可重用多分类代码)" />
+    <MESSAGE value="测试SVM.py(可重用多分类代码)" />
+    <option name="LAST_COMMIT_MESSAGE" value="测试SVM.py(可重用多分类代码)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SVM/SVC.py</url>
-          <line>40</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/SVM/SVM.py</url>
+          <line>108</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

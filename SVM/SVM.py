@@ -25,7 +25,7 @@ Type = ('DAG', 'ECOC')
 #   Error我是随便raise的, 因为我不知道raise什么Error比较合适....
 
 class Classifier:
-    def __init__(self, dataList, C, tol, maxIter, kTup=('lin', 0), cWeight=0, classifierType=Type[0]):
+    def __init__(self, dataList, C, tol, maxIter, kTup=('lin', 0), cWeight=None, classifierType=Type[0]):
         #   check type
         if not isinstance(dataList, list):
             raise NameError('error: dataList should be a list.')
@@ -54,17 +54,15 @@ class Classifier:
         self.neatDataSet = []
         self.neatLabelSet = []
 
-        # 下面这块二重循环仔细看看
         for data in dataList:
             if data[len(data) - 1] not in self.neatLabelSet:  # 如果data末尾的标签不在neatLabelSet中
-                self.neatLabelSet.append((data[len(data) - 1], 1))
-                tempDataSet = []  # 一个临时的list
+                self.neatLabelSet.append((data[len(data) - 1]))
+
+                self.neatDataSet.append([])
 
                 for da in dataList:  # 再次遍历数据集
-                    if da[len(data) - 1] == self.neatLabelSet[len(self.neatLabelSet)]:  # 如果da末尾标签与当前处理标签相符
-                        tempDataSet.append(da)
-
-                self.neatDataSet.append(tempDataSet)
+                    if da[len(da) - 1] == self.neatLabelSet[len(self.neatLabelSet)-1]:  # 如果da末尾标签与当前处理标签相符
+                        self.neatDataSet[len(self.neatDataSet)-1].append(da[0:len(da)-1])
 
         #  计算类别数目
         self.num = len(self.neatLabelSet)
@@ -72,7 +70,7 @@ class Classifier:
             raise NameError('error: require two or more types .')
 
         #  训练
-        if classifierType not in type:
+        if classifierType not in Type:
             raise NameError('error: classifierType error .')
 
         self.train()
@@ -121,7 +119,7 @@ class Classifier:
 
         while True:
 
-            if index == self.num:
+            if index == len(self.svcsName):
                 return predict
 
             if predict not in self.svcsName[index].split('&'):

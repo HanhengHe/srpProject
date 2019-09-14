@@ -168,7 +168,7 @@ def svc(dataMat, labelMat, C, tol, maxIter, kTup, cWeight=None):
     s = SVC(np.mat(dataMat), np.mat(labelMat).T, kTup, tol, C, cWeight)
     numChange = 0
     examineAll = True
-    m, n = np.shape(dataMat)
+    m = len(dataMat)
     iter = 0
     while (numChange > 0 or examineAll) and (iter < maxIter):
         numChange = 0
