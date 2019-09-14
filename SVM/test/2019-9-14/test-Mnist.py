@@ -1,30 +1,103 @@
 # -*- coding: UTF-8 -*-
 from SVM.SVM import *
 
-trainFile = open('D:\\WINTER\\Pycharm_project\\data\\Iris\\iris')
+trainFile = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\train')
 
-trainList = []
+trainSize = 100
+testSize = 100
+
+trainSet = []
+
+trainCounter = [
+    [1, 0],
+    [2, 0],
+    [3, 0],
+    [4, 0],
+    [5, 0],
+    [6, 0],
+    [7, 0],
+    [8, 0],
+    [9, 0],
+    [0, 0],
+]
+
+testCounter = [
+    [1, 0],
+    [2, 0],
+    [3, 0],
+    [4, 0],
+    [5, 0],
+    [6, 0],
+    [7, 0],
+    [8, 0],
+    [9, 0],
+    [0, 0],
+]
 
 for line in trainFile.readlines():
-    data = line.strip().split(' ')
-    trainList.append([float(data[1]), float(data[2]), float(data[3]), float(data[4]), str(data[5])])
+    #  修改格式
+    dataSet = line.split(')')[0]
+    label = line.split(')')[1].replace('\n', '')
 
-classifier = Classifier(trainList, 0.8, 0.01, 20, ['rbf', 0.5])
+    # 计数
+    #  ****************从这开始*********************
+    if trainCounter[int(label)][1] == trainSize:
+        continue
 
-testFile = open('D:\\WINTER\\Pycharm_project\\data\\Iris\\iris_test')
+    trainCounter[int(label)][1] = trainCounter[int(label)][1]+1
 
-testList = []
+    #  ******************到这***********************
+
+    dataSets = dataSet.split(',')
+    dataSets[0] = dataSets[0].replace('(', '')
+
+    #  data set调整为float类型，label调整为int类型
+    temp = []
+    for i in range(len(dataSets)):
+        temp.append(int(dataSets[i]))
+
+    temp.append(label)
+
+    #  置入数据结构中
+    trainSet.append(temp)
+
+classifier = Classifier(trainSet, 0.8, 0.01, 30, ['lin', 0.6])
+
+testFile = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\test')
+
+testSet = []
 testLabels = []
 
 for line in testFile.readlines():
-    data = line.strip().split(' ')
-    testList.append([float(data[1]), float(data[2]), float(data[3]), float(data[4])])
-    testLabels.append(str(data[5]))
+    #  修改格式
+    dataSet = line.split(')')[0]
+    label = line.split(')')[1].replace('\n', '')
+
+    # 计数
+    #  ****************从这开始*********************
+    if testCounter[int(label)][1] == trainSize:
+        continue
+
+    testCounter[int(label)][1] = testCounter[int(label)][1] + 1
+
+    #  ******************到这***********************
+
+    dataSets = dataSet.split(',')
+    dataSets[0] = dataSets[0].replace('(', '')
+
+    #  data set调整为float类型，label调整为int类型
+    temp = []
+    for i in range(len(dataSets)):
+        temp.append(int(dataSets[i]))
+
+    #  置入数据结构中
+    testSet.append(temp)
+    testLabels.append(label)
 
 correct = 0
 
-for index in range(0, len(testList)):
-    predict = classifier.predict(testList[index])
+for index in range(0, len(testSet)):
+    predict = classifier.predict(testSet[index])
 
     print(index, end='')
     print(" predict is ", end='')
@@ -35,6 +108,12 @@ for index in range(0, len(testList)):
         print('predict is right.')
     else:
         print('predict is wrong.')
+
+print("train data set situation: ")
+print(trainCounter)
+
+print("test data set situation: ")
+print(testCounter)
 
 print("Correct present: ")
 print(correct/len(testLabels))
