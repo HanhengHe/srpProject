@@ -3,8 +3,8 @@ from SVM.SVM import *
 
 trainFile = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\train')
 
-trainSize = 100
-testSize = 100
+trainSize = 50
+testSize = 10
 
 trainSet = []
 
@@ -61,7 +61,7 @@ for line in trainFile.readlines():
     #  置入数据结构中
     trainSet.append(temp)
 
-classifier = Classifier(trainSet, 0.8, 0.01, 30, ['lin', 0.6])
+classifier = Classifier(trainSet, 0.8, 0.01, 30, ['rbf', 0.8])
 
 testFile = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\test')
 

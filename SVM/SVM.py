@@ -104,7 +104,10 @@ class Classifier:
     #   End function
 
     def predict(self, x):
+
         #   I have no idea whether this will work
+
+        atList = self.neatLabelSet.copy()
 
         index = 1
 
@@ -112,8 +115,10 @@ class Classifier:
 
         if firstStep < 0:
             predict = self.svcsName[0].split('&')[0]
+            atList.remove(self.svcsName[0].split('&')[1])
         elif firstStep > 0:
             predict = self.svcsName[0].split('&')[1]
+            atList.remove(self.svcsName[0].split('&')[0])
         else:
             raise NameError('error: predict zero .')
 
@@ -126,12 +131,22 @@ class Classifier:
                 index += 1
                 continue
 
+            tempIndex = (self.svcsName[index].split('&').index(predict)+1) % 2
+
+            if self.svcsName[index].split('&')[tempIndex] not in atList:
+                index += 1
+                continue
+
             takeStep = self.svcs[index].predict(x)
 
             if takeStep < 0:
                 predict = self.svcsName[index].split('&')[0]
+                atList.remove(self.svcsName[index].split('&')[1])
+
             elif takeStep > 0:
                 predict = self.svcsName[index].split('&')[1]
+                atList.remove(self.svcsName[index].split('&')[0])
+
             else:
                 raise NameError('error: predict zero .')
 
