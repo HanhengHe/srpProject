@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/SVM/test/2019-9-14/test-SVM.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SVM/test/2019-9-14/test-Mnist.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/SVC.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/SVC.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/SVM.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/SVM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/test/2019-9-14/test.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -351,7 +348,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568450951934</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="利用iris数据集测试SVM.py">
+      <created>1568454960340</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1568454960340</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -392,7 +396,8 @@
     <MESSAGE value="开始更新SVM.py(可重用多分类代码)" />
     <MESSAGE value="更新SVM.py(可重用多分类代码)" />
     <MESSAGE value="测试SVM.py(可重用多分类代码)" />
-    <option name="LAST_COMMIT_MESSAGE" value="测试SVM.py(可重用多分类代码)" />
+    <MESSAGE value="利用iris数据集测试SVM.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="利用iris数据集测试SVM.py" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
