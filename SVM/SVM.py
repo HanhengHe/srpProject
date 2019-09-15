@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 from SVM.SVC import svc
 
-#   这是一个不成熟的svr多分类器
+#   这是一个不成熟的svc多分类器
 
 #   目前只打算写 dag 部分和 ecoc 部分
 #   ovo 和 ovr 不打算做
