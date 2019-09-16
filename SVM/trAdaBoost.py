@@ -16,7 +16,7 @@ from SVM.SVC import svc
 #   N 迭代次数
 #   param=[C, tol, maxIter, kTup]
 
-class Classifier:
+class trClassifier:
     def __init__(self, svcs, beta_Ts):
         self.svcs = svcs
         #   构造一个队列减少计算量
@@ -36,9 +36,17 @@ class Classifier:
             return -1
 
 
-def trAdaBoost(trans_S, trans_A, label_S, label_A, N, errorRate, param):
+def trAdaBoost(trans_S, trans_A, N, errorRate, param):
     trans_data = trans_S + trans_A
-    trans_label = label_S + label_A
+
+    label_S = []
+    label_A = []
+
+    for x in trans_S:
+        label_S.append(x[len(x)-1])
+
+    for x in trans_A:
+        label_A.append(x[len(x)-1])
 
     row_A = len(trans_A)
     row_S = len(trans_S)
@@ -57,19 +65,16 @@ def trAdaBoost(trans_S, trans_A, label_S, label_A, N, errorRate, param):
 
     print('params initial finished.')
 
-    # s是预测器
-    s = None
-
     for i in range(N):
 
         # 归一化权重
         P = calculate_P(weights)
 
         # 训练分类器并返回预测结果
-        result[:, i], s = train_classify(trans_data, trans_label, trans_S, param, P)
+        result[:, i], classifier = train_classify(trans_data, trans_S, param, P)
 
         # 计算错误率
-        error_rate = calculate_error_rate(label_S, result, weights[row_A:row_A + row_S, :])
+        error_rate = calculate_error_rate(np.mat(label_S), result[:, i], weights[row_A:row_A + row_S, :])
         print('Error rate:', error_rate)
         if error_rate > 0.5:
             error_rate = 0.5  # 确保eta大于0.5
@@ -91,11 +96,11 @@ def trAdaBoost(trans_S, trans_A, label_S, label_A, N, errorRate, param):
 
         # 记录后N/2个分类器和betaT, 向下取整
         if i > int(N / 2):
-            svcs.append(s)
+            svcs.append(classifier)
             beta_Ts.append(beta_T)
 
     # 构造训练出来的集成分类器并返回
-    classifier = Classifier(svcs, beta_Ts)
+    classifier = trClassifier(svcs, beta_Ts)
 
     return classifier
 
@@ -107,13 +112,13 @@ def calculate_P(weights):
 
 
 #  训练分类器，返回对源数据集的分类结果以及分类器
-def train_classify(trans_data, trans_label, trans_S, param, P):
-    s = svc(trans_data, trans_label, param[0], param[1], param[2], param[3], cWeight=P)
+def train_classify(trans_data, trans_S, param, P):
+    classifier = svc(trans_data, param[0], param[1], param[2], param[3], cWeight=P)
 
     result = np.zeros(1, len(trans_S))
     for i in range(len(trans_S)):
-        result[0, i] = s.predict(trans_S[i])
-    return result, s
+        result[0, i] = classifier.predict(trans_S[i])
+    return result, classifier
 
 
 # 计算错误率
