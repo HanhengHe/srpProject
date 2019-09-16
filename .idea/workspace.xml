@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/log" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SVM/test/2019-9-14/test-Mnist.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/test/2019-9-14/test-Mnist.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -375,7 +376,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568481090237</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="利用Mnist数据集测试SVM.py">
+      <created>1568535028627</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1568535028631</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

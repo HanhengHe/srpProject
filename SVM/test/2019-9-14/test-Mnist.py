@@ -61,7 +61,7 @@ for line in trainFile.readlines():
     #  置入数据结构中
     trainSet.append(temp)
 
-classifier = Classifier(trainSet, 0.8, 0.01, 20, ['lin', 0.8])
+classifier = Classifier(trainSet, 0.7, 0.01, 20, ['lin', 0.8])
 
 testFile = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\test')
 
