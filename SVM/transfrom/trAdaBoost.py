@@ -36,17 +36,8 @@ class trClassifier:
             return -1
 
 
-def trAdaBoost(trans_S, trans_A, N, errorRate, param):
+def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05):
     trans_data = trans_S + trans_A
-
-    label_S = []
-    label_A = []
-
-    for x in trans_S:
-        label_S.append(x[len(x)-1])
-
-    for x in trans_A:
-        label_A.append(x[len(x)-1])
 
     row_A = len(trans_A)
     row_S = len(trans_S)
@@ -71,7 +62,7 @@ def trAdaBoost(trans_S, trans_A, N, errorRate, param):
         P = calculate_P(weights)
 
         # 训练分类器并返回预测结果
-        result[:, i], classifier = train_classify(trans_data, trans_S, param, P)
+        result[:, i], classifier = train_classify(trans_data, label_S+label_A, trans_S, param, P)
 
         # 计算错误率
         error_rate = calculate_error_rate(np.mat(label_S), result[:, i], weights[row_A:row_A + row_S, :])
@@ -112,8 +103,8 @@ def calculate_P(weights):
 
 
 #  训练分类器，返回对源数据集的分类结果以及分类器
-def train_classify(trans_data, trans_S, param, P):
-    classifier = svc(trans_data, param[0], param[1], param[2], param[3], cWeight=P)
+def train_classify(trans_data, trans_labels, trans_S, param, P):
+    classifier = svc(trans_data, trans_labels, param[0], param[1], param[2], param[3], cWeight=P)
 
     result = np.zeros(1, len(trans_S))
     for i in range(len(trans_S)):

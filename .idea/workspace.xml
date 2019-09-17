@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/log" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/test/2019-9-14/test-Mnist.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/test/2019-9-14/test-Mnist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/test/2019-9-16/test_trMnist.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/test/2019-9-16/test_trMnist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/trAdaBoost.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/transfrom/trAdaBoost.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/trSVM.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/transfrom/trSVM.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,11 +40,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\WINTER\Pycharm_project\srpProject\SVM\transfrom" />
       <recent name="D:\WINTER\Pycharm_project\MachineLearning\SVM" />
       <recent name="D:\WINTER\Pycharm_project\MachineLearning\SVM\test\2019-7-26" />
       <recent name="D:\WINTER\Pycharm_project\MachineLearning\SVM\test\2019-8-31" />
       <recent name="D:\WINTER\Pycharm_project\MachineLearning\SVM\test\old" />
-      <recent name="D:\WINTER\Pycharm_project\MachineLearning\test" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -58,7 +59,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test-Mnist">
+  <component name="RunManager" selected="Python.test_trMnist">
     <configuration name="MachineLearning" type="PythonConfigurationType" factoryName="Python">
       <module name="MachineLearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -145,7 +146,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="transfrom" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="test_trMnist" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MachineLearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -153,12 +154,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data/Mnist" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SVM/test/2019-9-16" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/Mnist/transfrom.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SVM/test/2019-9-16/test_trMnist.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -167,7 +167,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="trible_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="trSVM" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MachineLearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -175,12 +175,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SVM/test/2019-8-31" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SVM" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SVM/test/2019-8-31/trible_test.py" />
+      <option name="SCRIPT_NAME" value="D:\WINTER\Pycharm_project\srpProject\SVM\transfrom\trSVM.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -191,11 +190,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test_trMnist" />
+        <item itemvalue="Python.trSVM" />
         <item itemvalue="Python.test-Mnist" />
         <item itemvalue="Python.test-SVM" />
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.transfrom" />
-        <item itemvalue="Python.trible_test" />
       </list>
     </recent_temporary>
   </component>
@@ -404,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568649595916</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Mnist数据集训练">
+      <created>1568729455169</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1568729455169</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
