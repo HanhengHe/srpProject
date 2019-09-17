@@ -90,6 +90,9 @@ class Classifier:
         if self.num <= 1:
             raise NameError('error: require two or more types .')
 
+        if self.num != len(self.neatLabelSet_S):
+            raise NameError('error: some types in assistant data did not find in source data.')
+
         #  训练
         if classifierType not in Type:
             raise NameError('error: classifierType error .')
