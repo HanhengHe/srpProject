@@ -5,16 +5,31 @@ import numpy as np
 trainFile = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\train')
 
 trainASize = 50
+SourceSize = 15
 trainSSize = 5
 testSize = 10
 
 trainSetA = []
-trainSetS = []
+SourceSet = []
 
+trainSetS = []
 testSet = []
 testLabels = []
 
 trainSCounter = [
+    [1, 0],
+    [2, 0],
+    [3, 0],
+    [4, 0],
+    [5, 0],
+    [6, 0],
+    [7, 0],
+    [8, 0],
+    [9, 0],
+    [0, 0],
+]
+
+SourceCounter = [
     [1, 0],
     [2, 0],
     [3, 0],
@@ -62,7 +77,7 @@ for line in trainFile.readlines():
     # 计数
     #  ****************从这开始*********************
     if trainACounter[int(label)][1] == trainASize:
-        continue
+        break
 
     trainACounter[int(label)][1] = trainACounter[int(label)][1] + 1
 
@@ -81,6 +96,8 @@ for line in trainFile.readlines():
     #  置入数据结构中
     trainSetA.append(temp)
 
+trainFile.close()
+
 testFile = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\test')
 
 #   data source and test data
@@ -91,33 +108,10 @@ for line in testFile.readlines():
 
     # 计数
     #  ****************从这开始*********************
-    if trainACounter[int(label)][1] == trainSSize:
-        #   test data
-        #  修改格式
-        dataSet = line.split(')')[0]
-        label = line.split(')')[1].replace('\n', '')
-        # 计数
-        #  ****************从这开始*********************
-        if testCounter[int(label)][1] == testSize:
-            continue
+    if SourceCounter[int(label)][1] == SourceSize:
+        break
 
-        testCounter[int(label)][1] = testCounter[int(label)][1] + 1
-
-        #  ******************到这***********************
-
-        dataSets = dataSet.split(',')
-        dataSets[0] = dataSets[0].replace('(', '')
-
-        #  data set调整为float类型，label调整为int类型
-        temp = []
-        for i in range(len(dataSets)):
-            temp.append(int(dataSets[i]))
-
-        #  置入数据结构中
-        testSet.append(temp)
-        testLabels.append(label)
-
-    trainSCounter[int(label)][1] = trainSCounter[int(label)][1] + 1
+    SourceCounter[int(label)][1] = SourceCounter[int(label)][1] + 1
 
     #  ******************到这***********************
 
@@ -132,9 +126,26 @@ for line in testFile.readlines():
     temp.append(label)
 
     #  置入数据结构中
-    trainSetS.append(temp)
+    SourceSet.append(temp)
 
-classifier = Classifier(trainSetA, trainSetS, 0.7, 0.01, 20, ['lin', 0.8])
+testFile.close()
+
+for i in range(len(SourceSet)):
+    if trainSSize > trainSCounter[int(SourceSet[i][len(SourceSet[i]) - 1])][1]:
+        trainSetS.append(SourceSet[i])
+        trainSCounter[int(SourceSet[i][len(SourceSet[i]) - 1])][1] = \
+            trainSCounter[int(SourceSet[i][len(SourceSet[i]) - 1])][1] + 1
+    else:
+        testSet.append(SourceSet[:len(SourceSet)-1])
+        testLabels.append(SourceSet[len(SourceSet)-1])
+
+print(len(trainSetA))
+print(len(trainSetS))
+print(len(testSet))
+print(len(SourceSet))
+
+
+classifier = Classifier(trainSetA, SourceSet, 0.7, 0.01, 20, ['lin', 0.8])
 
 correct = 0
 

@@ -121,7 +121,7 @@ class Classifier:
                 self.svcs.append(
                     trAdaBoost(self.neatDataSet_A[i] + self.neatDataSet_A[j],  # A svc on type number i and type number j
                                self.neatDataSet_S[i] + self.neatDataSet_S[j],  # S
-                               [-1] * len(self.neatDataSet_A[i])+[1] * len(self.neatDataSet_A[j]),  # A label set
+                               [-1] * len(self.neatDataSet_A[i]) + [1] * len(self.neatDataSet_A[j]),  # A label set
                                [-1] * len(self.neatDataSet_S[i]) + [1] * len(self.neatDataSet_S[j]),  # S label set
                                [self.C, self.tol, self.maxIter, self.kTup],
                                20, 0.05  # parameters
