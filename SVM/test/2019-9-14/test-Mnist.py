@@ -1,5 +1,6 @@
 # -*- coding: UTF-8 -*-
 from SVM.SVM import *
+import numpy as np
 
 trainFile = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\train')
 
@@ -96,17 +97,21 @@ for line in testFile.readlines():
 
 correct = 0
 
+error = np.zeros((10, 10), int)
+
 for index in range(0, len(testSet)):
     predict = classifier.predict(testSet[index])
 
     print(index, end='')
     print(" predict is ", end='')
     print(predict, end=';')
+    print(" real label is ", end=testLabels[index]+";")
 
     if predict == testLabels[index]:
         correct += 1
         print('predict is right.')
     else:
+        error[int(testLabels[index]), int(predict)] = error[int(testLabels[index]), int(predict)]+1
         print('predict is wrong.')
 
 print("train data set situation: ")
@@ -117,3 +122,4 @@ print(testCounter)
 
 print("Correct present: ")
 print(correct/len(testLabels))
+print(error)
