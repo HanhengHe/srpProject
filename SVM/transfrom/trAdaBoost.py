@@ -46,7 +46,7 @@ def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05):
     # 权重C：C越大系统越重视对应样本
     weights_A = [1 / row_A] * row_A
     weights_S = [1 / row_S] * row_S
-    weights = np.mat(weights_A + weights_S)
+    weights = weights_A + weights_S
 
     beta = 1 / (1 + np.sqrt(2 * np.log(row_A / N)))
 
@@ -98,8 +98,9 @@ def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05):
 
 # 归一化权重
 def calculate_P(weights):
-    total = np.sum(weights)
-    return np.asarray(weights / total, order='C')
+    temp = np.mat(weights)
+    total = np.sum(temp)
+    return np.asarray(temp / total, order='C').tolist()[0]
 
 
 #  训练分类器，返回对源数据集的分类结果以及分类器

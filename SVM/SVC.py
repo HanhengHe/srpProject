@@ -21,7 +21,7 @@ class SVC:
         elif len(cWeight) != self.m:
             raise NameError("Error on C weight")
         else:
-            self.cWeight = cWeight * self.m
+            self.cWeight = cWeight
 
         self.K = np.mat(np.zeros((self.m, self.m), dtype=int))
         print('Init dataMat')

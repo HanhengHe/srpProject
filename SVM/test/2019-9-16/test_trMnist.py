@@ -4,12 +4,30 @@ import numpy as np
 
 trainFile = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\train')
 
-trainSize = 50
+trainASize = 50
+trainSSize = 5
 testSize = 10
 
-trainSet = []
+trainSetA = []
+trainSetS = []
 
-trainCounter = [
+testSet = []
+testLabels = []
+
+trainSCounter = [
+    [1, 0],
+    [2, 0],
+    [3, 0],
+    [4, 0],
+    [5, 0],
+    [6, 0],
+    [7, 0],
+    [8, 0],
+    [9, 0],
+    [0, 0],
+]
+
+trainACounter = [
     [1, 0],
     [2, 0],
     [3, 0],
@@ -35,6 +53,7 @@ testCounter = [
     [0, 0],
 ]
 
+#   assistant data
 for line in trainFile.readlines():
     #  修改格式
     dataSet = line.split(')')[0]
@@ -42,10 +61,10 @@ for line in trainFile.readlines():
 
     # 计数
     #  ****************从这开始*********************
-    if trainCounter[int(label)][1] == trainSize:
+    if trainACounter[int(label)][1] == trainASize:
         continue
 
-    trainCounter[int(label)][1] = trainCounter[int(label)][1]+1
+    trainACounter[int(label)][1] = trainACounter[int(label)][1] + 1
 
     #  ******************到这***********************
 
@@ -60,15 +79,11 @@ for line in trainFile.readlines():
     temp.append(label)
 
     #  置入数据结构中
-    trainSet.append(temp)
-
-classifier = Classifier(trainSet, 0.7, 0.01, 20, ['lin', 0.8])
+    trainSetA.append(temp)
 
 testFile = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\test')
 
-testSet = []
-testLabels = []
-
+#   data source and test data
 for line in testFile.readlines():
     #  修改格式
     dataSet = line.split(')')[0]
@@ -76,10 +91,33 @@ for line in testFile.readlines():
 
     # 计数
     #  ****************从这开始*********************
-    if testCounter[int(label)][1] == trainSize:
-        continue
+    if trainACounter[int(label)][1] == trainSSize:
+        #   test data
+        #  修改格式
+        dataSet = line.split(')')[0]
+        label = line.split(')')[1].replace('\n', '')
+        # 计数
+        #  ****************从这开始*********************
+        if testCounter[int(label)][1] == testSize:
+            continue
 
-    testCounter[int(label)][1] = testCounter[int(label)][1] + 1
+        testCounter[int(label)][1] = testCounter[int(label)][1] + 1
+
+        #  ******************到这***********************
+
+        dataSets = dataSet.split(',')
+        dataSets[0] = dataSets[0].replace('(', '')
+
+        #  data set调整为float类型，label调整为int类型
+        temp = []
+        for i in range(len(dataSets)):
+            temp.append(int(dataSets[i]))
+
+        #  置入数据结构中
+        testSet.append(temp)
+        testLabels.append(label)
+
+    trainSCounter[int(label)][1] = trainSCounter[int(label)][1] + 1
 
     #  ******************到这***********************
 
@@ -91,14 +129,18 @@ for line in testFile.readlines():
     for i in range(len(dataSets)):
         temp.append(int(dataSets[i]))
 
+    temp.append(label)
+
     #  置入数据结构中
-    testSet.append(temp)
-    testLabels.append(label)
+    trainSetS.append(temp)
+
+classifier = Classifier(trainSetA, trainSetS, 0.7, 0.01, 20, ['lin', 0.8])
 
 correct = 0
 
 error = np.zeros((10, 10), int)
 
+# test
 for index in range(0, len(testSet)):
     predict = classifier.predict(testSet[index])
 
@@ -115,7 +157,7 @@ for index in range(0, len(testSet)):
         print('predict is wrong.')
 
 print("train data set situation: ")
-print(trainCounter)
+print(trainSCounter)
 
 print("test data set situation: ")
 print(testCounter)
