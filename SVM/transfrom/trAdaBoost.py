@@ -22,14 +22,22 @@ class trClassifier:
         #   构造一个队列减少计算量
         self.core = []
         for i in range(len(svcs)):
-            self.core.append(log(1 / beta_Ts[i]))
+            self.core.append(beta_Ts[i])
 
     def predict(self, x):
         right = 0
         left = 0
         for i in range(len(self.svcs)):
-            right += self.core[i] * self.svcs[i].predict(x)
-            left += self.core[i] / 2
+            predict = self.svcs[i].predict(x)
+            if predict > 0:
+                predict = 1
+            elif predict < 0:
+                predict = 0
+            else:
+                raise NameError("Error : predict = 0")
+            right *= self.core[i] ** (-predict)
+            left *= self.core[i] ** (0.5)
+
         if right >= left:
             return 1
         else:
@@ -55,6 +63,9 @@ def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05):
 
     beta = 1 / (1 + np.sqrt(2 * np.log(row_A / N)))
 
+    tempSvcs = []
+    tempBeta_Ts = []
+
     svcs = []
     beta_Ts = []
     result = np.ones([row_A + row_S, N])
@@ -75,10 +86,14 @@ def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05):
         print('')
         if error_rate > 0.5:
             error_rate = 0.5  # 确保eta大于0.5
-        if error_rate <= errorRate:
-            break  # 防止过拟合
 
         beta_T = error_rate / (1 - error_rate)
+
+        tempSvcs.append(classifier)
+        tempBeta_Ts.append(beta_T)
+
+        if error_rate <= errorRate:
+            break  # 防止过拟合
 
         # 调整源域样本权重
         for j in range(row_S):
@@ -89,10 +104,12 @@ def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05):
         for j in range(row_A):
             weights[0, j] = weights[0, j] * np.power(beta, np.abs(result[j, i] - label_A[j]) / 2)
 
-        # 记录后N/2个分类器和betaT, 向下取整
-        if i > int(N / 2):
-            svcs.append(classifier)
-            beta_Ts.append(beta_T)
+    # 记录后N/2个分类器，向上取整
+    num = int(len(tempSvcs)/2)
+
+    for i in range(num, len(tempSvcs)):
+        svcs.append(tempSvcs[i])
+        beta_Ts.append(tempBeta_Ts[i])
 
     # 构造训练出来的集成分类器并返回
     classifier = trClassifier(svcs, beta_Ts)

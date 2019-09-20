@@ -143,13 +143,6 @@ for i in range(len(SourceSet)):
         testSet.append(SourceSet[i][:len(SourceSet[i])-1])
         testLabels.append(SourceSet[i][len(SourceSet[i])-1])
 
-print(len(trainSetA))
-print(len(trainSetS))
-print(len(testSet))
-
-for i in range(len(trainSetS)):
-    print(trainSetS[i][len(trainSetS[i])-1])
-
 classifier = Classifier(trainSetS, trainSetA, 0.7, 0.01, 20, ['lin', 0], 10, 0.1)
 
 correct = 0

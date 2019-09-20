@@ -195,6 +195,11 @@ def svc(dataMat, labelMat, C, tol, maxIter, kTup, cWeight=None):
     #  get b
     s.b = s.calcB()
 
+    #  release memory
+    s.alphas = None
+    s.labelMat = None
+    s.cWeight = None
+
     return s
 
 
