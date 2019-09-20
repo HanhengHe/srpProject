@@ -22,11 +22,11 @@ class trClassifier:
         #   构造一个队列减少计算量
         self.core = []
         for i in range(len(svcs)):
-            self.core.append(beta_Ts[i])
+            self.core.append(beta_Ts[i][0, 0])
 
     def predict(self, x):
-        right = 0
-        left = 0
+        right = 1
+        left = 1
         for i in range(len(self.svcs)):
             predict = self.svcs[i].predict(x)
             if predict > 0:
@@ -35,8 +35,17 @@ class trClassifier:
                 predict = 0
             else:
                 raise NameError("Error : predict = 0")
-            right *= self.core[i] ** (-predict)
-            left *= self.core[i] ** (0.5)
+
+            #  当core等于0时，predict永远返回1，但此时第i次迭代的分类表现很好（error=0），
+            #  于是单独使用第i次训练得到的分类器作为总分类器
+            if self.core[i] == 0:
+                if predict == 1:
+                    return 1
+                else:
+                    return -1
+            else:
+                right *= self.core[i] ** (-predict)
+                left *= self.core[i] ** (-0.5)
 
         if right >= left:
             return 1
