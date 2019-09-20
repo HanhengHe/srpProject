@@ -28,7 +28,7 @@ Type = ('DAG', 'ECOC')
 #   Error我是随便raise的, 因为我不知道raise什么Error比较合适....
 
 class Classifier:
-    def __init__(self, dataList_A, dataList_S, C, tol, maxIter, kTup=('lin', 0), classifierType=Type[0]):
+    def __init__(self, dataList_A, dataList_S, C, tol, maxIter, kTup=('lin', 0), trMaxIter=20, trTol=0.05, classifierType=Type[0]):
         #   check type
         if not isinstance(dataList_A, list):
             raise NameError('error: dataList_A should be a list.')
@@ -40,6 +40,8 @@ class Classifier:
         self.tol = tol
         self.maxIter = maxIter
         self.kTup = kTup
+        self.trMaxIter = trMaxIter
+        self.trTol = trTol
         self.classifierType = classifierType
 
         #   需要 num*(num+1)/2 个分类器
@@ -124,7 +126,7 @@ class Classifier:
                                [-1] * len(self.neatDataSet_A[i]) + [1] * len(self.neatDataSet_A[j]),  # A label set
                                [-1] * len(self.neatDataSet_S[i]) + [1] * len(self.neatDataSet_S[j]),  # S label set
                                [self.C, self.tol, self.maxIter, self.kTup],
-                               20, 0.05  # parameters
+                               self.trMaxIter, self.trTol  # parameters
                                )
                 )
 

@@ -4,10 +4,12 @@ import numpy as np
 
 trainFile = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\train')
 
+ASRate = 0.1
+
 trainASize = 50
-SourceSize = 15
-trainSSize = 5
-testSize = 10
+SourceSize = 20
+trainSSize = trainASize * ASRate
+testSize = SourceSize - trainSSize
 
 trainSetA = []
 SourceSet = []
@@ -77,7 +79,7 @@ for line in trainFile.readlines():
     # 计数
     #  ****************从这开始*********************
     if trainACounter[int(label)][1] == trainASize:
-        break
+        continue
 
     trainACounter[int(label)][1] = trainACounter[int(label)][1] + 1
 
@@ -109,7 +111,7 @@ for line in testFile.readlines():
     # 计数
     #  ****************从这开始*********************
     if SourceCounter[int(label)][1] == SourceSize:
-        break
+        continue
 
     SourceCounter[int(label)][1] = SourceCounter[int(label)][1] + 1
 
@@ -145,7 +147,7 @@ print(len(testSet))
 print(len(SourceSet))
 
 
-classifier = Classifier(trainSetA, SourceSet, 0.7, 0.01, 20, ['lin', 0.8])
+classifier = Classifier(trainSetS, trainSetA, 0.7, 0.01, 20, ['lin', 0.8], 10, 0.2)
 
 correct = 0
 

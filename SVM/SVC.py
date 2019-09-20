@@ -15,18 +15,20 @@ class SVC:
         self.m, self.n = np.shape(dataMat)
         self.alphas = np.mat(np.zeros((self.m, 1)))
         self.ay = np.mat(np.zeros((self.m, 1)))
+        self.cWeight = [1] * self.m
 
         if cWeight is None:
-            self.cWeight = [1] * self.m
+            pass
         elif len(cWeight) != self.m:
             raise NameError("Error on C weight")
         else:
-            self.cWeight = cWeight
+            for i in range(0, len(cWeight)):
+                self.cWeight[i] = cWeight[i] * self.m
 
         self.K = np.mat(np.zeros((self.m, self.m), dtype=int))
         print('Init dataMat')
         for i in range(self.m):
-            print(i/self.m)
+            #  print(i/self.m, end=' ')
             self.K[:, i] = self.kernelTrans(self.dataMat[i, :])
 
     def calcEk(self, k):
@@ -88,7 +90,7 @@ class SVC:
             L = max(0, alphaJ + alphaI - self.C * self.cWeight[j])
             H = min(self.C * self.cWeight[j], alphaJ + alphaI)
         if L == H:
-            print("H==L!")
+            print("H==L!", end=' ')
             return False
 
         eta = self.K[i, i] + self.K[j, j] - 2 * self.K[i, j]
