@@ -27,7 +27,7 @@ class trClassifier:
     def predict(self, x):
         right = 0
         left = 0
-        for i in range(self.svcs):
+        for i in range(len(self.svcs)):
             right += self.core[i] * self.svcs[i].predict(x)
             left += self.core[i] / 2
         if right >= left:
@@ -40,7 +40,7 @@ def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05):
 
     print("trAdaBoost.")
 
-    trans_data = trans_S + trans_A
+    trans_data = trans_A + trans_S
 
     row_A = len(trans_A)
     row_S = len(trans_S)
@@ -66,11 +66,8 @@ def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05):
         # 归一化权重
         weights = calculate_P(weights)
 
-        print(weights)
-        print(np.sum(weights))
-
         # 训练分类器并返回预测结果
-        result[:, i], classifier = train_classify(trans_data, label_S+label_A, param, weights.tolist()[0])
+        result[:, i], classifier = train_classify(trans_data, label_A+label_S, param, weights.tolist()[0])
 
         # 计算错误率
         error_rate = calculate_error_rate(np.mat(label_S), result[row_A:row_A + row_S, i], weights[0, row_A:row_A + row_S])
@@ -124,6 +121,6 @@ def train_classify(trans_data, trans_labels, param, P):
 
 # 计算错误率
 def calculate_error_rate(label_R, label_H, weight):
-    total = np.sum(np.mat(weight))
+    total = np.sum(weight)
 
     return (weight * np.abs(label_R - label_H).T / total)/2

@@ -6,6 +6,8 @@ trainFile = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\train')
 
 ASRate = 0.1
 
+# svc get double size
+
 trainASize = 50
 SourceSize = 20
 trainSSize = trainASize * ASRate
@@ -138,16 +140,17 @@ for i in range(len(SourceSet)):
         trainSCounter[int(SourceSet[i][len(SourceSet[i]) - 1])][1] = \
             trainSCounter[int(SourceSet[i][len(SourceSet[i]) - 1])][1] + 1
     else:
-        testSet.append(SourceSet[:len(SourceSet)-1])
-        testLabels.append(SourceSet[len(SourceSet)-1])
+        testSet.append(SourceSet[i][:len(SourceSet[i])-1])
+        testLabels.append(SourceSet[i][len(SourceSet[i])-1])
 
 print(len(trainSetA))
 print(len(trainSetS))
 print(len(testSet))
-print(len(SourceSet))
 
+for i in range(len(trainSetS)):
+    print(trainSetS[i][len(trainSetS[i])-1])
 
-classifier = Classifier(trainSetS, trainSetA, 0.7, 0.01, 20, ['lin', 0.8], 10, 0.2)
+classifier = Classifier(trainSetS, trainSetA, 0.7, 0.01, 20, ['lin', 0], 10, 0.1)
 
 correct = 0
 
@@ -160,7 +163,7 @@ for index in range(0, len(testSet)):
     print(index, end='')
     print(" predict is ", end='')
     print(predict, end=';')
-    print(" real label is ", end=testLabels[index]+";")
+    print(" real label is ", end=str(testLabels[index])+";")
 
     if predict == testLabels[index]:
         correct += 1
