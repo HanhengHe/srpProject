@@ -8,8 +8,8 @@ ASRate = 0.1
 
 # svc get double size
 
-trainASize = 10
-SourceSize = 5
+trainASize = 500
+SourceSize = 150
 trainSSize = trainASize * ASRate
 testSize = SourceSize - trainSSize
 

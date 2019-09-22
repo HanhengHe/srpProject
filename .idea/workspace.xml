@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/SVM/bootingLog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/bootingLog" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/bootingLog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/log" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SVM/predictLog" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/predictLog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SVM/test/2019-9-16/test_trMnist.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/test/2019-9-16/test_trMnist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/transfrom/trAdaBoost.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/transfrom/trAdaBoost.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/transfrom/trSVM.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/transfrom/trSVM.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -482,7 +481,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569137979392</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Mnist数据集训练">
+      <created>1569164646128</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1569164646128</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

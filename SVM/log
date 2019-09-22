@@ -134,3 +134,7 @@ Correct present:
  ???
  it's not working
  sad
+
+ consider the output
+ whether use outside testData(from source) to avoid over fitting
+ whether use the second level classifier (base on the output of the exist classifier)
