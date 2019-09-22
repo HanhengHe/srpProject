@@ -152,9 +152,10 @@ class Classifier:
             raise NameError('error: predict zero .')
 
         #  输出判断步
-        print("\nPredict step:")
-        print("Compare between ", end=self.svcsName[0]+';')
-        print("step is ", end=predict)
+        log = open("predictLog")
+        log.write("\nPredict step:")
+        log.write("Compare between ", end=self.svcsName[0]+';')
+        log.write("step is ", end=predict)
 
         while True:
 
@@ -185,9 +186,11 @@ class Classifier:
                 raise NameError('error: predict zero .')
 
             #  输出判断步
-            print("Compare between ", end=self.svcsName[0] + ';')
-            print("step is ", end=predict)
+            log.write("Compare between ", end=self.svcsName[index] + ',')
+            log.write("step is ", end=predict + ';')
 
             index += 1
+
+        log.close()
 
     #   End function
