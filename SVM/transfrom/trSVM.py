@@ -126,13 +126,14 @@ class Classifier:
                                [-1] * len(self.neatDataSet_A[i]) + [1] * len(self.neatDataSet_A[j]),  # A label set
                                [-1] * len(self.neatDataSet_S[i]) + [1] * len(self.neatDataSet_S[j]),  # S label set
                                [self.C, self.tol, self.maxIter, self.kTup],
-                               self.trMaxIter, self.trTol  # parameters
+                               self.trMaxIter, self.trTol,  # parameters
+                               self.svcsName[len(self.svcs)]  # check trAdaBoost
                                )
                 )
 
     #   End function
 
-    def predict(self, x):
+    def predict(self, x, real=''):  # 方便整合输出
 
         #   I have no idea whether this will work
 
@@ -152,14 +153,16 @@ class Classifier:
             raise NameError('error: predict zero .')
 
         #  输出判断步
-        log = open("predictLog")
-        log.write("\nPredict step:")
-        log.write("Compare between ", end=self.svcsName[0]+';')
-        log.write("step is ", end=predict)
+        log = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\predictLog", 'a')
+        log.write("\nPredict step:\n")
+        log.write("Compare between " + self.svcsName[0] + ',')
+        log.write("step is " + predict + ';\n')
 
         while True:
 
             if index == len(self.svcsName):
+                log.write("real label is " + real + "\n")
+                log.close()
                 return predict
 
             if predict not in self.svcsName[index].split('&'):
@@ -186,11 +189,9 @@ class Classifier:
                 raise NameError('error: predict zero .')
 
             #  输出判断步
-            log.write("Compare between ", end=self.svcsName[index] + ',')
-            log.write("step is ", end=predict + ';')
+            log.write("Compare between " + self.svcsName[index] + ',')
+            log.write("step is " + predict + ';\n')
 
             index += 1
-
-        log.close()
 
     #   End function

@@ -53,7 +53,7 @@ class trClassifier:
             return -1
 
 
-def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05):
+def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05, checker=''):
 
     print("trAdaBoost.")
 
@@ -94,7 +94,7 @@ def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05):
         print('Error rate:', error_rate)
         print('')
         if error_rate > 0.5:
-            error_rate = 0.5  # 确保eta大于0.5
+            error_rate = 0.5  # 确保eta小于0.5
 
         beta_T = error_rate / (1 - error_rate)
 
@@ -103,6 +103,10 @@ def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05):
 
         if error_rate <= errorRate:
             break  # 防止过拟合
+
+        bootLog = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\bootingLog", 'a')
+        bootLog.write(checker + " in Boot \n")
+        bootLog.close()
 
         # 调整源域样本权重
         for j in range(row_S):

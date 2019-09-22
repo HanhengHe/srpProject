@@ -8,10 +8,14 @@ ASRate = 0.1
 
 # svc get double size
 
-trainASize = 200
-SourceSize = 120
+trainASize = 10
+SourceSize = 5
 trainSSize = trainASize * ASRate
 testSize = SourceSize - trainSSize
+
+C = 0.8
+tol = 0.1
+maxIter = 20
 
 trainSetA = []
 SourceSet = []
@@ -71,6 +75,10 @@ testCounter = [
     [9, 0],
     [0, 0],
 ]
+
+#  clear old log
+log = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\predictLog", 'w')
+log.close()
 
 #   assistant data
 for line in trainFile.readlines():
@@ -143,7 +151,7 @@ for i in range(len(SourceSet)):
         testSet.append(SourceSet[i][:len(SourceSet[i])-1])
         testLabels.append(SourceSet[i][len(SourceSet[i])-1])
 
-classifier = Classifier(trainSetS, trainSetA, 0.8, 0.1, 20, ['lin', 0], 10, 0.2)
+classifier = Classifier(trainSetS, trainSetA, C, tol, maxIter, ['lin', 0], 10, 0.2)
 
 correct = 0
 
@@ -151,7 +159,7 @@ error = np.zeros((10, 10), int)
 
 # test
 for index in range(0, len(testSet)):
-    predict = classifier.predict(testSet[index])
+    predict = classifier.predict(testSet[index], str(testLabels[index]))
 
     print(index, end='')
     print(" predict is ", end='')
@@ -169,7 +177,7 @@ print("Source train data set situation: ")
 print(trainSCounter)
 
 print("test data set situation: ")
-print(SourceCounter)
+print(testCounter)
 
 print("Correct present: ")
 print(correct/len(testLabels))
