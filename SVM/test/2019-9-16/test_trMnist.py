@@ -8,8 +8,8 @@ ASRate = 0.1
 
 # svc get double size
 
-trainASize = 50
-SourceSize = 20
+trainASize = 200
+SourceSize = 120
 trainSSize = trainASize * ASRate
 testSize = SourceSize - trainSSize
 
@@ -143,7 +143,7 @@ for i in range(len(SourceSet)):
         testSet.append(SourceSet[i][:len(SourceSet[i])-1])
         testLabels.append(SourceSet[i][len(SourceSet[i])-1])
 
-classifier = Classifier(trainSetS, trainSetA, 0.7, 0.01, 20, ['lin', 0], 10, 0.1)
+classifier = Classifier(trainSetS, trainSetA, 0.8, 0.1, 20, ['lin', 0], 10, 0.2)
 
 correct = 0
 
@@ -165,11 +165,11 @@ for index in range(0, len(testSet)):
         error[int(testLabels[index]), int(predict)] = error[int(testLabels[index]), int(predict)]+1
         print('predict is wrong.')
 
-print("train data set situation: ")
+print("Source train data set situation: ")
 print(trainSCounter)
 
 print("test data set situation: ")
-print(testCounter)
+print(SourceCounter)
 
 print("Correct present: ")
 print(correct/len(testLabels))

@@ -151,6 +151,11 @@ class Classifier:
         else:
             raise NameError('error: predict zero .')
 
+        #  输出判断步
+        print("\nPredict step:")
+        print("Compare between ", end=self.svcsName[0]+';')
+        print("step is ", end=predict)
+
         while True:
 
             if index == len(self.svcsName):
@@ -178,6 +183,10 @@ class Classifier:
 
             else:
                 raise NameError('error: predict zero .')
+
+            #  输出判断步
+            print("Compare between ", end=self.svcsName[0] + ';')
+            print("step is ", end=predict)
 
             index += 1
 
