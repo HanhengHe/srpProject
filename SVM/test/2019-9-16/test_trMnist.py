@@ -101,7 +101,12 @@ for line in trainFile.readlines():
     #  data set调整为float类型，label调整为int类型
     temp = []
     for i in range(len(dataSets)):
-        temp.append(int(dataSets[i]))
+        t = int(dataSets[i])/255  # 归一化
+        # 四舍五入
+        if t > 0.5:
+            temp.append(1)
+        else:
+            temp.append(0)
 
     temp.append(label)
 
@@ -133,7 +138,13 @@ for line in testFile.readlines():
     #  data set调整为float类型，label调整为int类型
     temp = []
     for i in range(len(dataSets)):
-        temp.append(int(dataSets[i]))
+
+        t = int(dataSets[i]) / 255  # 归一化
+        # 四舍五入
+        if t > 0.5:
+            temp.append(1)
+        else:
+            temp.append(0)
 
     temp.append(label)
 
