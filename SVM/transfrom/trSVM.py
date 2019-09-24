@@ -118,8 +118,11 @@ class Classifier:
 
         #  start train
         #  memory requirement would be huge here
+        counter = 0
         for i in range(self.num):
             for j in range(i + 1, self.num):
+                counter += 1
+                print(counter)
                 self.svcs.append(
                     trAdaBoost(self.neatDataSet_A[i] + self.neatDataSet_A[j],  # A svc on type number i and type number j
                                self.neatDataSet_S[i] + self.neatDataSet_S[j],  # S
