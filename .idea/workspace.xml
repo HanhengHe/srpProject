@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/bootingLog" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/bootingLog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/log" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/test/2019-9-16/test_trMnist.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/test/2019-9-16/test_trMnist.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -494,7 +491,21 @@
       <option name="project" value="LOCAL" />
       <updated>1569171178802</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Mnist数据集训练">
+      <created>1569342958850</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1569342958850</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Mnist数据集训练,增加对数据进行归一化并四舍五入处理">
+      <created>1569343051000</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1569343051000</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -538,7 +549,8 @@
     <MESSAGE value="利用iris数据集测试SVM.py" />
     <MESSAGE value="利用Mnist数据集测试SVM.py" />
     <MESSAGE value="Mnist数据集训练" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mnist数据集训练" />
+    <MESSAGE value="Mnist数据集训练,增加对数据进行归一化并四舍五入处理" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mnist数据集训练,增加对数据进行归一化并四舍五入处理" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
