@@ -1,4 +1,7 @@
 # -*- coding: UTF-8 -*-
+
+#  import multiprocessing
+from threading import Thread
 from SVM.transfrom.trAdaBoost import trAdaBoost
 
 #   这是一个不成熟的svc多分类器
@@ -8,6 +11,8 @@ from SVM.transfrom.trAdaBoost import trAdaBoost
 
 Type = ('DAG', 'ECOC')
 
+#  cores = multiprocessing.cpu_count()
+cores = 1
 
 #   List格式：[data,...,data,label]
 #   建议label从0开始，不跳过数字
@@ -28,7 +33,8 @@ Type = ('DAG', 'ECOC')
 #   Error我是随便raise的, 因为我不知道raise什么Error比较合适....
 
 class Classifier:
-    def __init__(self, dataList_A, dataList_S, C, tol, maxIter, kTup=('lin', 0), trMaxIter=20, trTol=0.05, classifierType=Type[0]):
+    def __init__(self, dataList_A, dataList_S, C, tol, maxIter, kTup=('lin', 0), trMaxIter=20, trTol=0.05,
+                 coreNum=cores, classifierType=Type[0]):
         #   check type
         if not isinstance(dataList_A, list):
             raise NameError('error: dataList_A should be a list.')
@@ -43,6 +49,7 @@ class Classifier:
         self.trMaxIter = trMaxIter
         self.trTol = trTol
         self.classifierType = classifierType
+        self.coreNum = coreNum
 
         #   需要 num*(num+1)/2 个分类器
         self.svcs = []
@@ -116,15 +123,33 @@ class Classifier:
             for j in range(i + 1, self.num):
                 self.svcsName.append(str(self.neatLabelSet_A[i]) + '&' + str(self.neatLabelSet_A[j]))
 
+        #  thread mission dispatch
+
+        i = 0
+        perCore = int(len(self.svcsName) / self.coreNum) + 1
+        threadMission = []
+
+        for i in range(self.coreNum):
+            threadMission.append([])
+
+        index = 0
+
+        for i in range(len(self.svcsName)):
+            threadMission[index].append(self.svcsName[i])
+            if len(threadMission[index]) == perCore:
+                index += 1
+
         #  start train
+
         #  memory requirement would be huge here
-        counter = 0
+        """counter = 0
         for i in range(self.num):
             for j in range(i + 1, self.num):
                 counter += 1
                 print(counter)
                 self.svcs.append(
-                    trAdaBoost(self.neatDataSet_A[i] + self.neatDataSet_A[j],  # A svc on type number i and type number j
+                    trAdaBoost(self.neatDataSet_A[i] + self.neatDataSet_A[j],
+                               # A svc on type number i and type number j
                                self.neatDataSet_S[i] + self.neatDataSet_S[j],  # S
                                [-1] * len(self.neatDataSet_A[i]) + [1] * len(self.neatDataSet_A[j]),  # A label set
                                [-1] * len(self.neatDataSet_S[i]) + [1] * len(self.neatDataSet_S[j]),  # S label set
@@ -133,6 +158,37 @@ class Classifier:
                                self.svcsName[len(self.svcs)]  # check trAdaBoost
                                )
                 )
+        """
+
+        threads = []
+
+        for i in range(self.coreNum):
+            thread = Thread(target=self.subThread, args=(threadMission[i],))
+            threads.append(thread)
+
+        for t in threads:
+            t.start()
+
+        for t in threads:
+            t.join()
+
+    #   End function
+
+    def subThread(self, missionList):
+        for i in range(len(missionList)):
+            a = int(missionList[i].split('&')[0])
+            b = int(missionList[i].split('&')[1])
+            self.svcs.append(
+                trAdaBoost(self.neatDataSet_A[a] + self.neatDataSet_A[b],
+                           # A svc on type number i and type number j
+                           self.neatDataSet_S[a] + self.neatDataSet_S[b],  # S
+                           [-1] * len(self.neatDataSet_A[a]) + [1] * len(self.neatDataSet_A[b]),  # A label set
+                           [-1] * len(self.neatDataSet_S[a]) + [1] * len(self.neatDataSet_S[b]),  # S label set
+                           [self.C, self.tol, self.maxIter, self.kTup],
+                           self.trMaxIter, self.trTol,  # parameters
+                           self.svcsName[len(self.svcs)]  # check trAdaBoost
+                           )
+            )
 
     #   End function
 

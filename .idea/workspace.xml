@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
+    <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="trSVM增加多线程功能">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/bootingLog" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/bootingLog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/test/2019-9-16/test_trMnist.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/test/2019-9-16/test_trMnist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/transfrom/trSVM.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/transfrom/trSVM.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -91,6 +94,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SVM/test/2019-9-14/test-Mnist.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -112,6 +116,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SVM/test/2019-9-14/test-SVM.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -155,6 +160,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SVM/test/2019-9-16/test_trMnist.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -176,6 +182,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="D:\WINTER\Pycharm_project\srpProject\SVM\transfrom\trSVM.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -463,49 +470,7 @@
       <option name="project" value="LOCAL" />
       <updated>1568987229020</updated>
     </task>
-    <task id="LOCAL-00037" summary="Mnist数据集训练">
-      <created>1569127949637</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1569127949637</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Mnist数据集训练">
-      <created>1569137979392</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1569137979392</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Mnist数据集训练">
-      <created>1569164646128</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1569164646128</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Mnist数据集训练">
-      <created>1569171178802</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1569171178802</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Mnist数据集训练">
-      <created>1569342958850</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1569342958850</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Mnist数据集训练,增加对数据进行归一化并四舍五入处理">
-      <created>1569343051000</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1569343051000</updated>
-    </task>
-    <option name="localTasksCounter" value="43" />
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -549,11 +514,22 @@
     <MESSAGE value="利用iris数据集测试SVM.py" />
     <MESSAGE value="利用Mnist数据集测试SVM.py" />
     <MESSAGE value="Mnist数据集训练" />
-    <MESSAGE value="Mnist数据集训练,增加对数据进行归一化并四舍五入处理" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mnist数据集训练,增加对数据进行归一化并四舍五入处理" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mnist数据集训练" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SVM/transfrom/trSVM.py</url>
+          <line>176</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SVM/transfrom/trSVM.py</url>
+          <line>165</line>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -564,6 +540,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/srpProject$test_trMnist.coverage" NAME="test_trMnist Coverage Results" MODIFIED="1569514283732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/test/2019-9-16" />
     <SUITE FILE_PATH="coverage/srpProject$test.coverage" NAME="test Coverage Results" MODIFIED="1568091873909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/test/2019-9-8" />
     <SUITE FILE_PATH="coverage/srpProject$transfrom.coverage" NAME="transfrom Coverage Results" MODIFIED="1567950126337" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/Mnist" />
   </component>

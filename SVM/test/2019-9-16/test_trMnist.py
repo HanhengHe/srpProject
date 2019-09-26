@@ -16,6 +16,10 @@ testSize = SourceSize - trainSSize
 C = 0.8
 tol = 0.1
 maxIter = 20
+kTup = ['lin', 0]
+trMaxIter = 1
+errorRate = 0.05
+coreNum = 6
 
 trainSetA = []
 SourceSet = []
@@ -162,7 +166,7 @@ for i in range(len(SourceSet)):
         testSet.append(SourceSet[i][:len(SourceSet[i])-1])
         testLabels.append(SourceSet[i][len(SourceSet[i])-1])
 
-classifier = Classifier(trainSetS, trainSetA, C, tol, maxIter, ['lin', 0], 10, 0.2)
+classifier = Classifier(trainSetS, trainSetA, C, tol, maxIter, kTup, trMaxIter, errorRate, coreNum)
 
 correct = 0
 
