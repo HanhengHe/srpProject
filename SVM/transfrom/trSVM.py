@@ -14,6 +14,7 @@ Type = ('DAG', 'ECOC')
 #  cores = multiprocessing.cpu_count()
 cores = 1
 
+
 #   List格式：[data,...,data,label]
 #   建议label从0开始，不跳过数字
 #   当然其实你不这么干也没什么关系
@@ -52,7 +53,7 @@ class Classifier:
         self.coreNum = coreNum
 
         #   需要 num*(num+1)/2 个分类器
-        self.svcs = []
+        self.svcs = [None] * int(self.num * (self.num + 1) / 2)
         self.svcsName = []
 
         # ***************这部分代码还可以进一步优化******************
@@ -128,14 +129,17 @@ class Classifier:
         i = 0
         perCore = int(len(self.svcsName) / self.coreNum) + 1
         threadMission = []
+        threadMIndex = []
 
         for i in range(self.coreNum):
             threadMission.append([])
+            threadMIndex.append([])
 
         index = 0
 
         for i in range(len(self.svcsName)):
             threadMission[index].append(self.svcsName[i])
+            threadMIndex[index].append(i)
             if len(threadMission[index]) == perCore:
                 index += 1
 
@@ -163,7 +167,7 @@ class Classifier:
         threads = []
 
         for i in range(self.coreNum):
-            thread = Thread(target=self.subThread, args=(threadMission[i],))
+            thread = Thread(target=self.subThread, args=(threadMission[i], threadMIndex[i]))
             threads.append(thread)
 
         for t in threads:
@@ -174,21 +178,23 @@ class Classifier:
 
     #   End function
 
-    def subThread(self, missionList):
+    def subThread(self, missionList, threadMIndex):
         for i in range(len(missionList)):
             a = int(missionList[i].split('&')[0])
             b = int(missionList[i].split('&')[1])
-            self.svcs.append(
-                trAdaBoost(self.neatDataSet_A[a] + self.neatDataSet_A[b],
-                           # A svc on type number i and type number j
+            self.svcs[threadMIndex[i]] = \
+                trAdaBoost(self.neatDataSet_A[a] + self.neatDataSet_A[b],  # A
                            self.neatDataSet_S[a] + self.neatDataSet_S[b],  # S
-                           [-1] * len(self.neatDataSet_A[a]) + [1] * len(self.neatDataSet_A[b]),  # A label set
-                           [-1] * len(self.neatDataSet_S[a]) + [1] * len(self.neatDataSet_S[b]),  # S label set
+                           [-1] * len(self.neatDataSet_A[a]) + [1] * len(
+                               self.neatDataSet_A[b]),
+                           # A label set
+                           [-1] * len(self.neatDataSet_S[a]) + [1] * len(
+                               self.neatDataSet_S[b]),
+                           # S label set
                            [self.C, self.tol, self.maxIter, self.kTup],
                            self.trMaxIter, self.trTol,  # parameters
                            self.svcsName[len(self.svcs)]  # check trAdaBoost
                            )
-            )
 
     #   End function
 
