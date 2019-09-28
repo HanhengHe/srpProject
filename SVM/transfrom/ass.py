@@ -5,7 +5,10 @@ def f(xx, ii):
     return "new"
 
 
+
 if __name__ == "__main__":
+    print(0)
+    print(1)
     pool = Pool(processes=4)
     x = [None, None, None, None]
     for i in range(4):
