@@ -26,8 +26,8 @@ class trClassifier:
             self.core.append(beta_Ts[i])
 
     def predict(self, x):
-        right = 1
         left = 1
+        right = 1
         for i in range(len(self.svcs)):
             predict = self.svcs[i].predict(x)
             if predict > 0:
@@ -52,10 +52,10 @@ class trClassifier:
                 else:
                     return -1
             else:
-                right *= self.core[i] ** (-predict)
-                left *= self.core[i] ** (-0.5)
+                left *= self.core[i] ** (-predict)
+                right *= self.core[i] ** (-0.5)
 
-        if right >= left:
+        if left >= right:
             return 1
         else:
             return -1
