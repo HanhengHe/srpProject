@@ -23,7 +23,7 @@ class trClassifier:
         self.core = []
         self.nonTr = nonTr
         for i in range(len(svcs)):
-            self.core.append(beta_Ts[i][0, 0])
+            self.core.append(beta_Ts[i])
 
     def predict(self, x):
         right = 1

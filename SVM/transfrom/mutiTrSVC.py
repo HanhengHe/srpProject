@@ -51,8 +51,8 @@ ASRate = 0.1
 
 # svc get double size
 
-trainASize = 500
-SourceSize = 150
+trainASize = 50
+SourceSize = 15
 trainSSize = trainASize * ASRate
 testSize = SourceSize - trainSSize
 
@@ -230,7 +230,7 @@ if num != len(neatLabelSet_S):
 #  训练
 
 #   需要 num*(num+1)/2 个分类器
-svcs = [None] * int(num * (num + 1) / 2)
+svcs = [None] * int(num * (num - 1) / 2)
 svcsName = []
 
 
@@ -238,12 +238,13 @@ svcsName = []
 #                                  assist function                                       *
 #  ***************************************************************************************
 
-def subProcess(missionList, threadMIndexI):
+def subProcess(missionList):
     print('subProcess')
+    svms = [None] * len(missionList)
     for iterIndex in range(len(missionList)):
         a = int(missionList[iterIndex].split('&')[0])
         b = int(missionList[iterIndex].split('&')[1])
-        svcs[threadMIndexI[iterIndex]] = \
+        svms[iterIndex] = \
             trAdaBoost(neatDataSet_A[a] + neatDataSet_A[b],  # A
                        neatDataSet_S[a] + neatDataSet_S[b],  # S
                        [-1] * len(neatDataSet_A[a]) + [1] * len(
@@ -254,9 +255,10 @@ def subProcess(missionList, threadMIndexI):
                        # S label set
                        [C, tol, maxIter, kTup],
                        trMaxIter, trTol,  # parameters
-                       svcsName[int(threadMIndexI[iterIndex])],  # check trAdaBoost
+                       missionList[iterIndex],  # check trAdaBoost
                        nonTr  # with non-tr support
                        )
+    return svms
 
 
 def predict(x, real=''):  # 方便整合输出
@@ -328,7 +330,7 @@ def predict(x, real=''):  # 方便整合输出
 #                            prepare for train                                #
 ###############################################################################
 
-#   require num*(num+1)/2 classifiers
+#   require num*(num-1)/2 classifiers
 
 #  prepare for svc nameList
 for ini in range(num):
@@ -363,12 +365,16 @@ processes = []
 
 if __name__ == '__main__':
     pool = Pool(processes=coreNum)
+    temp = []
     freeze_support()
     for ini in range(coreNum):
-        pool.apply_async(subProcess, (threadMission[ini].copy(), threadMIndex[ini].copy()))
+        temp.append(pool.apply_async(subProcess, (threadMission[ini],)))
 
     pool.close()
     pool.join()
+
+    for index in range(coreNum):
+        svcs[threadMIndex[index][0]:threadMIndex[index][len(threadMIndex[index])-1]] = temp[index].get()
 
     ############################################################################
     #                                 test                                     #

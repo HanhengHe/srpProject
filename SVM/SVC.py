@@ -175,7 +175,7 @@ def svc(dataMat, labelMat, C, tol, maxIter, kTup, cWeight=None):
     while (numChange > 0 or examineAll) and (iter < maxIter):
         numChange = 0
 
-        print("Loop %s" % str(iter))
+        # print("Loop %s" % str(iter))
 
         iter += 1
 
