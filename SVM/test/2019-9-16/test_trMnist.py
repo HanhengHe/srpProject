@@ -20,6 +20,7 @@ kTup = ['lin', 0]
 trMaxIter = 1
 errorRate = 0.05
 coreNum = 6
+nonTr = True
 
 trainSetA = []
 SourceSet = []
@@ -28,57 +29,13 @@ trainSetS = []
 testSet = []
 testLabels = []
 
-trainSCounter = [
-    [1, 0],
-    [2, 0],
-    [3, 0],
-    [4, 0],
-    [5, 0],
-    [6, 0],
-    [7, 0],
-    [8, 0],
-    [9, 0],
-    [0, 0],
-]
+trainSCounter = [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [0, 0]]
 
-SourceCounter = [
-    [1, 0],
-    [2, 0],
-    [3, 0],
-    [4, 0],
-    [5, 0],
-    [6, 0],
-    [7, 0],
-    [8, 0],
-    [9, 0],
-    [0, 0],
-]
+SourceCounter = [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [0, 0]]
 
-trainACounter = [
-    [1, 0],
-    [2, 0],
-    [3, 0],
-    [4, 0],
-    [5, 0],
-    [6, 0],
-    [7, 0],
-    [8, 0],
-    [9, 0],
-    [0, 0],
-]
+trainACounter = [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [0, 0]]
 
-testCounter = [
-    [1, 0],
-    [2, 0],
-    [3, 0],
-    [4, 0],
-    [5, 0],
-    [6, 0],
-    [7, 0],
-    [8, 0],
-    [9, 0],
-    [0, 0],
-]
+testCounter = [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [0, 0]]
 
 #  clear old log
 log = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\predictLog", 'w')
@@ -166,7 +123,7 @@ for i in range(len(SourceSet)):
         testSet.append(SourceSet[i][:len(SourceSet[i])-1])
         testLabels.append(SourceSet[i][len(SourceSet[i])-1])
 
-classifier = Classifier(trainSetS, trainSetA, C, tol, maxIter, kTup, trMaxIter, errorRate, coreNum)
+classifier = Classifier(trainSetS, trainSetA, C, tol, maxIter, kTup, trMaxIter, errorRate, coreNum, nonTr)
 
 correct = 0
 

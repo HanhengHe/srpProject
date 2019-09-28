@@ -17,10 +17,11 @@ from SVM.SVC import svc
 #   param=[C, tol, maxIter, kTup]
 
 class trClassifier:
-    def __init__(self, svcs, beta_Ts):
+    def __init__(self, svcs, beta_Ts, nonTr):
         self.svcs = svcs
         #   构造一个队列减少计算量
         self.core = []
+        self.nonTr = nonTr
         for i in range(len(svcs)):
             self.core.append(beta_Ts[i][0, 0])
 
@@ -35,6 +36,13 @@ class trClassifier:
                 predict = 0
             else:
                 raise NameError("Error : predict = 0")
+
+            #  提供不采用tr的选项
+            if self.nonTr:
+                if predict == 1:
+                    return 1
+                else:
+                    return -1
 
             #  当core等于0时，predict永远返回1，但此时第i次迭代的分类表现很好（error=0），
             #  于是单独使用第i次训练得到的分类器作为总分类器
@@ -53,8 +61,7 @@ class trClassifier:
             return -1
 
 
-def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05, checker=''):
-
+def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05, checker='', nonTr=False):
     print("trAdaBoost.")
 
     trans_data = trans_A + trans_S
@@ -68,7 +75,7 @@ def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05, 
     # weights_A = [1 / row_A] * row_A
     # weights_S = [1 / row_S] * row_S
     # weights = np.mat(weights_A + weights_S)
-    weights = np.mat([1/(row_A + row_S)] * (row_A + row_S))
+    weights = np.mat([1 / (row_A + row_S)] * (row_A + row_S))
 
     beta = 1 / (1 + np.sqrt(2 * np.log(row_A / N)))
 
@@ -87,10 +94,11 @@ def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05, 
         weights = calculate_P(weights)
 
         # 训练分类器并返回预测结果
-        result[:, i], classifier = train_classify(trans_data, label_A+label_S, param, weights.tolist()[0])
+        result[:, i], classifier = train_classify(trans_data, label_A + label_S, param, weights.tolist()[0])
 
         # 计算错误率
-        error_rate = calculate_error_rate(np.mat(label_S), result[row_A:row_A + row_S, i], weights[0, row_A:row_A + row_S])
+        error_rate = calculate_error_rate(np.mat(label_S), result[row_A:row_A + row_S, i],
+                                          weights[0, row_A:row_A + row_S])
         print('Error rate:', error_rate)
         print('')
         if error_rate > 0.5:
@@ -111,21 +119,21 @@ def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05, 
         # 调整源域样本权重
         for j in range(row_S):
             weights[0, row_A + j] = weights[0, row_A + j] * np.power(beta_T,
-                                                               -np.abs(result[row_A + j, i] - label_S[j]) / 2)
+                                                                     -np.abs(result[row_A + j, i] - label_S[j]) / 2)
 
         # 调整辅域样本权重
         for j in range(row_A):
             weights[0, j] = weights[0, j] * np.power(beta, np.abs(result[j, i] - label_A[j]) / 2)
 
     # 记录后N/2个分类器，向上取整
-    num = int(len(tempSvcs)/2)
+    num = int(len(tempSvcs) / 2)
 
     for i in range(num, len(tempSvcs)):
         svcs.append(tempSvcs[i])
         beta_Ts.append(tempBeta_Ts[i])
 
     # 构造训练出来的集成分类器并返回
-    classifier = trClassifier(svcs, beta_Ts)
+    classifier = trClassifier(svcs, beta_Ts, nonTr)
 
     print("trAdaBoost finished.")
 
@@ -142,10 +150,15 @@ def calculate_P(weights):
 def train_classify(trans_data, trans_labels, param, P):
     classifier = svc(trans_data, trans_labels, param[0], param[1], param[2], param[3], cWeight=P)
 
-    result = [0]*len(trans_data)
+    result = [0] * len(trans_data)
     for i in range(len(trans_data)):
-        result[i] = classifier.predict(trans_data[i])
-        result[i] = result[i]/abs(result[i])
+        temp = classifier.predict(trans_data[i])
+        if temp < 0:
+            result[i] = 0
+        elif temp > 0:
+            result[i] = 1
+        else:
+            raise NameError("Error : predict = 0")
     return result, classifier
 
 
@@ -153,4 +166,4 @@ def train_classify(trans_data, trans_labels, param, P):
 def calculate_error_rate(label_R, label_H, weight):
     total = np.sum(weight)
 
-    return (weight * np.abs(label_R - label_H).T / total)/2
+    return weight * np.abs(label_R - label_H).T / total

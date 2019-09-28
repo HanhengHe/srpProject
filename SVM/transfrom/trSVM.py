@@ -35,7 +35,7 @@ cores = 1
 
 class Classifier:
     def __init__(self, dataList_A, dataList_S, C, tol, maxIter, kTup=('lin', 0), trMaxIter=20, trTol=0.05,
-                 coreNum=cores, classifierType=Type[0]):
+                 coreNum=cores, nonTr=False, classifierType=Type[0]):
         #   check type
         if not isinstance(dataList_A, list):
             raise NameError('error: dataList_A should be a list.')
@@ -51,10 +51,7 @@ class Classifier:
         self.trTol = trTol
         self.classifierType = classifierType
         self.coreNum = coreNum
-
-        #   需要 num*(num+1)/2 个分类器
-        self.svcs = [None] * int(self.num * (self.num + 1) / 2)
-        self.svcsName = []
+        self.nonTr = nonTr
 
         # ***************这部分代码还可以进一步优化******************
         #   按标签类型重新整理数据集
@@ -106,6 +103,10 @@ class Classifier:
         #  训练
         if classifierType not in Type:
             raise NameError('error: classifierType error .')
+
+        #   需要 num*(num+1)/2 个分类器
+        self.svcs = [None] * int(self.num * (self.num + 1) / 2)
+        self.svcsName = []
 
         self.train()
 
@@ -193,7 +194,8 @@ class Classifier:
                            # S label set
                            [self.C, self.tol, self.maxIter, self.kTup],
                            self.trMaxIter, self.trTol,  # parameters
-                           self.svcsName[len(self.svcs)]  # check trAdaBoost
+                           self.svcsName[int(threadMIndex[i])],  # check trAdaBoost
+                           self.nonTr  # with non-tr support
                            )
 
     #   End function
