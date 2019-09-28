@@ -173,7 +173,6 @@ if not isinstance(trainSetA, list):
 if not isinstance(trainSetS, list):
     raise NameError('error: dataList_S should be a list.')
 
-
 ###########################################################################################
 #                                      Init data                                          #
 ###########################################################################################
@@ -233,13 +232,17 @@ if num != len(neatLabelSet_S):
 svcs = [None] * int(num * (num - 1) / 2)
 svcsName = []
 
+# 显示进度
+proc = 0
+
 
 #  ***************************************************************************************
 #                                  assist function                                       *
 #  ***************************************************************************************
 
 def subProcess(missionList):
-    print('subProcess')
+    proc += 1
+    print('subProcess%s' % str(proc/num))
     svms = [None] * len(missionList)
     for iterIndex in range(len(missionList)):
         a = int(missionList[iterIndex].split('&')[0])
@@ -368,13 +371,13 @@ if __name__ == '__main__':
     temp = []
     freeze_support()
     for ini in range(coreNum):
-        temp.append(pool.apply_async(subProcess, (threadMission[ini],)))
+        temp.append(pool.apply_async(subProcess, (threadMission[ini], ini,)))
 
     pool.close()
     pool.join()
 
     for index in range(coreNum):
-        svcs[threadMIndex[index][0]:threadMIndex[index][len(threadMIndex[index])-1]+1] = temp[index].get()
+        svcs[threadMIndex[index][0]:threadMIndex[index][len(threadMIndex[index]) - 1] + 1] = temp[index].get()
 
     ############################################################################
     #                                 test                                     #

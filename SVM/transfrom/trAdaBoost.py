@@ -62,7 +62,7 @@ class trClassifier:
 
 
 def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05, checker='', nonTr=False):
-    print("trAdaBoost.")
+    #  print("trAdaBoost.")
 
     trans_data = trans_A + trans_S
 
@@ -135,7 +135,7 @@ def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05, 
     # 构造训练出来的集成分类器并返回
     classifier = trClassifier(svcs, beta_Ts, nonTr)
 
-    print("trAdaBoost finished.")
+    #  print("trAdaBoost finished.")
 
     return classifier
 
