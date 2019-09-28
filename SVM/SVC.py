@@ -90,7 +90,7 @@ class SVC:
             L = max(0, alphaJ + alphaI - self.C * self.cWeight[j])
             H = min(self.C * self.cWeight[j], alphaJ + alphaI)
         if L == H:
-            print("H==L!", end=' ')
+            # print("H==L!", end=' ')
             return False
 
         eta = self.K[i, i] + self.K[j, j] - 2 * self.K[i, j]

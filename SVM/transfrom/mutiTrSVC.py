@@ -51,8 +51,8 @@ ASRate = 0.1
 
 # svc get double size
 
-trainASize = 50
-SourceSize = 15
+trainASize = 500
+SourceSize = 150
 trainSSize = trainASize * ASRate
 testSize = SourceSize - trainSSize
 
@@ -60,11 +60,11 @@ C = 0.8
 tol = 0.1
 maxIter = 20
 kTup = ['lin', 0]
-trMaxIter = 1
+trMaxIter = 10
 trTol = 0.05
 errorRate = 0.05
 coreNum = cpu_count()
-nonTr = True
+nonTr = False
 
 trainSetA = []
 SourceSet = []
@@ -374,7 +374,7 @@ if __name__ == '__main__':
     pool.join()
 
     for index in range(coreNum):
-        svcs[threadMIndex[index][0]:threadMIndex[index][len(threadMIndex[index])-1]] = temp[index].get()
+        svcs[threadMIndex[index][0]:threadMIndex[index][len(threadMIndex[index])-1]+1] = temp[index].get()
 
     ############################################################################
     #                                 test                                     #
