@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Emh.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SVM/transfrom/mutiTrSVC.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/test/2019-9-16/test_trMnist.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/test/2019-9-16/test_trMnist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/transfrom/trAdaBoost.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/transfrom/trAdaBoost.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/bootingLog" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/bootingLog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SVM/transfrom/trSVM.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/transfrom/trSVM.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,7 +60,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test_trMnist">
+  <component name="RunManager" selected="Python.mutiTrSVC">
     <configuration name="MachineLearning" type="PythonConfigurationType" factoryName="Python">
       <module name="MachineLearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -82,7 +83,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test-Mnist" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="mutiTrSVC" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MachineLearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -90,78 +91,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SVM/test/2019-9-14" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SVM/transfrom" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SVM/test/2019-9-14/test-Mnist.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test-SVM" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="MachineLearning" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SVM/test/2019-9-14" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SVM/test/2019-9-14/test-SVM.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="MachineLearning" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SVM/test/2019-9-8" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\WINTER\Pycharm_project\srpProject\SVM\test\2019-9-8\test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test_trMnist" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="MachineLearning" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SVM/test/2019-9-16" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SVM/test/2019-9-16/test_trMnist.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SVM/transfrom/mutiTrSVC.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -178,12 +113,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SVM" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SVM/transfrom" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\WINTER\Pycharm_project\srpProject\SVM\transfrom\trSVM.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SVM/transfrom/trSVM.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -192,13 +127,15 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.MachineLearning" />
+      <item itemvalue="Python.trSVM" />
+      <item itemvalue="Python.mutiTrSVC" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.test_trMnist" />
+        <item itemvalue="Python.mutiTrSVC" />
         <item itemvalue="Python.trSVM" />
-        <item itemvalue="Python.test-Mnist" />
-        <item itemvalue="Python.test-SVM" />
-        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -218,7 +155,8 @@
       <workItem from="1568177405642" duration="802000" />
       <workItem from="1568213222969" duration="6302000" />
       <workItem from="1569560684315" duration="517000" />
-      <workItem from="1569654092072" duration="1374000" />
+      <workItem from="1569654092072" duration="8968000" />
+      <workItem from="1569663459889" duration="1231000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1567316351254</created>
@@ -486,7 +424,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569561088529</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="trSVM增加多线程功能">
+      <created>1569655491076</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1569655491076</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -538,13 +483,28 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/SVM/transfrom/trSVM.py</url>
-          <line>37</line>
-          <option name="timeStamp" value="62" />
+          <line>185</line>
+          <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/SVM/transfrom/trSVM.py</url>
-          <line>196</line>
-          <option name="timeStamp" value="63" />
+          <line>188</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SVM/transfrom/mutiTrSVC.py</url>
+          <line>269</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SVM/transfrom/mutiTrSVC.py</url>
+          <line>243</line>
+          <option name="timeStamp" value="80" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SVM/transfrom/mutiTrSVC.py</url>
+          <line>369</line>
+          <option name="timeStamp" value="84" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -557,8 +517,10 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/srpProject$test_trMnist.coverage" NAME="test_trMnist Coverage Results" MODIFIED="1569655382629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/test/2019-9-16" />
+    <SUITE FILE_PATH="coverage/srpProject$test_trMnist.coverage" NAME="test_trMnist Coverage Results" MODIFIED="1569657498045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/test/2019-9-16" />
+    <SUITE FILE_PATH="coverage/srpProject$mutiTrSVC.coverage" NAME="mutiTrSVC Coverage Results" MODIFIED="1569665928415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
     <SUITE FILE_PATH="coverage/srpProject$test.coverage" NAME="test Coverage Results" MODIFIED="1568091873909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/test/2019-9-8" />
     <SUITE FILE_PATH="coverage/srpProject$transfrom.coverage" NAME="transfrom Coverage Results" MODIFIED="1567950126337" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/Mnist" />
+    <SUITE FILE_PATH="coverage/srpProject$trSVM.coverage" NAME="trSVM Coverage Results" MODIFIED="1569660403861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
   </component>
 </project>

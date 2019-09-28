@@ -1,8 +1,20 @@
 # -*- coding: UTF-8 -*-
 
 #  import multiprocessing
-from threading import Thread
+from multiprocessing import Process, cpu_count
 from SVM.transfrom.trAdaBoost import trAdaBoost
+import numpy as np
+
+###############################################
+#               wdnmd GIL                     #
+#               wdnmd GIL                     #
+#               wdnmd GIL                     #
+#               wdnmd GIL                     #
+#               wdnmd GIL                     #
+#               wdnmd GIL                     #
+#               wdnmd GIL                     #
+#               wdnmd GIL                     #
+###############################################
 
 #   这是一个不成熟的svc多分类器
 
@@ -12,7 +24,7 @@ from SVM.transfrom.trAdaBoost import trAdaBoost
 Type = ('DAG', 'ECOC')
 
 #  cores = multiprocessing.cpu_count()
-cores = 1
+cores = cpu_count()
 
 
 #   List格式：[data,...,data,label]
@@ -121,26 +133,25 @@ class Classifier:
         #   require num*(num+1)/2 classifiers
 
         #  prepare for svc nameList
-        for i in range(self.num):
-            for j in range(i + 1, self.num):
-                self.svcsName.append(str(self.neatLabelSet_A[i]) + '&' + str(self.neatLabelSet_A[j]))
+        for ini in range(self.num):
+            for j in range(ini + 1, self.num):
+                self.svcsName.append(str(self.neatLabelSet_A[ini]) + '&' + str(self.neatLabelSet_A[j]))
 
         #  thread mission dispatch
 
-        i = 0
         perCore = int(len(self.svcsName) / self.coreNum) + 1
         threadMission = []
         threadMIndex = []
 
-        for i in range(self.coreNum):
+        for ini in range(self.coreNum):
             threadMission.append([])
             threadMIndex.append([])
 
         index = 0
 
-        for i in range(len(self.svcsName)):
-            threadMission[index].append(self.svcsName[i])
-            threadMIndex[index].append(i)
+        for ini in range(len(self.svcsName)):
+            threadMission[index].append(self.svcsName[ini])
+            threadMIndex[index].append(ini)
             if len(threadMission[index]) == perCore:
                 index += 1
 
@@ -165,25 +176,25 @@ class Classifier:
                 )
         """
 
-        threads = []
+        processes = []
 
-        for i in range(self.coreNum):
-            thread = Thread(target=self.subThread, args=(threadMission[i], threadMIndex[i]))
-            threads.append(thread)
+        for ini in range(self.coreNum):
+            process = Process(target=self.subThread, args=(threadMission[ini], threadMIndex[ini]))
+            processes.append(process)
+        if __name__ == '__main__':
+            for pr in processes:
+                pr.start()
 
-        for t in threads:
-            t.start()
-
-        for t in threads:
-            t.join()
+            for pr in processes:
+                pr.join()
 
     #   End function
 
     def subThread(self, missionList, threadMIndex):
-        for i in range(len(missionList)):
-            a = int(missionList[i].split('&')[0])
-            b = int(missionList[i].split('&')[1])
-            self.svcs[threadMIndex[i]] = \
+        for iterIndex in range(len(missionList)):
+            a = int(missionList[iterIndex].split('&')[0])
+            b = int(missionList[iterIndex].split('&')[1])
+            self.svcs[threadMIndex[iterIndex]] = \
                 trAdaBoost(self.neatDataSet_A[a] + self.neatDataSet_A[b],  # A
                            self.neatDataSet_S[a] + self.neatDataSet_S[b],  # S
                            [-1] * len(self.neatDataSet_A[a]) + [1] * len(
@@ -194,7 +205,7 @@ class Classifier:
                            # S label set
                            [self.C, self.tol, self.maxIter, self.kTup],
                            self.trMaxIter, self.trTol,  # parameters
-                           self.svcsName[int(threadMIndex[i])],  # check trAdaBoost
+                           self.svcsName[int(threadMIndex[iterIndex])],  # check trAdaBoost
                            self.nonTr  # with non-tr support
                            )
 
@@ -262,3 +273,168 @@ class Classifier:
             index += 1
 
     #   End function
+
+
+# work part
+# thanks for GIL
+# work part was moved to here
+# wdnmd GIL
+
+trainFile = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\train')
+
+ASRate = 0.1
+
+# svc get double size
+
+trainASize = 500
+SourceSize = 150
+trainSSize = trainASize * ASRate
+testSize = SourceSize - trainSSize
+
+C = 0.8
+tol = 0.1
+maxIter = 20
+kTup = ['lin', 0]
+trMaxIter = 1
+errorRate = 0.05
+coreNum = 6
+nonTr = True
+
+trainSetA = []
+SourceSet = []
+
+trainSetS = []
+testSet = []
+testLabels = []
+
+trainSCounter = [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [0, 0]]
+
+SourceCounter = [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [0, 0]]
+
+trainACounter = [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [0, 0]]
+
+testCounter = [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [0, 0]]
+
+#  clear old log
+oLog = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\predictLog", 'w')
+oLog.close()
+
+#   assistant data
+for line in trainFile.readlines():
+    #  修改格式
+    dataSet = line.split(')')[0]
+    label = line.split(')')[1].replace('\n', '')
+
+    # 计数
+    #  ****************从这开始*********************
+    if trainACounter[int(label)][1] == trainASize:
+        continue
+
+    trainACounter[int(label)][1] = trainACounter[int(label)][1] + 1
+
+    #  ******************到这***********************
+
+    dataSets = dataSet.split(',')
+    dataSets[0] = dataSets[0].replace('(', '')
+
+    #  data set调整为float类型，label调整为int类型
+    temp = []
+    for i in range(len(dataSets)):
+        t = int(dataSets[i]) / 255  # 归一化
+        # 四舍五入
+        if t > 0.5:
+            temp.append(1)
+        else:
+            temp.append(0)
+
+    temp.append(label)
+
+    #  置入数据结构中
+    trainSetA.append(temp)
+
+trainFile.close()
+
+testFile = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\test')
+
+#   data source and test data
+for line in testFile.readlines():
+    #  修改格式
+    dataSet = line.split(')')[0]
+    label = line.split(')')[1].replace('\n', '')
+
+    # 计数
+    #  ****************从这开始*********************
+    if SourceCounter[int(label)][1] == SourceSize:
+        continue
+
+    SourceCounter[int(label)][1] = SourceCounter[int(label)][1] + 1
+
+    #  ******************到这***********************
+
+    dataSets = dataSet.split(',')
+    dataSets[0] = dataSets[0].replace('(', '')
+
+    #  data set调整为float类型，label调整为int类型
+    temp = []
+    for i in range(len(dataSets)):
+
+        t = int(dataSets[i]) / 255  # 归一化
+        # 四舍五入
+        if t > 0.5:
+            temp.append(1)
+        else:
+            temp.append(0)
+
+    temp.append(label)
+
+    #  置入数据结构中
+    SourceSet.append(temp)
+
+testFile.close()
+
+for i in range(len(SourceSet)):
+    if trainSSize > trainSCounter[int(SourceSet[i][len(SourceSet[i]) - 1])][1]:
+        trainSetS.append(SourceSet[i])
+        trainSCounter[int(SourceSet[i][len(SourceSet[i]) - 1])][1] = \
+            trainSCounter[int(SourceSet[i][len(SourceSet[i]) - 1])][1] + 1
+    else:
+        testSet.append(SourceSet[i][:len(SourceSet[i]) - 1])
+        testLabels.append(SourceSet[i][len(SourceSet[i]) - 1])
+
+if not isinstance(trainSetA, list):
+    raise NameError('error: dataList_A should be a list.')
+
+if not isinstance(trainSetS, list):
+    raise NameError('error: dataList_S should be a list.')
+
+classifier = Classifier(trainSetS, trainSetA, C, tol, maxIter, kTup, trMaxIter, errorRate, coreNum, nonTr)
+
+correct = 0
+
+error = np.zeros((10, 10), int)
+
+# test
+for ind in range(0, len(testSet)):
+    prediction = classifier.predict(testSet[ind], str(testLabels[ind]))
+
+    print(ind, end='')
+    print(" predict is ", end='')
+    print(prediction, end=';')
+    print(" real label is ", end=str(testLabels[ind]) + ";")
+
+    if prediction == testLabels[ind]:
+        correct += 1
+        print('predict is right.')
+    else:
+        error[int(testLabels[ind]), int(prediction)] = error[int(testLabels[ind]), int(prediction)] + 1
+        print('predict is wrong.')
+
+print("Source train data set situation: ")
+print(trainSCounter)
+
+print("test data set situation: ")
+print(testCounter)
+
+print("Correct present: ")
+print(correct / len(testLabels))
+print(error)
