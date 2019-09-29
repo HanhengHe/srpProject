@@ -1,18 +1,18 @@
 # -*- coding: UTF-8 -*-
 
-from multiprocessing import Pool, cpu_count, freeze_support, Manager
+from multiprocessing import Pool, cpu_count, freeze_support
 from SVM.transfrom.trAdaBoost import trAdaBoost
 import numpy as np
 
 ###############################################
-#               wdnmd GIL                     #
-#               wdnmd GIL                     #
-#               wdnmd GIL                     #
-#               wdnmd GIL                     #
-#               wdnmd GIL                     #
-#               wdnmd GIL                     #
-#               wdnmd GIL                     #
-#               wdnmd GIL                     #
+#                 wdnmd GIL                   #
+#                 wdnmd GIL                   #
+#                 wdnmd GIL                   #
+#                 wdnmd GIL                   #
+#                 wdnmd GIL                   #
+#                 wdnmd GIL                   #
+#                 wdnmd GIL                   #
+#                 wdnmd GIL                   #
 ###############################################
 
 #   这是一个不成熟的svc多分类器
@@ -21,6 +21,7 @@ import numpy as np
 #   ovo 和 ovr 不打算做
 
 Type = ('DAG', 'ECOC')
+#      (SVM决策树, ECOC)
 
 #   List格式：[data,...,data,label]
 #   建议label从0开始，不跳过数字
@@ -40,30 +41,38 @@ Type = ('DAG', 'ECOC')
 
 #   Error我是随便raise的, 因为我不知道raise什么Error比较合适....
 
-# work part
-# thanks for GIL
-# work part was moved to here
-# wdnmd GIL
+#   work part
+#   thanks for GIL
+#   work part was moved to here
+#   wdnmd GIL
 
-ASRate = 0.1
-
+####################################################
+#                   size parameter                 #
+####################################################
 # svc get double size
-
-trainASize = 500
-SourceSize = 150
-trainSSize = trainASize * ASRate
+ASRate = 0.1
+trainASize = 50
+SourceSize = 200
+trainSSize = int(trainASize * ASRate)
 testSize = SourceSize - trainSSize
 
+####################################################
+#                    parameter                     #
+####################################################
 C = 0.8
-tol = 0.1
+tol = 0.01
 maxIter = 20
 kTup = ['lin', 0]
 trMaxIter = 10
 trTol = 0.05
-errorRate = 0.05
-coreNum = cpu_count()
+errorRate = 0.01
+coreNum = cpu_count() - 5
 nonTr = False
 
+trainFilePath = 'D:\\WINTER\\Pycharm_project\\data\\Mnist\\train'
+testFilePath = 'D:\\WINTER\\Pycharm_project\\data\\Mnist\\test'
+
+####################################################
 trainSetA = []
 SourceSet = []
 
@@ -78,10 +87,6 @@ SourceCounter = [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0],
 trainACounter = [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [0, 0]]
 
 testCounter = [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [0, 0]]
-
-#  clear old log
-oLog = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\predictLog", 'w')
-oLog.close()
 
 neatDataSet_A = []
 neatLabelSet_A = []
@@ -101,12 +106,20 @@ threadMIndex = []
 processes = []
 
 
-def init():
-    ###########################################################################################
-    #                                      init data                                          #
-    ###########################################################################################
+###########################################################################################
+#                                      init data                                          #
+###########################################################################################
 
-    trainFile = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\train')
+def init():
+
+    #  clear old log
+    oLog = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\predictLog", 'w')
+    oLog.close()
+    bootLog = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\boostingLog", 'w')
+    bootLog.close()
+
+
+    trainFile = open(trainFilePath)
 
     #   assistant data
     for line in trainFile.readlines():
@@ -143,7 +156,7 @@ def init():
 
     trainFile.close()
 
-    testFile = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\test')
+    testFile = open(testFilePath)
 
     #   data source and test data
     for line in testFile.readlines():
@@ -189,6 +202,8 @@ def init():
         else:
             testSet.append(SourceSet[i][:len(SourceSet[i]) - 1])
             testLabels.append(SourceSet[i][len(SourceSet[i]) - 1])
+            testCounter[int(SourceSet[i][len(SourceSet[i]) - 1])][1] = \
+                testCounter[int(SourceSet[i][len(SourceSet[i]) - 1])][1] + 1
 
     if not isinstance(trainSetA, list):
         raise NameError('error: dataList_A should be a list.')
@@ -197,10 +212,11 @@ def init():
         raise NameError('error: dataList_S should be a list.')
 
 
+###########################################################################################
+#                                      list data                                          #
+###########################################################################################
+
 def listData():
-    ###########################################################################################
-    #                                      list data                                          #
-    ###########################################################################################
 
     # ***************这部分代码还可以进一步优化******************
     #   按标签类型重新整理数据集
@@ -215,7 +231,7 @@ def listData():
 
     for data in trainSetA:
         if data[len(data) - 1] not in neatLabelSet_A:  # 如果data末尾的标签不在neatLabelSet中
-            neatLabelSet_A.append((data[len(data) - 1]))
+            neatLabelSet_A.append((data[len(data) - 1]))  # 注意neatLabelSet_A乱序
 
             neatDataSet_A.append([])
 
@@ -258,27 +274,34 @@ def listData():
 #                                  assist function                                       *
 #  ***************************************************************************************
 
-def subProcess(missionList, proc, numTotal, neatDataSet_Assist, neatDataSet_Source):
+def subProcess(missionList, neatDataSet_Assist, neatDataSet_Source, neatLabelSet_Assist, neatLabelSet_Source, proNum):
     svms = [None] * len(missionList)
     for iterIndex in range(len(missionList)):
-        proc.value += 1
-        print('Processing %s...' % str(proc.value / numTotal))
-        a = int(missionList[iterIndex].split('&')[0])
-        b = int(missionList[iterIndex].split('&')[1])
+
+        print("Core %s processing %s" % (str(proNum), str((iterIndex + 1) / len(missionList))))
+
+        left = missionList[iterIndex].split('&')[0]
+        right = missionList[iterIndex].split('&')[1]
+
+        aAssist = neatLabelSet_Assist.index(left)
+        bAssist = neatLabelSet_Assist.index(right)
+        aSource = neatLabelSet_Source.index(left)
+        bSource = neatLabelSet_Source.index(right)
+
         svms[iterIndex] = \
-            trAdaBoost(neatDataSet_Assist[a] + neatDataSet_Assist[b],  # A
-                       neatDataSet_Source[a] + neatDataSet_Source[b],  # S
-                       [-1] * len(neatDataSet_Assist[a]) + [1] * len(
-                           neatDataSet_Assist[b]),
-                       # A label set
-                       [-1] * len(neatDataSet_Source[a]) + [1] * len(
-                           neatDataSet_Source[b]),
-                       # S label set
-                       [C, tol, maxIter, kTup],
-                       trMaxIter, trTol,  # parameters
+            trAdaBoost(neatDataSet_Assist[aAssist] + neatDataSet_Assist[bAssist],  # A
+                       neatDataSet_Source[aSource] + neatDataSet_Source[bSource],  # S
+                       [-1] * len(neatDataSet_Assist[aAssist]) + [1] * len(
+                           neatDataSet_Assist[bAssist]),  # A label set
+                       [-1] * len(neatDataSet_Source[aSource]) + [1] * len(
+                           neatDataSet_Source[bSource]),  # S label set
+                       [C, tol, maxIter, kTup],  # parameters of svc
+                       trMaxIter, trTol,  # parameters of trAdaBoost
                        missionList[iterIndex],  # check trAdaBoost
+                       proNum,  # output at error rate
                        nonTr  # with non-tr support
                        )
+    print("Core %s task finish. " % (str(proNum)))
     return svms
 
 
@@ -343,13 +366,14 @@ def predict(x, real=''):  # 方便整合输出
 
         indexIn += 1
 
-
 #  ****************************************************************************
 
+
+###############################################################################
+#                         dispatch task for train                             #
+###############################################################################
+
 def prepare4train():
-    ###############################################################################
-    #                            prepare for train                                #
-    ###############################################################################
 
     #   require num*(num-1)/2 classifiers
 
@@ -376,6 +400,7 @@ def prepare4train():
         if len(threadMission[indexIn]) == perCore:
             indexIn += 1
 
+
 ###############################################################################
 #                                 start train                                 #
 ###############################################################################
@@ -391,15 +416,13 @@ if __name__ == '__main__':
 
     prepare4train()
 
-    # 显示进度
-    PROC = Manager().Value('i', 0)
-
     pool = Pool(processes=coreNum)
     temp = []
     freeze_support()
 
     for ini in range(coreNum):
-        temp.append(pool.apply_async(subProcess, (threadMission[ini], PROC, len(svcsName), neatDataSet_A, neatDataSet_S, )))
+        temp.append(pool.apply_async(subProcess, (threadMission[ini], neatDataSet_A, neatDataSet_S,
+                                                  neatLabelSet_A, neatLabelSet_S, ini,)))
 
     pool.close()
     pool.join()
