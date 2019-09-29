@@ -5,14 +5,14 @@ from SVM.transfrom.trAdaBoost import trAdaBoost
 import numpy as np
 
 ###############################################
-#               wdnmd GIL                     #
-#               wdnmd GIL                     #
-#               wdnmd GIL                     #
-#               wdnmd GIL                     #
-#               wdnmd GIL                     #
-#               wdnmd GIL                     #
-#               wdnmd GIL                     #
-#               wdnmd GIL                     #
+#                 wdnmd GIL                   #
+#                 wdnmd GIL                   #
+#                 wdnmd GIL                   #
+#                 wdnmd GIL                   #
+#                 wdnmd GIL                   #
+#                 wdnmd GIL                   #
+#                 wdnmd GIL                   #
+#                 wdnmd GIL                   #
 ###############################################
 
 #   这是一个不成熟的svc多分类器
@@ -41,10 +41,10 @@ Type = ('DAG', 'ECOC')
 
 #   Error我是随便raise的, 因为我不知道raise什么Error比较合适....
 
-# work part
-# thanks for GIL
-# work part was moved to here
-# wdnmd GIL
+#   work part
+#   thanks for GIL
+#   work part was moved to here
+#   wdnmd GIL
 
 ####################################################
 #                   size parameter                 #
