@@ -51,8 +51,8 @@ Type = ('DAG', 'ECOC')
 ####################################################
 # svc get double size
 ASRate = 0.1
-trainASize = 100
-SourceSize = 100
+trainASize = 50
+SourceSize = 200
 trainSSize = int(trainASize * ASRate)
 testSize = SourceSize - trainSSize
 
@@ -66,7 +66,7 @@ kTup = ['lin', 0]
 trMaxIter = 10
 trTol = 0.05
 errorRate = 0.01
-coreNum = cpu_count()
+coreNum = cpu_count() - 5
 nonTr = False
 
 trainFilePath = 'D:\\WINTER\\Pycharm_project\\data\\Mnist\\train'

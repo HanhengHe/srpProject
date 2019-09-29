@@ -4,6 +4,7 @@
     <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SVM/boostingLog" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/boostingLog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/predictLog" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/predictLog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SVM/transfrom/mutiTrSVC.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/transfrom/mutiTrSVC.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SVM/transfrom/trAdaBoost.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/transfrom/trAdaBoost.py" afterDir="false" />
     </list>
@@ -37,7 +38,7 @@
     <property name="ToolWindowRun.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Markdown" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -183,21 +184,7 @@
       <workItem from="1569663459889" duration="14384000" />
       <workItem from="1569714725594" duration="5876000" />
       <workItem from="1569748977807" duration="5106000" />
-      <workItem from="1569757600687" duration="5124000" />
-    </task>
-    <task id="LOCAL-00006" summary="update trAdaBoost">
-      <created>1567515262323</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1567515262323</updated>
-    </task>
-    <task id="LOCAL-00007" summary="update trAdaBoost">
-      <created>1567515321802</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1567515321802</updated>
+      <workItem from="1569757600687" duration="10012000" />
     </task>
     <task id="LOCAL-00008" summary="update trAdaBoost">
       <created>1567515417246</created>
@@ -528,7 +515,21 @@
       <option name="project" value="LOCAL" />
       <updated>1569757635045</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="mutiTrSVM基本完成&#10;测试tradaboost是否起作用">
+      <created>1569763445857</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1569763445857</updated>
+    </task>
+    <task id="LOCAL-00056" summary="mutiTrSVM基本完成&#10;测试tradaboost是否起作用">
+      <created>1569763511781</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1569763511781</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -600,11 +601,6 @@
           <line>386</line>
           <option name="timeStamp" value="111" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SVM/transfrom/trAdaBoost.py</url>
-          <line>54</line>
-          <option name="timeStamp" value="112" />
-        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -618,7 +614,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/srpProject$ass.coverage" NAME="ass Coverage Results" MODIFIED="1569679441531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
     <SUITE FILE_PATH="coverage/srpProject$test_trMnist.coverage" NAME="test_trMnist Coverage Results" MODIFIED="1569657498045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/test/2019-9-16" />
-    <SUITE FILE_PATH="coverage/srpProject$mutiTrSVC.coverage" NAME="mutiTrSVC Coverage Results" MODIFIED="1569762822362" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
+    <SUITE FILE_PATH="coverage/srpProject$mutiTrSVC.coverage" NAME="mutiTrSVC Coverage Results" MODIFIED="1569769975011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
     <SUITE FILE_PATH="coverage/srpProject$test.coverage" NAME="test Coverage Results" MODIFIED="1568091873909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/test/2019-9-8" />
     <SUITE FILE_PATH="coverage/srpProject$transfrom.coverage" NAME="transfrom Coverage Results" MODIFIED="1567950126337" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/Mnist" />
     <SUITE FILE_PATH="coverage/srpProject$trSVM.coverage" NAME="trSVM Coverage Results" MODIFIED="1569660403861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />

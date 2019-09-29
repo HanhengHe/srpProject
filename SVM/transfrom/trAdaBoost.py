@@ -52,9 +52,8 @@ class trClassifier:
                 else:
                     return -1
             else:
-                temp = self.core[i].tolist()[0][0]
-                left *= temp ** (-predict)
-                right *= temp ** (-0.5)
+                left *= self.core[i] ** (-predict)
+                right *= self.core[i] ** (-0.5)
 
         if left >= right:
             return 1
@@ -172,10 +171,18 @@ def train_classify(trans_data, trans_labels, param, P):
 
 # 计算错误率
 def calculate_error_rate(label_R, label_P, weight):
-    total = np.sum(weight)
-
     for i in range(len(label_P)):
         if label_P[i] == 0:
             label_P[i] = -1
 
-    return weight * np.abs(label_R - label_P).T / total
+    error = 0
+
+    labels = label_R.tolist()[0]
+
+    weights = weight.tolist()[0]
+
+    for i in range(len(label_P)):
+        if label_P[i] != labels[i]:
+            error += weights[i]
+
+    return error / np.sum(weight)
