@@ -52,7 +52,7 @@ Type = ('DAG', 'ECOC')
 # svc get double size
 ASRate = 0.2
 trainASize = 100
-SourceSize = 20
+SourceSize = 50
 trainSSize = int(trainASize * ASRate)
 testSize = SourceSize - trainSSize
 
@@ -271,13 +271,17 @@ def listData():
 def subProcess(missionList, neatDataSet_Assist, neatDataSet_Source, neatLabelSet_Assist, neatLabelSet_Source, proNum):
     svms = [None] * len(missionList)
     for iterIndex in range(len(missionList)):
+
         print("Core %s processing %s" % (str(proNum), str((iterIndex + 1) / len(missionList))))
+
         left = missionList[iterIndex].split('&')[0]
         right = missionList[iterIndex].split('&')[1]
+
         aAssist = neatLabelSet_Assist.index(left)
         bAssist = neatLabelSet_Assist.index(right)
         aSource = neatLabelSet_Source.index(left)
         bSource = neatLabelSet_Source.index(right)
+
         svms[iterIndex] = \
             trAdaBoost(neatDataSet_Assist[aAssist] + neatDataSet_Assist[bAssist],  # A
                        neatDataSet_Source[aSource] + neatDataSet_Source[bSource],  # S
