@@ -50,7 +50,7 @@ Type = ('DAG', 'ECOC')
 #                   size parameter                 #
 ####################################################
 # svc get double size
-ASRate = 0.2
+ASRate = 0.1
 trainASize = 100
 SourceSize = 50
 trainSSize = int(trainASize * ASRate)
@@ -116,7 +116,7 @@ def init():
     #  clear old log
     oLog = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\predictLog", 'w')
     oLog.close()
-    bootLog = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\bootingLog", 'w')
+    bootLog = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\boostingLog", 'w')
     bootLog.close()
 
 

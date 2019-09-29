@@ -100,8 +100,8 @@ def trAdaBoost(trans_A, trans_S, label_A, label_S, param, N=20, errorRate=0.05, 
         # 计算错误率
         error_rate = calculate_error_rate(np.mat(label_S), result[row_A:row_A + row_S, i],
                                           weights[0, row_A:row_A + row_S])
-        print('Core %s, Error rate: %s' % (str(proNum), str(error_rate)))
-        print('')
+        # print('Core %s, Error rate: %s' % (str(proNum), str(error_rate)))
+        # print('')
         if error_rate > 0.5:
             error_rate = 0.5  # 确保eta小于0.5
 
@@ -111,10 +111,16 @@ def trAdaBoost(trans_A, trans_S, label_A, label_S, param, N=20, errorRate=0.05, 
         tempBeta_Ts.append(beta_T)
 
         if error_rate <= errorRate:
-            break  # 防止过拟合
+            if i == 0:  # didn't boost
+                break  # 防止过拟合
 
-        bootLog = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\bootingLog", 'a')
-        bootLog.write(checker + " in Boot \n")
+            # collect boost result
+            bootLog = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\boostingLog", 'a')
+            bootLog.write(checker + " in Boost ,error rate: %s \n" % (str(error_rate)))
+            bootLog.close()
+
+        bootLog = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\boostingLog", 'a')
+        bootLog.write(checker + " in Boost ,error rate: %s \n" % (str(error_rate)))
         bootLog.close()
 
         # 调整源域样本权重
