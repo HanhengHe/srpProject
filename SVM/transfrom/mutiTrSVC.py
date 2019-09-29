@@ -21,6 +21,7 @@ import numpy as np
 #   ovo 和 ovr 不打算做
 
 Type = ('DAG', 'ECOC')
+#      (SVM决策树, ECOC)
 
 #   List格式：[data,...,data,label]
 #   建议label从0开始，不跳过数字
@@ -49,8 +50,8 @@ ASRate = 0.1
 
 # svc get double size
 
-trainASize = 500
-SourceSize = 150
+trainASize = 50
+SourceSize = 15
 trainSSize = trainASize * ASRate
 testSize = SourceSize - trainSSize
 
@@ -61,7 +62,8 @@ kTup = ['lin', 0]
 trMaxIter = 10
 trTol = 0.05
 errorRate = 0.05
-coreNum = cpu_count()
+# coreNum = cpu_count()
+coreNum = 1
 nonTr = False
 
 trainSetA = []
@@ -189,6 +191,8 @@ def init():
         else:
             testSet.append(SourceSet[i][:len(SourceSet[i]) - 1])
             testLabels.append(SourceSet[i][len(SourceSet[i]) - 1])
+            testCounter[int(SourceSet[i][len(SourceSet[i]) - 1])][1] = \
+                testCounter[int(SourceSet[i][len(SourceSet[i]) - 1])][1] + 1
 
     if not isinstance(trainSetA, list):
         raise NameError('error: dataList_A should be a list.')
@@ -215,7 +219,7 @@ def listData():
 
     for data in trainSetA:
         if data[len(data) - 1] not in neatLabelSet_A:  # 如果data末尾的标签不在neatLabelSet中
-            neatLabelSet_A.append((data[len(data) - 1]))
+            neatLabelSet_A.append((data[len(data) - 1]))  # 注意neatLabelSet_A乱序
 
             neatDataSet_A.append([])
 
@@ -258,11 +262,14 @@ def listData():
 #                                  assist function                                       *
 #  ***************************************************************************************
 
-def subProcess(missionList, neatDataSet_Assist, neatDataSet_Source):
+def subProcess(missionList, neatDataSet_Assist, neatDataSet_Source, neatLabelSet_Assist, neatLabelSet_Source, proNum):
     svms = [None] * len(missionList)
     for iterIndex in range(len(missionList)):
-        a = int(missionList[iterIndex].split('&')[0])
-        b = int(missionList[iterIndex].split('&')[1])
+        print("Core %s processing %s" % (str(proNum), str((iterIndex+1)/len(missionList))))
+        left = int(missionList[iterIndex].split('&')[0])
+        right = int(missionList[iterIndex].split('&')[1])
+        a = neatLabelSet_Assist.index(left)
+        b = neatLabelSet_Source.index(right)
         svms[iterIndex] = \
             trAdaBoost(neatDataSet_Assist[a] + neatDataSet_Assist[b],  # A
                        neatDataSet_Source[a] + neatDataSet_Source[b],  # S
@@ -275,6 +282,7 @@ def subProcess(missionList, neatDataSet_Assist, neatDataSet_Source):
                        [C, tol, maxIter, kTup],
                        trMaxIter, trTol,  # parameters
                        missionList[iterIndex],  # check trAdaBoost
+                       proNum,
                        nonTr  # with non-tr support
                        )
     return svms
@@ -292,10 +300,10 @@ def predict(x, real=''):  # 方便整合输出
 
     if firstStep < 0:
         predictIn = svcsName[0].split('&')[0]
-        # atList.remove(svcsName[0].split('&')[1])
+        atList.remove(svcsName[0].split('&')[1])
     elif firstStep > 0:
         predictIn = svcsName[0].split('&')[1]
-        # atList.remove(svcsName[0].split('&')[0])
+        atList.remove(svcsName[0].split('&')[0])
     else:
         raise NameError('error: predict zero .')
 
@@ -326,11 +334,11 @@ def predict(x, real=''):  # 方便整合输出
 
         if takeStep < 0:
             predictIn = svcsName[indexIn].split('&')[0]
-            # atList.remove(svcsName[indexIn].split('&')[1])
+            atList.remove(svcsName[indexIn].split('&')[1])
 
         elif takeStep > 0:
             predictIn = svcsName[indexIn].split('&')[1]
-            # atList.remove(svcsName[indexIn].split('&')[0])
+            atList.remove(svcsName[indexIn].split('&')[0])
 
         else:
             raise NameError('error: predict zero .')
@@ -342,11 +350,11 @@ def predict(x, real=''):  # 方便整合输出
         indexIn += 1
 
 
-#  ****************************************************************************
+#  ***************************************************************************s*
 
 def prepare4train():
     ###############################################################################
-    #                            prepare for train                                #
+    #                         dispatch task for train                             #
     ###############################################################################
 
     #   require num*(num-1)/2 classifiers
@@ -394,7 +402,8 @@ if __name__ == '__main__':
     freeze_support()
 
     for ini in range(coreNum):
-        temp.append(pool.apply_async(subProcess, (threadMission[ini], neatDataSet_A, neatDataSet_S, )))
+        temp.append(pool.apply_async(subProcess, (threadMission[ini], neatDataSet_A, neatDataSet_S,
+                                                  neatLabelSet_A, neatLabelSet_S, ini, )))
 
     pool.close()
     pool.join()

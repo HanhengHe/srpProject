@@ -25,8 +25,8 @@ class SVC:
             for i in range(0, len(cWeight)):
                 self.cWeight[i] = cWeight[i] * self.m
 
-        self.K = np.mat(np.zeros((self.m, self.m), dtype=int))
-        print('Init dataMat')
+        self.K = np.mat(np.zeros((self.m, self.m), dtype=int))  # !!type is int
+        # print('Init dataMat')
         for i in range(self.m):
             #  print(i/self.m, end=' ')
             self.K[:, i] = self.kernelTrans(self.dataMat[i, :])

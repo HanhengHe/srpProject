@@ -61,7 +61,7 @@ class trClassifier:
             return -1
 
 
-def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05, checker='', nonTr=False):
+def trAdaBoost(trans_A, trans_S, label_A, label_S, param, N=20, errorRate=0.05, checker='', proNum=0, nonTr=False):
     # print("trAdaBoost.")
 
     trans_data = trans_A + trans_S
@@ -99,7 +99,7 @@ def trAdaBoost(trans_S, trans_A, label_S, label_A, param, N=20, errorRate=0.05, 
         # 计算错误率
         error_rate = calculate_error_rate(np.mat(label_S), result[row_A:row_A + row_S, i],
                                           weights[0, row_A:row_A + row_S])
-        print('Error rate:', error_rate)
+        print('Core %s, Error rate: %s' % (str(proNum), str(error_rate)))
         print('')
         if error_rate > 0.5:
             error_rate = 0.5  # 确保eta小于0.5
@@ -163,7 +163,13 @@ def train_classify(trans_data, trans_labels, param, P):
 
 
 # 计算错误率
-def calculate_error_rate(label_R, label_H, weight):
+def calculate_error_rate(label_R, label_P, weight):
     total = np.sum(weight)
 
-    return weight * np.abs(label_R - label_H).T / total
+    for i in range(len(label_P)):
+        if label_P[i] == 0:
+            label_P[i] = -1
+
+    temp = np.abs(label_R - label_P).T / total
+
+    return weight * np.abs(label_R - label_P).T / total
