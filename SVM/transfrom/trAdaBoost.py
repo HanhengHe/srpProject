@@ -178,6 +178,4 @@ def calculate_error_rate(label_R, label_P, weight):
         if label_P[i] == 0:
             label_P[i] = -1
 
-    temp = np.abs(label_R - label_P).T / total
-
     return weight * np.abs(label_R - label_P).T / total
