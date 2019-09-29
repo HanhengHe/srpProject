@@ -52,7 +52,7 @@ Type = ('DAG', 'ECOC')
 # svc get double size
 ASRate = 0.1
 trainASize = 100
-SourceSize = 50
+SourceSize = 100
 trainSSize = int(trainASize * ASRate)
 testSize = SourceSize - trainSSize
 
@@ -301,6 +301,7 @@ def subProcess(missionList, neatDataSet_Assist, neatDataSet_Source, neatLabelSet
                        proNum,  # output at error rate
                        nonTr  # with non-tr support
                        )
+    print("Core %s task finish. " % (str(proNum)))
     return svms
 
 
@@ -316,10 +317,10 @@ def predict(x, real=''):  # 方便整合输出
 
     if firstStep < 0:
         predictIn = svcsName[0].split('&')[0]
-        atList.remove(svcsName[0].split('&')[1])
+        # atList.remove(svcsName[0].split('&')[1])
     elif firstStep > 0:
         predictIn = svcsName[0].split('&')[1]
-        atList.remove(svcsName[0].split('&')[0])
+        # atList.remove(svcsName[0].split('&')[0])
     else:
         raise NameError('error: predict zero .')
 
@@ -350,11 +351,11 @@ def predict(x, real=''):  # 方便整合输出
 
         if takeStep < 0:
             predictIn = svcsName[indexIn].split('&')[0]
-            atList.remove(svcsName[indexIn].split('&')[1])
+            # atList.remove(svcsName[indexIn].split('&')[1])
 
         elif takeStep > 0:
             predictIn = svcsName[indexIn].split('&')[1]
-            atList.remove(svcsName[indexIn].split('&')[0])
+            # atList.remove(svcsName[indexIn].split('&')[0])
 
         else:
             raise NameError('error: predict zero .')
