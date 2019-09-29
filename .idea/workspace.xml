@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="" />
+    <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/SVM/transfrom/mutiTrSVC.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/transfrom/mutiTrSVC.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,14 +179,7 @@
       <workItem from="1569654092072" duration="8968000" />
       <workItem from="1569663459889" duration="14384000" />
       <workItem from="1569714725594" duration="5876000" />
-      <workItem from="1569748977807" duration="2825000" />
-    </task>
-    <task id="LOCAL-00001" summary="first commit">
-      <created>1567316351254</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1567316351254</updated>
+      <workItem from="1569748977807" duration="3090000" />
     </task>
     <task id="LOCAL-00002" summary="first commit">
       <created>1567316900278</created>
@@ -522,7 +517,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569755027216</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="mutiTrSVM增加并行功能&#10;采用mutiprocessing.pool&#10;默认cpu全开">
+      <created>1569755431876</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1569755431876</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -590,13 +592,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/SVM/transfrom/mutiTrSVC.py</url>
-          <line>379</line>
+          <line>382</line>
           <option name="timeStamp" value="111" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SVM/transfrom/mutiTrSVC.py</url>
-          <line>304</line>
-          <option name="timeStamp" value="121" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/SVM/transfrom/trAdaBoost.py</url>

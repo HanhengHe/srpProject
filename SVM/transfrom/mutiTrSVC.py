@@ -70,6 +70,9 @@ errorRate = 0.01
 coreNum = 4
 nonTr = False
 
+trainFilePath = 'D:\\WINTER\\Pycharm_project\\data\\Mnist\\train'
+testFilePath = 'D:\\WINTER\\Pycharm_project\\data\\Mnist\\test'
+
 ####################################################
 trainSetA = []
 SourceSet = []
@@ -113,7 +116,7 @@ processes = []
 ###########################################################################################
 
 def init():
-    trainFile = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\train')
+    trainFile = open(trainFilePath)
 
     #   assistant data
     for line in trainFile.readlines():
@@ -150,7 +153,7 @@ def init():
 
     trainFile.close()
 
-    testFile = open('D:\\WINTER\\Pycharm_project\\data\\Mnist\\test')
+    testFile = open(testFilePath)
 
     #   data source and test data
     for line in testFile.readlines():
