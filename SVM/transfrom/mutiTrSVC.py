@@ -66,8 +66,7 @@ kTup = ['lin', 0]
 trMaxIter = 10
 trTol = 0.05
 errorRate = 0.01
-# coreNum = cpu_count()
-coreNum = 4
+coreNum = cpu_count()
 nonTr = False
 
 trainFilePath = 'D:\\WINTER\\Pycharm_project\\data\\Mnist\\train'

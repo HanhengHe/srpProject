@@ -118,6 +118,7 @@ def trAdaBoost(trans_A, trans_S, label_A, label_S, param, N=20, errorRate=0.05, 
             bootLog = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\boostingLog", 'a')
             bootLog.write(checker + " in Boost ,error rate: %s \n" % (str(error_rate)))
             bootLog.close()
+            break
 
         bootLog = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\boostingLog", 'a')
         bootLog.write(checker + " in Boost ,error rate: %s \n" % (str(error_rate)))
