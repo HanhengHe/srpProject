@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-from multiprocessing import Pool, cpu_count, freeze_support, Manager
+from multiprocessing import Pool, cpu_count, freeze_support
 from SVM.transfrom.trAdaBoost import trAdaBoost
 import numpy as np
 
@@ -258,11 +258,9 @@ def listData():
 #                                  assist function                                       *
 #  ***************************************************************************************
 
-def subProcess(missionList, proc, numTotal, neatDataSet_Assist, neatDataSet_Source):
+def subProcess(missionList, neatDataSet_Assist, neatDataSet_Source):
     svms = [None] * len(missionList)
     for iterIndex in range(len(missionList)):
-        proc.value += 1
-        print('Processing %s...' % str(proc.value / numTotal))
         a = int(missionList[iterIndex].split('&')[0])
         b = int(missionList[iterIndex].split('&')[1])
         svms[iterIndex] = \
@@ -391,15 +389,12 @@ if __name__ == '__main__':
 
     prepare4train()
 
-    # 显示进度
-    PROC = Manager().Value('i', 0)
-
     pool = Pool(processes=coreNum)
     temp = []
     freeze_support()
 
     for ini in range(coreNum):
-        temp.append(pool.apply_async(subProcess, (threadMission[ini], PROC, len(svcsName), neatDataSet_A, neatDataSet_S, )))
+        temp.append(pool.apply_async(subProcess, (threadMission[ini], neatDataSet_A, neatDataSet_S, )))
 
     pool.close()
     pool.join()
