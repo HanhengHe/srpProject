@@ -52,8 +52,9 @@ class trClassifier:
                 else:
                     return -1
             else:
-                left *= self.core[i] ** (-predict)
-                right *= self.core[i] ** (-0.5)
+                t = self.core[i][0, 0]
+                left *= self.core[i][0, 0] ** (-predict)
+                right *= self.core[i][0, 0] ** (-0.5)
 
         if left >= right:
             return 1

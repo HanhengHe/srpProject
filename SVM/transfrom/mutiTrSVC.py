@@ -89,10 +89,6 @@ trainACounter = [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0],
 
 testCounter = [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [0, 0]]
 
-#  clear old log
-oLog = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\predictLog", 'w')
-oLog.close()
-
 neatDataSet_A = []
 neatLabelSet_A = []
 
@@ -116,6 +112,14 @@ processes = []
 ###########################################################################################
 
 def init():
+
+    #  clear old log
+    oLog = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\predictLog", 'w')
+    oLog.close()
+    bootLog = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\bootingLog", 'w')
+    bootLog.close()
+
+
     trainFile = open(trainFilePath)
 
     #   assistant data
