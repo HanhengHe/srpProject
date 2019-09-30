@@ -51,7 +51,7 @@ Type = ('DAG', 'ECOC')
 ####################################################
 # svc get double size
 ASRate = 0.1
-trainASize = 50
+trainASize = 500
 SourceSize = 200
 trainSSize = int(trainASize * ASRate)
 testSize = SourceSize - trainSSize
@@ -66,7 +66,7 @@ kTup = ['lin', 0]
 trMaxIter = 10
 trTol = 0.05
 errorRate = 0.01
-coreNum = cpu_count() - 5
+coreNum = cpu_count()
 nonTr = False
 
 trainFilePath = 'D:\\WINTER\\Pycharm_project\\data\\Mnist\\train'
@@ -416,7 +416,7 @@ if __name__ == '__main__':
 
     prepare4train()
 
-    pool = Pool(processes=coreNum)
+    pool = Pool(coreNum)
     temp = []
     freeze_support()
 
