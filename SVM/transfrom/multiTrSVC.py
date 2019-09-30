@@ -61,12 +61,12 @@ testSize = SourceSize - trainSSize
 ####################################################
 C = 0.8
 tol = 0.01
-maxIter = 20
+maxIter = 30
 kTup = ['lin', 0]
 trMaxIter = 10
 trTol = 0.05
-errorRate = 0.01
-coreNum = cpu_count()
+errorRate = 0.05
+coreNum = cpu_count() - 1
 nonTr = False
 
 trainFilePath = 'D:\\WINTER\\Pycharm_project\\data\\Mnist\\train'
@@ -317,10 +317,10 @@ def predict(x, real=''):  # 方便整合输出
 
     if firstStep < 0:
         predictIn = svcsName[0].split('&')[0]
-        # atList.remove(svcsName[0].split('&')[1])
+        atList.remove(svcsName[0].split('&')[1])
     elif firstStep > 0:
         predictIn = svcsName[0].split('&')[1]
-        # atList.remove(svcsName[0].split('&')[0])
+        atList.remove(svcsName[0].split('&')[0])
     else:
         raise NameError('error: predict zero .')
 
@@ -351,11 +351,11 @@ def predict(x, real=''):  # 方便整合输出
 
         if takeStep < 0:
             predictIn = svcsName[indexIn].split('&')[0]
-            # atList.remove(svcsName[indexIn].split('&')[1])
+            atList.remove(svcsName[indexIn].split('&')[1])
 
         elif takeStep > 0:
             predictIn = svcsName[indexIn].split('&')[1]
-            # atList.remove(svcsName[indexIn].split('&')[0])
+            atList.remove(svcsName[indexIn].split('&')[0])
 
         else:
             raise NameError('error: predict zero .')
