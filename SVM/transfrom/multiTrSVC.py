@@ -64,10 +64,11 @@ tol = 0.01
 maxIter = 30
 kTup = ['lin', 0]
 trMaxIter = 10
-trTol = 0.05
+# trTol = 0.05
+trTol = 2
 errorRate = 0.05
 coreNum = cpu_count() - 1
-nonTr = False
+nonTr = False  # 这个参数可以直接忽略，把trTol设置成大于1的数就可以取消boost
 
 trainFilePath = 'D:\\WINTER\\Pycharm_project\\data\\Mnist\\train'
 testFilePath = 'D:\\WINTER\\Pycharm_project\\data\\Mnist\\test'
@@ -111,13 +112,11 @@ processes = []
 ###########################################################################################
 
 def init():
-
     #  clear old log
     oLog = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\predictLog", 'w')
     oLog.close()
     bootLog = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\boostingLog", 'w')
     bootLog.close()
-
 
     trainFile = open(trainFilePath)
 
@@ -217,7 +216,6 @@ def init():
 ###########################################################################################
 
 def listData():
-
     # ***************这部分代码还可以进一步优化******************
     #   按标签类型重新整理数据集
     #   list嵌套list，这种方式的空间效率可能会很低，期待后续修正
@@ -277,7 +275,6 @@ def listData():
 def subProcess(missionList, neatDataSet_Assist, neatDataSet_Source, neatLabelSet_Assist, neatLabelSet_Source, proNum):
     svms = [None] * len(missionList)
     for iterIndex in range(len(missionList)):
-
         print("Core %s processing %s" % (str(proNum), str((iterIndex + 1) / len(missionList))))
 
         left = missionList[iterIndex].split('&')[0]
@@ -366,6 +363,7 @@ def predict(x, real=''):  # 方便整合输出
 
         indexIn += 1
 
+
 #  ****************************************************************************
 
 
@@ -374,7 +372,6 @@ def predict(x, real=''):  # 方便整合输出
 ###############################################################################
 
 def prepare4train():
-
     #   require num*(num-1)/2 classifiers
 
     #  prepare for svc nameList
