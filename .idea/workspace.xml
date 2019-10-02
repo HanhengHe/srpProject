@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/transfrom/multiTrSVC.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/transfrom/multiTrSVC.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/log" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/predictLog" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/predictLog" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -149,14 +149,7 @@
       <workItem from="1569850454685" duration="2993000" />
       <workItem from="1569946661040" duration="2155000" />
       <workItem from="1569985207142" duration="70000" />
-      <workItem from="1569987597618" duration="5180000" />
-    </task>
-    <task id="LOCAL-00014" summary="first try on Mnist(failed)">
-      <created>1567956379761</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1567956379761</updated>
+      <workItem from="1569987597618" duration="5612000" />
     </task>
     <task id="LOCAL-00015" summary="first try on Mnist(failed)">
       <created>1568092062864</created>
@@ -494,7 +487,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569995825386</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="mutiTrSVM基本完成&#10;测试tradaboost是否起作用&#10;测试rbf核">
+      <created>1569996610607</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1569996610607</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -541,7 +541,8 @@
     <MESSAGE value="trSVM增加多线程功能" />
     <MESSAGE value="mutiTrSVM增加并行功能&#10;采用mutiprocessing.pool&#10;默认cpu全开" />
     <MESSAGE value="mutiTrSVM基本完成&#10;测试tradaboost是否起作用" />
-    <option name="LAST_COMMIT_MESSAGE" value="mutiTrSVM基本完成&#10;测试tradaboost是否起作用" />
+    <MESSAGE value="mutiTrSVM基本完成&#10;测试tradaboost是否起作用&#10;测试rbf核" />
+    <option name="LAST_COMMIT_MESSAGE" value="mutiTrSVM基本完成&#10;测试tradaboost是否起作用&#10;测试rbf核" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
