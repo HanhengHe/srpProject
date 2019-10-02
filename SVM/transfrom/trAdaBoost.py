@@ -1,5 +1,4 @@
 # -*- coding: UTF-8 -*-
-from math import log
 
 import numpy as np
 from SVM.SVC import svc
