@@ -17,11 +17,10 @@ from SVM.SVC import svc
 #   param=[C, tol, maxIter, kTup]
 
 class trClassifier:
-    def __init__(self, svcs, beta_Ts, nonTr):
+    def __init__(self, svcs, beta_Ts):
         self.svcs = svcs
         #   构造一个队列减少计算量
         self.core = []
-        self.nonTr = nonTr
         for i in range(len(svcs)):
             self.core.append(beta_Ts[i])
 
@@ -36,13 +35,6 @@ class trClassifier:
                 predict = 0
             else:
                 raise NameError("Error : predict = 0")
-
-            #  提供不采用tr的选项
-            if self.nonTr:
-                if predict == 1:
-                    return 1
-                else:
-                    return -1
 
             #  当core等于0时，predict永远返回1，但此时第i次迭代的分类表现很好（error=0），
             #  于是单独使用第i次训练得到的分类器作为总分类器
@@ -61,7 +53,7 @@ class trClassifier:
             return -1
 
 
-def trAdaBoost(trans_A, trans_S, label_A, label_S, param, N=20, errorRate=0.05, checker='', proNum=0, nonTr=False):
+def trAdaBoost(trans_A, trans_S, label_A, label_S, param, N=20, errorRate=0.05, checker='', nonTr=False):
     # print("trAdaBoost.")
 
     trans_data = trans_A + trans_S
@@ -71,10 +63,6 @@ def trAdaBoost(trans_A, trans_S, label_A, label_S, param, N=20, errorRate=0.05, 
 
     # 初始化权重
     # 权重C：C越大系统越重视对应样本
-    # ??
-    # weights_A = [1 / row_A] * row_A
-    # weights_S = [1 / row_S] * row_S
-    # weights = np.mat(weights_A + weights_S)
     weights = np.mat([1 / (row_A + row_S)] * (row_A + row_S))
 
     beta = 1 / (1 + np.sqrt(2 * np.log(row_A / N)))
@@ -87,6 +75,9 @@ def trAdaBoost(trans_A, trans_S, label_A, label_S, param, N=20, errorRate=0.05, 
     result = np.ones([row_A + row_S, N])
 
     # print('params initial finished.')
+
+    if nonTr:
+        errorRate = 1.5
 
     for i in range(N):
 
@@ -107,6 +98,10 @@ def trAdaBoost(trans_A, trans_S, label_A, label_S, param, N=20, errorRate=0.05, 
         beta_T = error_rate / (1 - error_rate)
 
         tempSvcs.append(classifier)
+
+        if nonTr:
+            beta_T = 0
+
         tempBeta_Ts.append(beta_T)
 
         if error_rate <= errorRate:
@@ -140,7 +135,7 @@ def trAdaBoost(trans_A, trans_S, label_A, label_S, param, N=20, errorRate=0.05, 
         beta_Ts.append(tempBeta_Ts[i])
 
     # 构造训练出来的集成分类器并返回
-    classifier = trClassifier(svcs, beta_Ts, nonTr)
+    classifier = trClassifier(svcs, beta_Ts)
 
     # print("trAdaBoost finished.")
 

@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/SVC.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/SVC.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/bootingLog" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/bootingLog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/transfrom/ass.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/transfrom/ass.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/boostingLog" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/boostingLog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/predictLog" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/predictLog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SVM/transfrom/mutiTrSVC.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/transfrom/mutiTrSVC.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SVM/transfrom/trAdaBoost.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/transfrom/trAdaBoost.py" afterDir="false" />
     </list>
@@ -39,7 +38,7 @@
     <property name="ToolWindowRun.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Markdown" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -182,56 +181,10 @@
       <workItem from="1568213222969" duration="6302000" />
       <workItem from="1569560684315" duration="517000" />
       <workItem from="1569654092072" duration="8968000" />
-      <workItem from="1569663459889" duration="14370000" />
-    </task>
-    <task id="LOCAL-00001" summary="first commit">
-      <created>1567316351254</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1567316351254</updated>
-    </task>
-    <task id="LOCAL-00002" summary="first commit">
-      <created>1567316900278</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1567316900278</updated>
-    </task>
-    <task id="LOCAL-00003" summary="first commit">
-      <created>1567318485471</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1567318485471</updated>
-    </task>
-    <task id="LOCAL-00004" summary="2019-9-2">
-      <created>1567422845134</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1567422845134</updated>
-    </task>
-    <task id="LOCAL-00005" summary="2019-9-2">
-      <created>1567440411204</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1567440411204</updated>
-    </task>
-    <task id="LOCAL-00006" summary="update trAdaBoost">
-      <created>1567515262323</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1567515262323</updated>
-    </task>
-    <task id="LOCAL-00007" summary="update trAdaBoost">
-      <created>1567515321802</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1567515321802</updated>
+      <workItem from="1569663459889" duration="14384000" />
+      <workItem from="1569714725594" duration="5876000" />
+      <workItem from="1569748977807" duration="5106000" />
+      <workItem from="1569757600687" duration="10012000" />
     </task>
     <task id="LOCAL-00008" summary="update trAdaBoost">
       <created>1567515417246</created>
@@ -492,7 +445,91 @@
       <option name="project" value="LOCAL" />
       <updated>1569676978596</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="mutiTrSVM增加并行功能&#10;采用mutiprocessing.pool&#10;默认cpu全开">
+      <created>1569681490446</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1569681490446</updated>
+    </task>
+    <task id="LOCAL-00046" summary="mutiTrSVM增加并行功能&#10;采用mutiprocessing.pool&#10;默认cpu全开">
+      <created>1569732876859</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1569732876859</updated>
+    </task>
+    <task id="LOCAL-00047" summary="mutiTrSVM增加并行功能&#10;采用mutiprocessing.pool&#10;默认cpu全开">
+      <created>1569737947554</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1569737947554</updated>
+    </task>
+    <task id="LOCAL-00048" summary="mutiTrSVM增加并行功能&#10;采用mutiprocessing.pool&#10;默认cpu全开">
+      <created>1569750803126</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1569750803126</updated>
+    </task>
+    <task id="LOCAL-00049" summary="mutiTrSVM增加并行功能&#10;采用mutiprocessing.pool&#10;默认cpu全开">
+      <created>1569755027216</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1569755027216</updated>
+    </task>
+    <task id="LOCAL-00050" summary="mutiTrSVM增加并行功能&#10;采用mutiprocessing.pool&#10;默认cpu全开">
+      <created>1569755431876</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1569755431876</updated>
+    </task>
+    <task id="LOCAL-00051" summary="mutiTrSVM增加并行功能&#10;采用mutiprocessing.pool&#10;默认cpu全开">
+      <created>1569755548233</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1569755548233</updated>
+    </task>
+    <task id="LOCAL-00052" summary="mutiTrSVM增加并行功能&#10;采用mutiprocessing.pool&#10;默认cpu全开">
+      <created>1569756926142</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1569756926142</updated>
+    </task>
+    <task id="LOCAL-00053" summary="mutiTrSVM基本完成&#10;测试tradaboost是否起作用">
+      <created>1569757193938</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1569757193938</updated>
+    </task>
+    <task id="LOCAL-00054" summary="mutiTrSVM基本完成&#10;测试tradaboost是否起作用">
+      <created>1569757635045</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1569757635045</updated>
+    </task>
+    <task id="LOCAL-00055" summary="mutiTrSVM基本完成&#10;测试tradaboost是否起作用">
+      <created>1569763445857</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1569763445857</updated>
+    </task>
+    <task id="LOCAL-00056" summary="mutiTrSVM基本完成&#10;测试tradaboost是否起作用">
+      <created>1569763511781</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1569763511781</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -538,7 +575,8 @@
     <MESSAGE value="Mnist数据集训练" />
     <MESSAGE value="trSVM增加多线程功能" />
     <MESSAGE value="mutiTrSVM增加并行功能&#10;采用mutiprocessing.pool&#10;默认cpu全开" />
-    <option name="LAST_COMMIT_MESSAGE" value="mutiTrSVM增加并行功能&#10;采用mutiprocessing.pool&#10;默认cpu全开" />
+    <MESSAGE value="mutiTrSVM基本完成&#10;测试tradaboost是否起作用" />
+    <option name="LAST_COMMIT_MESSAGE" value="mutiTrSVM基本完成&#10;测试tradaboost是否起作用" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -554,29 +592,14 @@
           <option name="timeStamp" value="72" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SVM/transfrom/trAdaBoost.py</url>
-          <line>40</line>
-          <option name="timeStamp" value="95" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SVM/transfrom/mutiTrSVC.py</url>
-          <line>401</line>
-          <option name="timeStamp" value="106" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/SVM/transfrom/ass.py</url>
           <line>6</line>
           <option name="timeStamp" value="108" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/SVM/transfrom/mutiTrSVC.py</url>
-          <line>362</line>
+          <line>386</line>
           <option name="timeStamp" value="111" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SVM/transfrom/mutiTrSVC.py</url>
-          <line>264</line>
-          <option name="timeStamp" value="112" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -591,7 +614,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/srpProject$ass.coverage" NAME="ass Coverage Results" MODIFIED="1569679441531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
     <SUITE FILE_PATH="coverage/srpProject$test_trMnist.coverage" NAME="test_trMnist Coverage Results" MODIFIED="1569657498045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/test/2019-9-16" />
-    <SUITE FILE_PATH="coverage/srpProject$mutiTrSVC.coverage" NAME="mutiTrSVC Coverage Results" MODIFIED="1569681368997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
+    <SUITE FILE_PATH="coverage/srpProject$mutiTrSVC.coverage" NAME="mutiTrSVC Coverage Results" MODIFIED="1569769975011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
     <SUITE FILE_PATH="coverage/srpProject$test.coverage" NAME="test Coverage Results" MODIFIED="1568091873909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/test/2019-9-8" />
     <SUITE FILE_PATH="coverage/srpProject$transfrom.coverage" NAME="transfrom Coverage Results" MODIFIED="1567950126337" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/Mnist" />
     <SUITE FILE_PATH="coverage/srpProject$trSVM.coverage" NAME="trSVM Coverage Results" MODIFIED="1569660403861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />

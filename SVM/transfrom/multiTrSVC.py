@@ -26,6 +26,7 @@ Type = ('DAG', 'ECOC')
 #   List格式：[data,...,data,label]
 #   建议label从0开始，不跳过数字
 #   当然其实你不这么干也没什么关系
+#   讲道理, label随便给就好，不要重复就行
 
 #   返回训练好的分类器，直接调用predict
 #   classifier = Classifier(parameters...)
@@ -52,22 +53,23 @@ Type = ('DAG', 'ECOC')
 # svc get double size
 ASRate = 0.1
 trainASize = 50
-SourceSize = 200
+SourceSize = 20
 trainSSize = int(trainASize * ASRate)
 testSize = SourceSize - trainSSize
 
 ####################################################
 #                    parameter                     #
 ####################################################
-C = 0.8
-tol = 0.01
-maxIter = 20
-kTup = ['lin', 0]
+C = 1.0
+tol = 0.001
+maxIter = 50
+kTup = ['rbf', 2.5]
 trMaxIter = 10
-trTol = 0.05
-errorRate = 0.01
-coreNum = cpu_count() - 5
-nonTr = False
+# trTol = 0.05
+trTol = 1.5  # close Boost
+errorRate = 0.05
+coreNum = cpu_count() - 1
+nonTr = True  # non-tr support
 
 trainFilePath = 'D:\\WINTER\\Pycharm_project\\data\\Mnist\\train'
 testFilePath = 'D:\\WINTER\\Pycharm_project\\data\\Mnist\\test'
@@ -111,13 +113,11 @@ processes = []
 ###########################################################################################
 
 def init():
-
     #  clear old log
     oLog = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\predictLog", 'w')
     oLog.close()
     bootLog = open("D:\\WINTER\\Pycharm_project\\srpProject\\SVM\\boostingLog", 'w')
     bootLog.close()
-
 
     trainFile = open(trainFilePath)
 
@@ -217,7 +217,6 @@ def init():
 ###########################################################################################
 
 def listData():
-
     # ***************这部分代码还可以进一步优化******************
     #   按标签类型重新整理数据集
     #   list嵌套list，这种方式的空间效率可能会很低，期待后续修正
@@ -277,7 +276,6 @@ def listData():
 def subProcess(missionList, neatDataSet_Assist, neatDataSet_Source, neatLabelSet_Assist, neatLabelSet_Source, proNum):
     svms = [None] * len(missionList)
     for iterIndex in range(len(missionList)):
-
         print("Core %s processing %s" % (str(proNum), str((iterIndex + 1) / len(missionList))))
 
         left = missionList[iterIndex].split('&')[0]
@@ -298,8 +296,7 @@ def subProcess(missionList, neatDataSet_Assist, neatDataSet_Source, neatLabelSet
                        [C, tol, maxIter, kTup],  # parameters of svc
                        trMaxIter, trTol,  # parameters of trAdaBoost
                        missionList[iterIndex],  # check trAdaBoost
-                       proNum,  # output at error rate
-                       nonTr  # with non-tr support
+                       nonTr  # no tr support
                        )
     print("Core %s task finish. " % (str(proNum)))
     return svms
@@ -317,10 +314,10 @@ def predict(x, real=''):  # 方便整合输出
 
     if firstStep < 0:
         predictIn = svcsName[0].split('&')[0]
-        # atList.remove(svcsName[0].split('&')[1])
+        atList.remove(svcsName[0].split('&')[1])
     elif firstStep > 0:
         predictIn = svcsName[0].split('&')[1]
-        # atList.remove(svcsName[0].split('&')[0])
+        atList.remove(svcsName[0].split('&')[0])
     else:
         raise NameError('error: predict zero .')
 
@@ -351,11 +348,11 @@ def predict(x, real=''):  # 方便整合输出
 
         if takeStep < 0:
             predictIn = svcsName[indexIn].split('&')[0]
-            # atList.remove(svcsName[indexIn].split('&')[1])
+            atList.remove(svcsName[indexIn].split('&')[1])
 
         elif takeStep > 0:
             predictIn = svcsName[indexIn].split('&')[1]
-            # atList.remove(svcsName[indexIn].split('&')[0])
+            atList.remove(svcsName[indexIn].split('&')[0])
 
         else:
             raise NameError('error: predict zero .')
@@ -366,6 +363,7 @@ def predict(x, real=''):  # 方便整合输出
 
         indexIn += 1
 
+
 #  ****************************************************************************
 
 
@@ -374,7 +372,6 @@ def predict(x, real=''):  # 方便整合输出
 ###############################################################################
 
 def prepare4train():
-
     #   require num*(num-1)/2 classifiers
 
     #  prepare for svc nameList
@@ -416,7 +413,7 @@ if __name__ == '__main__':
 
     prepare4train()
 
-    pool = Pool(processes=coreNum)
+    pool = Pool(coreNum)
     temp = []
     freeze_support()
 
