@@ -26,6 +26,7 @@ Type = ('DAG', 'ECOC')
 #   List格式：[data,...,data,label]
 #   建议label从0开始，不跳过数字
 #   当然其实你不这么干也没什么关系
+#   讲道理, label随便给就好，不要重复就行
 
 #   返回训练好的分类器，直接调用predict
 #   classifier = Classifier(parameters...)
@@ -68,7 +69,7 @@ trMaxIter = 10
 trTol = 2
 errorRate = 0.05
 coreNum = cpu_count() - 1
-nonTr = False  # non-tr support
+nonTr = True  # non-tr support
 
 trainFilePath = 'D:\\WINTER\\Pycharm_project\\data\\Mnist\\train'
 testFilePath = 'D:\\WINTER\\Pycharm_project\\data\\Mnist\\test'
