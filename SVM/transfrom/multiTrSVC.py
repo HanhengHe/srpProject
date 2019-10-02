@@ -60,13 +60,13 @@ testSize = SourceSize - trainSSize
 ####################################################
 #                    parameter                     #
 ####################################################
-C = 0.8
-tol = 0.01
-maxIter = 30
-kTup = ['lin', 0]
+C = 1.0
+tol = 0.001
+maxIter = 50
+kTup = ['rbf', 0.8]
 trMaxIter = 10
 # trTol = 0.05
-trTol = 2
+trTol = 1.5  # close Boost
 errorRate = 0.05
 coreNum = cpu_count() - 1
 nonTr = True  # non-tr support
