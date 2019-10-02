@@ -52,8 +52,8 @@ Type = ('DAG', 'ECOC')
 ####################################################
 # svc get double size
 ASRate = 0.1
-trainASize = 500
-SourceSize = 200
+trainASize = 50
+SourceSize = 20
 trainSSize = int(trainASize * ASRate)
 testSize = SourceSize - trainSSize
 
@@ -63,7 +63,7 @@ testSize = SourceSize - trainSSize
 C = 1.0
 tol = 0.001
 maxIter = 50
-kTup = ['rbf', 0.8]
+kTup = ['rbf', 2.5]
 trMaxIter = 10
 # trTol = 0.05
 trTol = 1.5  # close Boost
