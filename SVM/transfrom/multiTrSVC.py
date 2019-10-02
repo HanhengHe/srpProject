@@ -68,7 +68,7 @@ trMaxIter = 10
 trTol = 2
 errorRate = 0.05
 coreNum = cpu_count() - 1
-nonTr = False  # 这个参数可以直接忽略，把trTol设置成大于1的数就可以取消boost
+nonTr = False  # non-tr support
 
 trainFilePath = 'D:\\WINTER\\Pycharm_project\\data\\Mnist\\train'
 testFilePath = 'D:\\WINTER\\Pycharm_project\\data\\Mnist\\test'
@@ -295,8 +295,7 @@ def subProcess(missionList, neatDataSet_Assist, neatDataSet_Source, neatLabelSet
                        [C, tol, maxIter, kTup],  # parameters of svc
                        trMaxIter, trTol,  # parameters of trAdaBoost
                        missionList[iterIndex],  # check trAdaBoost
-                       proNum,  # output at error rate
-                       nonTr  # with non-tr support
+                       nonTr  # no tr support
                        )
     print("Core %s task finish. " % (str(proNum)))
     return svms
