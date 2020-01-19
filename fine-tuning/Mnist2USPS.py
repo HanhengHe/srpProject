@@ -124,3 +124,4 @@ for i, line in enumerate(targetFile.readlines()):
     targetSet.append(np.asarray(image))
 
 targetFile.close()
+
