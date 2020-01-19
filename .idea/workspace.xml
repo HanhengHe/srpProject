@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/fine-tuning/Mnist2USPS.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Emh.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Emh.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/log" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/transfrom/multiTrSVC.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/transfrom/multiTrSVC.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Iris/iris" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Iris/iris.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Iris/iris_test" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Iris/test" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Iris/train" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Mnist/t10k-images.idx3-ubyte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Mnist/t10k-labels.idx1-ubyte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Mnist/train-images.idx3-ubyte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Mnist/train-labels.idx1-ubyte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Mnist/transfrom.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/USPS/usps.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fine-tuning/Mnist2USPS.py" beforeDir="false" afterPath="$PROJECT_DIR$/fine-tuning/Mnist2USPS.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,35 +187,10 @@
       <workItem from="1575735606519" duration="1111000" />
       <workItem from="1575772941052" duration="13314000" />
       <workItem from="1578668348311" duration="26000" />
-      <workItem from="1579431164417" duration="5843000" />
-    </task>
-    <task id="LOCAL-00017" summary="开始更新SVM.py(可重用多分类代码)">
-      <created>1568178065924</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1568178065924</updated>
-    </task>
-    <task id="LOCAL-00018" summary="更新SVM.py(可重用多分类代码)">
-      <created>1568221215176</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1568221215176</updated>
-    </task>
-    <task id="LOCAL-00019" summary="测试SVM.py(可重用多分类代码)">
-      <created>1568450951934</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1568450951934</updated>
-    </task>
-    <task id="LOCAL-00020" summary="利用iris数据集测试SVM.py">
-      <created>1568454960340</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1568454960340</updated>
+      <workItem from="1579431164417" duration="6720000" />
+      <workItem from="1579439381462" duration="17000" />
+      <workItem from="1579440216928" duration="2703000" />
+      <workItem from="1579447111231" duration="4561000" />
     </task>
     <task id="LOCAL-00021" summary="利用iris数据集测试SVM.py">
       <created>1568458787933</created>
@@ -544,7 +507,35 @@
       <option name="project" value="LOCAL" />
       <updated>1570001064407</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="mutiTrSVM基本完成&#10;测试tradaboost是否起作用&#10;测试rbf核">
+      <created>1579437948987</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1579437948987</updated>
+    </task>
+    <task id="LOCAL-00067" summary="trying fine-tuning">
+      <created>1579437992720</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1579437992720</updated>
+    </task>
+    <task id="LOCAL-00068" summary="trying fine-tuning">
+      <created>1579438023556</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1579438023556</updated>
+    </task>
+    <task id="LOCAL-00069" summary="trying fine-tuning">
+      <created>1579438112083</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1579438112083</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -592,57 +583,62 @@
     <MESSAGE value="mutiTrSVM增加并行功能&#10;采用mutiprocessing.pool&#10;默认cpu全开" />
     <MESSAGE value="mutiTrSVM基本完成&#10;测试tradaboost是否起作用" />
     <MESSAGE value="mutiTrSVM基本完成&#10;测试tradaboost是否起作用&#10;测试rbf核" />
-    <option name="LAST_COMMIT_MESSAGE" value="mutiTrSVM基本完成&#10;测试tradaboost是否起作用&#10;测试rbf核" />
+    <MESSAGE value="trying fine-tuning" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying fine-tuning" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="560" y="93" key="CommitChangelistDialog2" timestamp="1579438095806">
+    <state x="560" y="93" key="CommitChangelistDialog2" timestamp="1579438111430">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="560" y="93" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1579438095806" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1579431622698">
+    <state x="560" y="93" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1579438111430" />
+    <state width="1231" height="466" key="DebuggerActiveHint" timestamp="1579452428706">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1579431622698" />
-    <state width="1877" height="327" key="GridCell.Tab.0.bottom" timestamp="1579438000847">
+    <state width="1231" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1579452428706" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1579452384498">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579438000847" />
-    <state width="1877" height="327" key="GridCell.Tab.0.center" timestamp="1579438000847">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1579452384498" />
+    <state width="1877" height="327" key="GridCell.Tab.0.bottom" timestamp="1579452485046">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579438000847" />
-    <state width="1877" height="327" key="GridCell.Tab.0.left" timestamp="1579438000847">
+    <state width="1877" height="327" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579452485046" />
+    <state width="1877" height="327" key="GridCell.Tab.0.center" timestamp="1579452485046">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579438000847" />
-    <state width="1877" height="327" key="GridCell.Tab.0.right" timestamp="1579438000847">
+    <state width="1877" height="327" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579452485046" />
+    <state width="1877" height="327" key="GridCell.Tab.0.left" timestamp="1579452485046">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579438000847" />
-    <state width="1877" height="327" key="GridCell.Tab.1.bottom" timestamp="1579438000847">
+    <state width="1877" height="327" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579452485046" />
+    <state width="1877" height="327" key="GridCell.Tab.0.right" timestamp="1579452485046">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579438000847" />
-    <state width="1877" height="327" key="GridCell.Tab.1.center" timestamp="1579438000847">
+    <state width="1877" height="327" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579452485046" />
+    <state width="1877" height="327" key="GridCell.Tab.1.bottom" timestamp="1579452488186">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579438000847" />
-    <state width="1877" height="327" key="GridCell.Tab.1.left" timestamp="1579438000847">
+    <state width="1877" height="327" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579452488186" />
+    <state width="1877" height="327" key="GridCell.Tab.1.center" timestamp="1579452488186">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579438000847" />
-    <state width="1877" height="327" key="GridCell.Tab.1.right" timestamp="1579438000847">
+    <state width="1877" height="327" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579452488186" />
+    <state width="1877" height="327" key="GridCell.Tab.1.left" timestamp="1579452488186">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579438000847" />
+    <state width="1877" height="327" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579452488186" />
+    <state width="1877" height="327" key="GridCell.Tab.1.right" timestamp="1579452488186">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="327" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579452488186" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1579438031255">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579438031255" />
-    <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1578668350920">
+    <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1579447134633">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="640" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578668350920" />
+    <state x="640" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579447134633" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -661,6 +657,11 @@
           <url>file://$PROJECT_DIR$/SVM/transfrom/trAdaBoost.py</url>
           <line>1</line>
           <option name="timeStamp" value="112" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/fine-tuning/Mnist2USPS.py</url>
+          <line>114</line>
+          <option name="timeStamp" value="117" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -683,6 +684,6 @@
     <SUITE FILE_PATH="coverage/srpProject$multiTrSVC_pyx.coverage" NAME="multiTrSVC.pyx Coverage Results" MODIFIED="1569850357347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfromC" />
     <SUITE FILE_PATH="coverage/srpProject$setup.coverage" NAME="setup Coverage Results" MODIFIED="1569822919313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
     <SUITE FILE_PATH="coverage/srpProject$multiTrSVC.coverage" NAME="multiTrSVC Coverage Results" MODIFIED="1579437492611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
-    <SUITE FILE_PATH="coverage/srpProject$Mnist2USPS.coverage" NAME="Mnist2USPS Coverage Results" MODIFIED="1579437893790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/fine-tuning" />
+    <SUITE FILE_PATH="coverage/srpProject$Mnist2USPS.coverage" NAME="Mnist2USPS Coverage Results" MODIFIED="1579452484952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/fine-tuning" />
   </component>
 </project>

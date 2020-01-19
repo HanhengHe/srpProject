@@ -12,10 +12,6 @@ import PIL.Image as Image
 # since we got a ideal model which is easy to train                           #
 ###############################################################################
 
-########################################
-#  define the model and train it       #
-########################################
-
 class LeNet_5(nn.Module):
     def __init__(self):
         super().__init__()
@@ -50,59 +46,18 @@ class LeNet_5(nn.Module):
         return X
 
 
-# 读取本地数据
-sourceFilePath = 'D:\\WINTER\\PycharmProjects\\data\\Mnist\\train'
-
-sourceSet = []
-sourceLabels = []
-
-sourceFile = open(sourceFilePath)
-
-for line in sourceFile.readlines():
-    #  修改格式
-    data = line.split(')')[0]
-    label = line.split(')')[1].replace('\n', '')
-
-    data = data.split(',')
-    data[0] = data[0].replace('(', '')
-
-    #  data set调整为float类型，label调整为int类型
-
-    sourceLabels.append(int(label))
-
-    #  置入数据结构中
-    sourceSet.append(np.array([int(d) / 255 for d in data]).reshape((28, 28)))
-
-sourceFile.close()
-
-trainSize = len(sourceSet)
-
-sourceSet = torch.from_numpy(np.array([sourceSet])).permute(1, 0, 2, 3)
-sourceLabels = torch.from_numpy(np.array(sourceLabels))
+modelPath = "D:\\WINTER\\PycharmProjects\\PyTorch\\LeNet-5\\model"
 
 model = LeNet_5()
-optimizer = optim.Adam(model.parameters())
-
-Epoch = 100
-for epoch in range(Epoch):
-    model.train()  # 训练模式
-    optimizer.zero_grad()
-    output = model(sourceSet.float())
-    loss = F.nll_loss(output, sourceLabels.long())
-    loss.backward()
-    optimizer.step()
-    print("epoch %s: Loss %s" % (epoch + 1, loss.item()))
-    if float(loss.item()) <= 0.05:
-        break
-
-################################################################
-#  we consider it an ideal model, thus we use it without test  #
-################################################################
+model.load_state_dict(torch.load(modelPath))
+model.eval()
 
 # read USPS data
 targetFilePath = 'D:\\WINTER\\PycharmProjects\\data\\USPS\\USPS'
-targetSet = []
-targetLabels = []
+targetTrainSet = []
+targetTrainLabels = []
+targetTestSet = []
+targetTestLabels = []
 targetFile = open(targetFilePath)
 
 counter = 1
@@ -110,17 +65,52 @@ counter = 1
 for i, line in enumerate(targetFile.readlines()):
     #  修改格式
     data = line.split(' ')
-    label = int(i/1100) + 1
-    if label == 11:
+    label = int(i / 1100) + 1
+    if label == 10:
         label = 0
-    targetLabels.append(int(label))
 
     #  reshape image from USPS using openCV
     temp = np.array([int(d) for d in data]).reshape((16, 16))
     image = Image.fromarray(temp)
     image = image.resize((28, 28), Image.ANTIALIAS)
 
-    #  置入数据结构中
-    targetSet.append(np.asarray(image))
+    if counter <= 100:
+        targetTrainLabels.append(int(label))
+
+        #  置入数据结构中
+        targetTrainSet.append(np.asarray(image))
+    else:
+        targetTestLabels.append(int(label))
+
+        #  置入数据结构中
+        targetTestSet.append(np.asarray(image))
+
+    counter += 1
+    if counter == 1101:
+        counter = 1
 
 targetFile.close()
+
+trainSet = torch.from_numpy(np.array([targetTrainSet])).permute(1, 0, 2, 3)
+trainLabels = torch.from_numpy(np.array(targetTrainLabels))
+testSet = torch.from_numpy(np.array([targetTestSet])).permute(1, 0, 2, 3)
+testLabels = torch.from_numpy(np.array(targetTestLabels))
+
+#  acc: 0.17
+
+in_list = []  # 这里存放所有的输出
+
+
+def hook(module, input, output):
+    # input是一个tuple代表顺序代表每一个输入项，我们这里只有一项，所以直接获取
+    for j in range(input[0].size(0)):
+        in_list.append(input[0][j].numpy())
+
+
+model.fc1.register_forward_hook(hook)
+
+with torch.no_grad():
+    y_hat = model(trainSet.float())
+
+features = np.array(in_list)
+#  np.save("features",features)
