@@ -52,23 +52,24 @@ Type = ('DAG', 'ECOC')
 ####################################################
 # svc get double size
 ASRate = 0.1
-trainASize = 50
-SourceSize = 20
+trainASize = 1200
+SourceSize = 200
 trainSSize = int(trainASize * ASRate)
 testSize = SourceSize - trainSSize
 
 ####################################################
 #                    parameter                     #
 ####################################################
-C = 1.0
-tol = 0.001
-maxIter = 50
-kTup = ['rbf', 2.5]
-trMaxIter = 10
+C = 0.8
+tol = 0.01
+maxIter = 101
+kTup = ['lin', 2.5]
+trMaxIter = 100
 # trTol = 0.05
 trTol = 1.5  # close Boost
 errorRate = 0.05
-coreNum = cpu_count() - 1
+# coreNum = cpu_count() - 1
+coreNum = 5
 nonTr = True  # non-tr support
 
 trainFilePath = 'D:\\WINTER\\Pycharm_project\\data\\Mnist\\train'
@@ -139,6 +140,15 @@ def init():
         dataSets = dataSet.split(',')
         dataSets[0] = dataSets[0].replace('(', '')
 
+        gray = np.reshape(np.array(dataSets), (28, 28)).astype(np.uint8)
+        poolingGary = np.zeros((14, 14))
+        for i in range(0, 14):
+            for j in range(0, 14):
+                poolingGary[i, j] = np.max(gray[i * 2:i * 2 + 2, j * 2:j * 2 + 2])
+        # im = Image.fromarray(poolingGary)  # numpy 转 image类
+        # im.show()
+        dataSets = np.reshape(poolingGary, (1, 196)).tolist()[0]
+
         #  data set调整为float类型，label调整为int类型
         tempIn = []
         for i in range(len(dataSets)):
@@ -175,6 +185,15 @@ def init():
 
         dataSets = dataSet.split(',')
         dataSets[0] = dataSets[0].replace('(', '')
+
+        gray = np.reshape(np.array(dataSets), (28, 28)).astype(np.uint8)
+        poolingGary = np.zeros((14, 14))
+        for i in range(0, 14):
+            for j in range(0, 14):
+                poolingGary[i, j] = np.max(gray[i * 2:i * 2 + 2, j * 2:j * 2 + 2])
+        # im = Image.fromarray(poolingGary)  # numpy 转 image类
+        # im.show()
+        dataSets = np.reshape(poolingGary, (1, 196)).tolist()[0]
 
         #  data set调整为float类型，label调整为int类型
         tempIn = []
