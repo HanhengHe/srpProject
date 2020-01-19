@@ -15,7 +15,7 @@ import PIL.Image as Image
 ########################################
 #  define the model and train it       #
 ########################################
-"""
+
 class LeNet_5(nn.Module):
     def __init__(self):
         super().__init__()
@@ -94,7 +94,7 @@ for epoch in range(Epoch):
     print("epoch %s: Loss %s" % (epoch + 1, loss.item()))
     if float(loss.item()) <= 0.05:
         break
-"""
+
 ################################################################
 #  we consider it an ideal model, thus we use it without test  #
 ################################################################
