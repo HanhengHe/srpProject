@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Emh.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Emh.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fine-tuning/Mnist2USPS.py" beforeDir="false" afterPath="$PROJECT_DIR$/fine-tuning/Mnist2USPS.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/log" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/predictLog" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/predictLog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM/transfrom/multiTrSVC.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/transfrom/multiTrSVC.py" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,17 +31,12 @@
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ToolWindowRun.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PyTorch" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../NeuralNetworks" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
   </component>
@@ -57,7 +54,19 @@
       <recent name="D:\WINTER\Pycharm_project\MachineLearning\SVM\test\2019-7-26" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Mnist2USPS">
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.multiTrSVC">
     <configuration name="MachineLearning" type="PythonConfigurationType" factoryName="Python">
       <module name="MachineLearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -72,28 +81,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Mnist2USPS" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="MachineLearning" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/fine-tuning" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fine-tuning/Mnist2USPS.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -127,26 +114,12 @@
     <list>
       <item itemvalue="Python.MachineLearning" />
       <item itemvalue="Python.multiTrSVC" />
-      <item itemvalue="Python.Mnist2USPS" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Mnist2USPS" />
         <item itemvalue="Python.multiTrSVC" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -178,19 +151,42 @@
       <workItem from="1569850454685" duration="2993000" />
       <workItem from="1569946661040" duration="2155000" />
       <workItem from="1569985207142" duration="70000" />
-      <workItem from="1569987597618" duration="9422000" />
-      <workItem from="1570087387540" duration="46000" />
-      <workItem from="1570087743595" duration="17000" />
-      <workItem from="1575513829697" duration="3314000" />
-      <workItem from="1575621859425" duration="50000" />
-      <workItem from="1575622079411" duration="1193000" />
-      <workItem from="1575735606519" duration="1111000" />
-      <workItem from="1575772941052" duration="13314000" />
-      <workItem from="1578668348311" duration="26000" />
-      <workItem from="1579431164417" duration="6720000" />
-      <workItem from="1579439381462" duration="17000" />
-      <workItem from="1579440216928" duration="2703000" />
-      <workItem from="1579447111231" duration="4561000" />
+      <workItem from="1569987597618" duration="9271000" />
+    </task>
+    <task id="LOCAL-00016" summary="600+200二分类器on Mnist">
+      <created>1568092120253</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1568092120253</updated>
+    </task>
+    <task id="LOCAL-00017" summary="开始更新SVM.py(可重用多分类代码)">
+      <created>1568178065924</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1568178065924</updated>
+    </task>
+    <task id="LOCAL-00018" summary="更新SVM.py(可重用多分类代码)">
+      <created>1568221215176</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1568221215176</updated>
+    </task>
+    <task id="LOCAL-00019" summary="测试SVM.py(可重用多分类代码)">
+      <created>1568450951934</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1568450951934</updated>
+    </task>
+    <task id="LOCAL-00020" summary="利用iris数据集测试SVM.py">
+      <created>1568454960340</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1568454960340</updated>
     </task>
     <task id="LOCAL-00021" summary="利用iris数据集测试SVM.py">
       <created>1568458787933</created>
@@ -500,42 +496,7 @@
       <option name="project" value="LOCAL" />
       <updated>1569997031349</updated>
     </task>
-    <task id="LOCAL-00065" summary="mutiTrSVM基本完成&#10;测试tradaboost是否起作用&#10;测试rbf核">
-      <created>1570001064407</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1570001064407</updated>
-    </task>
-    <task id="LOCAL-00066" summary="mutiTrSVM基本完成&#10;测试tradaboost是否起作用&#10;测试rbf核">
-      <created>1579437948987</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1579437948987</updated>
-    </task>
-    <task id="LOCAL-00067" summary="trying fine-tuning">
-      <created>1579437992720</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1579437992720</updated>
-    </task>
-    <task id="LOCAL-00068" summary="trying fine-tuning">
-      <created>1579438023556</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1579438023556</updated>
-    </task>
-    <task id="LOCAL-00069" summary="trying fine-tuning">
-      <created>1579438112083</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1579438112083</updated>
-    </task>
-    <option name="localTasksCounter" value="70" />
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -583,62 +544,7 @@
     <MESSAGE value="mutiTrSVM增加并行功能&#10;采用mutiprocessing.pool&#10;默认cpu全开" />
     <MESSAGE value="mutiTrSVM基本完成&#10;测试tradaboost是否起作用" />
     <MESSAGE value="mutiTrSVM基本完成&#10;测试tradaboost是否起作用&#10;测试rbf核" />
-    <MESSAGE value="trying fine-tuning" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying fine-tuning" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="560" y="93" key="CommitChangelistDialog2" timestamp="1579438111430">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="560" y="93" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1579438111430" />
-    <state width="1231" height="466" key="DebuggerActiveHint" timestamp="1579452428706">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1231" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1579452428706" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1579452384498">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1579452384498" />
-    <state width="1877" height="327" key="GridCell.Tab.0.bottom" timestamp="1579452485046">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="327" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579452485046" />
-    <state width="1877" height="327" key="GridCell.Tab.0.center" timestamp="1579452485046">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="327" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579452485046" />
-    <state width="1877" height="327" key="GridCell.Tab.0.left" timestamp="1579452485046">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="327" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579452485046" />
-    <state width="1877" height="327" key="GridCell.Tab.0.right" timestamp="1579452485046">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="327" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579452485046" />
-    <state width="1877" height="327" key="GridCell.Tab.1.bottom" timestamp="1579452488186">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="327" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579452488186" />
-    <state width="1877" height="327" key="GridCell.Tab.1.center" timestamp="1579452488186">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="327" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579452488186" />
-    <state width="1877" height="327" key="GridCell.Tab.1.left" timestamp="1579452488186">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="327" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579452488186" />
-    <state width="1877" height="327" key="GridCell.Tab.1.right" timestamp="1579452488186">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="327" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579452488186" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1579438031255">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579438031255" />
-    <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1579447134633">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="640" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579447134633" />
+    <option name="LAST_COMMIT_MESSAGE" value="mutiTrSVM基本完成&#10;测试tradaboost是否起作用&#10;测试rbf核" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -654,14 +560,9 @@
           <option name="timeStamp" value="72" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SVM/transfrom/trAdaBoost.py</url>
-          <line>1</line>
-          <option name="timeStamp" value="112" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/fine-tuning/Mnist2USPS.py</url>
-          <line>114</line>
-          <option name="timeStamp" value="117" />
+          <url>file://$PROJECT_DIR$/SVM/transfrom/multiTrSVC.py</url>
+          <line>380</line>
+          <option name="timeStamp" value="111" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -674,16 +575,15 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/srpProject$test_trMnist.coverage" NAME="test_trMnist Coverage Results" MODIFIED="1569657498045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/test/2019-9-16" />
-    <SUITE FILE_PATH="coverage/srpProject$test.coverage" NAME="test Coverage Results" MODIFIED="1568091873909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/test/2019-9-8" />
     <SUITE FILE_PATH="coverage/srpProject$ass.coverage" NAME="ass Coverage Results" MODIFIED="1569679441531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
+    <SUITE FILE_PATH="coverage/srpProject$test_trMnist.coverage" NAME="test_trMnist Coverage Results" MODIFIED="1569657498045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/test/2019-9-16" />
+    <SUITE FILE_PATH="coverage/srpProject$multiTrSVC_pyx.coverage" NAME="multiTrSVC.pyx Coverage Results" MODIFIED="1569850357347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfromC" />
     <SUITE FILE_PATH="coverage/srpProject$mutiTrSVC_pyx.coverage" NAME="mutiTrSVC.pyx Coverage Results" MODIFIED="1569821282116" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
     <SUITE FILE_PATH="coverage/srpProject$mutiTrSVC.coverage" NAME="mutiTrSVC Coverage Results" MODIFIED="1569830164288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
-    <SUITE FILE_PATH="coverage/srpProject$trSVM.coverage" NAME="trSVM Coverage Results" MODIFIED="1569660403861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
+    <SUITE FILE_PATH="coverage/srpProject$test.coverage" NAME="test Coverage Results" MODIFIED="1568091873909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/test/2019-9-8" />
+    <SUITE FILE_PATH="coverage/srpProject$multiTrSVC.coverage" NAME="multiTrSVC Coverage Results" MODIFIED="1570000946204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
     <SUITE FILE_PATH="coverage/srpProject$transfrom.coverage" NAME="transfrom Coverage Results" MODIFIED="1567950126337" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/Mnist" />
-    <SUITE FILE_PATH="coverage/srpProject$multiTrSVC_pyx.coverage" NAME="multiTrSVC.pyx Coverage Results" MODIFIED="1569850357347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfromC" />
+    <SUITE FILE_PATH="coverage/srpProject$trSVM.coverage" NAME="trSVM Coverage Results" MODIFIED="1569660403861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
     <SUITE FILE_PATH="coverage/srpProject$setup.coverage" NAME="setup Coverage Results" MODIFIED="1569822919313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
-    <SUITE FILE_PATH="coverage/srpProject$multiTrSVC.coverage" NAME="multiTrSVC Coverage Results" MODIFIED="1579437492611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
-    <SUITE FILE_PATH="coverage/srpProject$Mnist2USPS.coverage" NAME="Mnist2USPS Coverage Results" MODIFIED="1579452484952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/fine-tuning" />
   </component>
 </project>
