@@ -1,2 +1,4 @@
 acc: 0.17 if directly use
-acc: 0.88 if fine-tuning(base on LeNet-5, froze the convolutional layers and retrain the full connect layer with the same architecture)
+acc: 0.88 if fine-tuning(base on LeNet-5, froze the convolutional layers and retrain the full connect layers with the same architecture)
+acc: 0.6 if fine-tuning(convolutional layers with learning rate=1e-4 and full connect layers with learning rate=1e-2, much slower.
+                        mean loss on train set is 0.697, mean loss on test set is 1.49, which shows the evidence of overfitting)
