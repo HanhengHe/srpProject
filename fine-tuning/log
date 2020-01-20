@@ -1,0 +1,2 @@
+acc: 0.17 if directly use
+acc: 0.88 if fine-tuning(base on LeNet-5, froze the convolutional layers and retrain the full connect layer with the same architecture)

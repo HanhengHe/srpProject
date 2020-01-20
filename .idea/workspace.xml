@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/fine-tuning/log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Emh.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Emh.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/log" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/predictLog" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/predictLog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVM/transfrom/multiTrSVC.py" beforeDir="false" afterPath="$PROJECT_DIR$/SVM/transfrom/multiTrSVC.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fine-tuning/Mnist2USPS.py" beforeDir="false" afterPath="$PROJECT_DIR$/fine-tuning/Mnist2USPS.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,12 +30,17 @@
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ToolWindowRun.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../NeuralNetworks" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PyTorch" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
   </component>
@@ -54,19 +58,7 @@
       <recent name="D:\WINTER\Pycharm_project\MachineLearning\SVM\test\2019-7-26" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Python.multiTrSVC">
+  <component name="RunManager" selected="Python.Mnist2USPS">
     <configuration name="MachineLearning" type="PythonConfigurationType" factoryName="Python">
       <module name="MachineLearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -81,6 +73,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Mnist2USPS" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="MachineLearning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Emh\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/fine-tuning" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fine-tuning/Mnist2USPS.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -114,12 +128,26 @@
     <list>
       <item itemvalue="Python.MachineLearning" />
       <item itemvalue="Python.multiTrSVC" />
+      <item itemvalue="Python.Mnist2USPS" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Mnist2USPS" />
         <item itemvalue="Python.multiTrSVC" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -152,13 +180,10 @@
       <workItem from="1569946661040" duration="2155000" />
       <workItem from="1569985207142" duration="70000" />
       <workItem from="1569987597618" duration="9271000" />
-    </task>
-    <task id="LOCAL-00016" summary="600+200二分类器on Mnist">
-      <created>1568092120253</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1568092120253</updated>
+      <workItem from="1579452708570" duration="68000" />
+      <workItem from="1579530794837" duration="1012000" />
+      <workItem from="1579532073283" duration="186000" />
+      <workItem from="1579532321794" duration="1113000" />
     </task>
     <task id="LOCAL-00017" summary="开始更新SVM.py(可重用多分类代码)">
       <created>1568178065924</created>
@@ -496,7 +521,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569997031349</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="fine-tuning">
+      <created>1579452747749</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1579452747749</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -544,7 +576,70 @@
     <MESSAGE value="mutiTrSVM增加并行功能&#10;采用mutiprocessing.pool&#10;默认cpu全开" />
     <MESSAGE value="mutiTrSVM基本完成&#10;测试tradaboost是否起作用" />
     <MESSAGE value="mutiTrSVM基本完成&#10;测试tradaboost是否起作用&#10;测试rbf核" />
-    <option name="LAST_COMMIT_MESSAGE" value="mutiTrSVM基本完成&#10;测试tradaboost是否起作用&#10;测试rbf核" />
+    <MESSAGE value="fine-tuning" />
+    <option name="LAST_COMMIT_MESSAGE" value="fine-tuning" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579532734292">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579532734292" />
+    <state x="560" y="93" key="CommitChangelistDialog2" timestamp="1579452746831">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="560" y="93" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1579452746831" />
+    <state width="1358" height="466" key="DebuggerActiveHint" timestamp="1579533004646">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1358" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1579533004646" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1579532355286">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1579532355286" />
+    <state width="1877" height="496" key="GridCell.Tab.0.bottom" timestamp="1579533573914">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="496" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579533573914" />
+    <state width="1877" height="496" key="GridCell.Tab.0.center" timestamp="1579533573914">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="496" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579533573914" />
+    <state width="1877" height="496" key="GridCell.Tab.0.left" timestamp="1579533573914">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="496" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579533573914" />
+    <state width="1877" height="496" key="GridCell.Tab.0.right" timestamp="1579533573914">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="496" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579533573914" />
+    <state width="1877" height="327" key="GridCell.Tab.1.bottom" timestamp="1579533017528">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="327" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579533017528" />
+    <state width="1877" height="327" key="GridCell.Tab.1.center" timestamp="1579533017528">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="327" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579533017528" />
+    <state width="1877" height="327" key="GridCell.Tab.1.left" timestamp="1579533017528">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="327" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579533017528" />
+    <state width="1877" height="327" key="GridCell.Tab.1.right" timestamp="1579533017528">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="327" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579533017528" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1579452761503">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579452761503" />
+    <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1579532329016">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="640" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579532329016" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1579533204494">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579533204494" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -563,6 +658,11 @@
           <url>file://$PROJECT_DIR$/SVM/transfrom/multiTrSVC.py</url>
           <line>380</line>
           <option name="timeStamp" value="111" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/fine-tuning/Mnist2USPS.py</url>
+          <line>157</line>
+          <option name="timeStamp" value="113" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -585,5 +685,6 @@
     <SUITE FILE_PATH="coverage/srpProject$multiTrSVC_pyx.coverage" NAME="multiTrSVC.pyx Coverage Results" MODIFIED="1569850357347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfromC" />
     <SUITE FILE_PATH="coverage/srpProject$multiTrSVC.coverage" NAME="multiTrSVC Coverage Results" MODIFIED="1570000946204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
     <SUITE FILE_PATH="coverage/srpProject$setup.coverage" NAME="setup Coverage Results" MODIFIED="1569822919313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
+    <SUITE FILE_PATH="coverage/srpProject$Mnist2USPS.coverage" NAME="Mnist2USPS Coverage Results" MODIFIED="1579533573914" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/fine-tuning" />
   </component>
 </project>

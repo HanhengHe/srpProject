@@ -2,6 +2,7 @@
   <dictionary name="Emh">
     <words>
       <w>conv</w>
+      <w>convolutional</w>
       <w>cython</w>
       <w>cythonize</w>
       <w>svms</w>

@@ -1,4 +1,3 @@
-import cv2
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -96,7 +95,7 @@ trainLabels = torch.from_numpy(np.array(targetTrainLabels))
 testSet = torch.from_numpy(np.array([targetTestSet])).permute(1, 0, 2, 3)
 testLabels = torch.from_numpy(np.array(targetTestLabels))
 
-#  acc: 0.17
+#  acc: 0.17 if directly use
 
 in_list = []  # 这里存放所有的输出
 
@@ -110,7 +109,56 @@ def hook(module, input, output):
 model.fc1.register_forward_hook(hook)
 
 with torch.no_grad():
-    y_hat = model(trainSet.float())
+    _ = model(trainSet.float())
+    _ = model(testSet.float())
 
 features = np.array(in_list)
-#  np.save("features",features)
+
+
+class fullConnect(nn.Module):
+    def __init__(self):
+        super().__init__()
+
+        # 相似的全连接层
+        self.fc1 = nn.Linear(16 * 4 * 4, 120)
+        self.fc2 = nn.Linear(120, 84)
+        self.fc3 = nn.Linear(84, 10)
+
+    # 定义正向传播
+    def forward(self, X):
+        X = self.fc1(X)
+        X = F.relu(X)
+        X = self.fc2(X)
+        X = F.relu(X)
+        X = self.fc3(X)
+        X = F.log_softmax(X, dim=1)
+        return X
+
+
+fc = fullConnect()
+optimizer = optim.Adam(fc.parameters())
+
+Epoch = 150
+for epoch in range(Epoch):
+    model.train()  # 训练模式
+    optimizer.zero_grad()
+    output = fc(torch.from_numpy(features[:1000, :]))
+    loss = F.nll_loss(output, trainLabels.long())
+    loss.backward()
+    optimizer.step()
+    print("epoch %s: Loss %s" % (epoch + 1, loss.item()))
+    if float(loss.item()) <= 0.001:
+        break
+
+model.eval()  # 测试模式
+test_loss = 0
+correct = 0
+with torch.no_grad():
+    output = fc(torch.from_numpy(features[1000:, :]))
+    test_loss += F.nll_loss(output, testLabels.long(), reduction='sum').item()  # 将一批的损失相加
+    predict = output.max(1, keepdim=True)[1]  # 找到概率最大的下标
+    correct += predict.eq(testLabels.view_as(predict)).sum().item()
+
+test_loss /= 10000
+print("Test: Average loss:%s, Accuracy: %s/%s (%s)"
+      % (test_loss, correct, 10000, correct / 10000))
