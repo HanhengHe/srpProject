@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Partical_approach/Gobal.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Partical_approach/backbone.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Partical_approach/data_loader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Partical_approach/functions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Partical_approach/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/MachineLearning.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MachineLearning.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Emh.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Emh.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Partical_approach/GobalAdapt.py" beforeDir="false" afterPath="$PROJECT_DIR$/Partical_approach/GobalAdapt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Partical_approach/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Partical_approach/functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Partical_approach/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Partical_approach/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +56,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ToolWindowRun.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DAAN" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PyTorch" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
@@ -291,14 +286,9 @@
       <workItem from="1583251810907" duration="1244000" />
       <workItem from="1583286609818" duration="1753000" />
       <workItem from="1583315545094" duration="8444000" />
-      <workItem from="1583339197670" duration="487000" />
-    </task>
-    <task id="LOCAL-00019" summary="测试SVM.py(可重用多分类代码)">
-      <created>1568450951934</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1568450951934</updated>
+      <workItem from="1583339197670" duration="1140000" />
+      <workItem from="1583385145469" duration="393000" />
+      <workItem from="1583386753938" duration="10017000" />
     </task>
     <task id="LOCAL-00020" summary="利用iris数据集测试SVM.py">
       <created>1568454960340</created>
@@ -636,7 +626,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579535625410</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="a new try">
+      <created>1583339896912</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1583339896912</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -686,7 +683,8 @@
     <MESSAGE value="mutiTrSVM基本完成&#10;测试tradaboost是否起作用&#10;测试rbf核" />
     <MESSAGE value="fine-tuning" />
     <MESSAGE value="fine-tuning on Mnist2USPS end" />
-    <option name="LAST_COMMIT_MESSAGE" value="fine-tuning on Mnist2USPS end" />
+    <MESSAGE value="a new try" />
+    <option name="LAST_COMMIT_MESSAGE" value="a new try" />
   </component>
   <component name="WindowStateProjectService">
     <state x="478" y="182" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583157206143">
@@ -694,19 +692,20 @@
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579534044022" />
     <state x="478" y="182" key="#com.intellij.execution.impl.EditConfigurationsDialog/82.0.1838.1080@82.0.1838.1080" timestamp="1583157206143" />
-    <state x="560" y="93" key="CommitChangelistDialog2" timestamp="1579535624582">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="618" y="97" key="CommitChangelistDialog2" timestamp="1583339890602">
+      <screen x="82" y="0" width="1838" height="1080" />
     </state>
     <state x="560" y="93" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1579535624582" />
+    <state x="618" y="97" key="CommitChangelistDialog2/82.0.1838.1080@82.0.1838.1080" timestamp="1583339890602" />
     <state width="1358" height="466" key="DebuggerActiveHint" timestamp="1579533004646">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1358" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1579533004646" />
-    <state x="790" y="286" key="FileChooserDialogImpl" timestamp="1583339218439">
+    <state x="790" y="286" key="FileChooserDialogImpl" timestamp="1583397661098">
       <screen x="82" y="0" width="1838" height="1080" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1580983032322" />
-    <state x="790" y="286" key="FileChooserDialogImpl/82.0.1838.1080@82.0.1838.1080" timestamp="1583339218439" />
+    <state x="790" y="286" key="FileChooserDialogImpl/82.0.1838.1080@82.0.1838.1080" timestamp="1583397661098" />
     <state width="1795" height="518" key="GridCell.Tab.0.bottom" timestamp="1583159085401">
       <screen x="82" y="0" width="1838" height="1080" />
     </state>
@@ -748,10 +747,11 @@
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1579596094116" />
     <state x="523" y="168" key="SettingsEditor/82.0.1838.1080@82.0.1838.1080" timestamp="1583315562607" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1579535627020">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="610" y="263" key="Vcs.Push.Dialog.v2" timestamp="1583339900186">
+      <screen x="82" y="0" width="1838" height="1080" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579535627020" />
+    <state x="610" y="263" key="Vcs.Push.Dialog.v2/82.0.1838.1080@82.0.1838.1080" timestamp="1583339900186" />
     <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1581742871723">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

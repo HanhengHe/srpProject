@@ -1,55 +1,55 @@
 import torch.nn as nn
 
 import Partical_approach.backbone as backbone
-from Partical_approach.functions import ReverseLayerF, Replacement
+from Partical_approach.functions import GradientReverseLayerF
 
 
-class GobalAdapt(nn.Module):
+class FeatureExtractor(nn.Module):
 
-    def __init__(self, num_classes=65, base_net='ResNet50'):
-        super(GobalAdapt, self).__init__()
+    def __init__(self, base_net='ResNet50'):
+        super(FeatureExtractor, self).__init__()
         self.sharedNet = backbone.network_dict[base_net]()
-        self.bottleneck = nn.Linear(2048, 256)
-        self.source_fc = nn.Linear(256, num_classes)
-        self.softmax = nn.Softmax(dim=1)
+
+    def forward(self, tensor):
+        return self.sharedNet(tensor)
+
+
+class MixturePost(nn.Module):
+    def __init__(self, num_classes=65):
+        super().__init__()
+
         self.classes = num_classes
+        self.alpha = 0.0
 
-        # global domain discriminator
-        self.domain_classifier = nn.Sequential()
-        self.domain_classifier.add_module('fc1', nn.Linear(256, 1024))
-        self.domain_classifier.add_module('relu1', nn.ReLU(True))
-        self.domain_classifier.add_module('dpt1', nn.Dropout())
-        self.domain_classifier.add_module('fc2', nn.Linear(1024, 1024))
-        self.domain_classifier.add_module('relu2', nn.ReLU(True))
-        self.domain_classifier.add_module('dpt2', nn.Dropout())
-        self.domain_classifier.add_module('fc3', nn.Linear(1024, 2))
+        # classifier
+        self.classifier = nn.Sequential()
+        self.classifier.add_module('fc1', nn.Linear(2048, 1024))
+        self.classifier.add_module('relu1', nn.ReLU(True))
+        self.classifier.add_module('dpt1', nn.Dropout())
 
+        self.classifier.add_module('fc2', nn.Linear(1024, 256))
+        self.classifier.add_module('relu2', nn.ReLU(True))
+        self.classifier.add_module('dpt2', nn.Dropout())
 
-    def forward(self, source, target, s_label, DEV, alpha=0.0):
-        source_share = self.sharedNet(source)
-        source_share = self.bottleneck(source_share)
-        source = self.source_fc(source_share)
-        p_source = self.softmax(source)
+        self.classifier.add_module('fc3', nn.Linear(256, num_classes))
+        self.classifier.add_module('classifier_out', nn.Softmax(dim=1))
 
-        a = p_source.cpu()
+        # discriminator
+        self.discriminator = nn.Sequential()
+        self.discriminator.add_module('fc1', nn.Linear(2048, 1024))
+        self.discriminator.add_module('relu1', nn.ReLU(True))
+        self.discriminator.add_module('dpt1', nn.Dropout())
 
-        target = self.sharedNet(target)
-        target = self.bottleneck(target)
-        t_label = self.source_fc(target)
-        s_out = []
-        t_out = []
+        self.discriminator.add_module('fc2', nn.Linear(1024, 256))
+        self.discriminator.add_module('relu2', nn.ReLU(True))
+        self.discriminator.add_module('dpt2', nn.Dropout())
 
-        if self.training is True:
-            # RevGrad
-            s_reverse_feature = ReverseLayerF.apply(source_share, alpha)
-            t_reverse_feature = ReverseLayerF.apply(target, alpha)
-            s_domain_output = self.domain_classifier(s_reverse_feature)
-            t_domain_output = self.domain_classifier(t_reverse_feature)
+        self.discriminator.add_module('fc3', nn.Linear(256, 2))
+        self.discriminator.add_module('discriminator_out', nn.Softmax(dim=1))
 
+    def set_alpha(self, alpha_new):
+        self.alpha = alpha_new
 
-        else:
-            s_domain_output = 0
-            t_domain_output = 0
-            s_out = [0] * self.classes
-            t_out = [0] * self.classes
-        return source, s_domain_output, t_domain_output, s_out, t_out,
+    def forward(self, X, alpha=0.0):
+        dis_out = GradientReverseLayerF.apply(X, alpha)
+        return self.classifier(X), self.discriminator(dis_out)
