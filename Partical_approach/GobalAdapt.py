@@ -45,7 +45,7 @@ class MixturePost(nn.Module):
         self.discriminator.add_module('dpt2', nn.Dropout())
 
         self.discriminator.add_module('fc3', nn.Linear(256, 2))
-        self.discriminator.add_module('discriminator_out', nn.Softmax(dim=1))
+        self.discriminator.add_module('discriminator_out', nn.Sigmoid())
 
     def set_alpha(self, alpha_new):
         self.alpha = alpha_new

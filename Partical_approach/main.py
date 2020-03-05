@@ -1,4 +1,5 @@
 import torch
+import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
 
@@ -14,8 +15,8 @@ import tqdm
 # Training settings
 parser = argparse.ArgumentParser(description='PyTorch Domain Adapt')
 parser.add_argument('--batch_size', type=int, default=8, metavar='N',
-                    help='input batch size for training (default: 64)')
-parser.add_argument('--epochs', type=int, default=10, metavar='N',  # origin: 200
+                    help='input batch size for training (default: 8)')
+parser.add_argument('--epochs', type=int, default=5, metavar='N',
                     help='number of epochs to train (default: 10)')
 parser.add_argument('--lr', type=float, default=0.01, metavar='LR',
                     help='learning rate (default: 0.01)')
@@ -58,7 +59,7 @@ def load_data():
 
 
 def train(epoch_, feS_model, feT_model, mp_model, sourceLoader, targetLoader):
-    total_progress_bar = tqdm.tqdm(desc='Train iter', total=args.epochs)
+    # total_progress_bar = tqdm.tqdm(desc='Train iter', total=args.epochs)
     LEARNING_RATE = args.lr / math.pow((1 + 10 * (epoch_ - 1) / args.epochs), 0.75)
 
     feS_optimizer = optim.SGD(feS_model.parameters(), lr=LEARNING_RATE,
@@ -74,6 +75,9 @@ def train(epoch_, feS_model, feT_model, mp_model, sourceLoader, targetLoader):
     feT_model.train()
     mp_model.train()
 
+    label_source = torch.from_numpy(np.array([[0, 0]]*args.batch_size)).float().to(DEVICE)
+    label_target = torch.from_numpy(np.array([[1, 1]]*args.batch_size)).float().to(DEVICE)
+
     for batch_idx, (source_data, source_label) in tqdm.tqdm(enumerate(sourceLoader),
                                                             total=len_dataLoader,
                                                             desc='Train epoch = {}'.format(epoch_),
@@ -86,8 +90,8 @@ def train(epoch_, feS_model, feT_model, mp_model, sourceLoader, targetLoader):
         mp_optimizer.zero_grad()
 
         source_data, source_label = source_data.to(DEVICE), source_label.to(DEVICE)
-        for target_data, target_label in targetLoader:
-            target_data, target_label = target_data.to(DEVICE), target_label.to(DEVICE)
+        for t_data, t_label in targetLoader:
+            target_data, target_label = t_data.to(DEVICE), t_label.to(DEVICE)
             break
 
         source_out = feS_model(source_data)
@@ -97,11 +101,11 @@ def train(epoch_, feS_model, feT_model, mp_model, sourceLoader, targetLoader):
 
         source_outC, source_outD = mixturePost(source_out)
         _, target_outD = mixturePost(target_out)
-        lossC = F.nll_loss(source_outC, source_label)
-        lossD = F.nll_loss(source_outD, torch.zeros(args.batch_size).long().to(DEVICE))
-        lossD += F.nll_loss(target_outD, torch.ones(args.batch_size).long().to(DEVICE))
+        lossC = F.cross_entropy(source_outC, source_label)
+        lossD = F.binary_cross_entropy(source_outD, label_source)
+        lossD += F.binary_cross_entropy(target_outD, label_target)
         # ??
-        loss = lossC + lossD
+        loss = (1-alpha) * lossC + alpha * lossD
         loss.backward()
         feS_optimizer.step()
         feT_optimizer.step()
@@ -111,7 +115,7 @@ def train(epoch_, feS_model, feT_model, mp_model, sourceLoader, targetLoader):
             print(
                 '\nTotal Loss: {:.6f},  Classifier Loss: {:.6f},  Discriminator Loss: {:.6f}'.format(
                     loss.item(), lossC.item(), lossD.item()))
-        total_progress_bar.update(1)
+        # total_progress_bar.update(1)
 
 
 def test(feT_model, mp_model, testLoader):
