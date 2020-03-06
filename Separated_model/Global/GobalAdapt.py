@@ -1,7 +1,7 @@
 import torch.nn as nn
 
-import Partical_approach.backbone as backbone
-from Partical_approach.functions import GradientReverseLayerF
+import Separated_model.backbone as backbone
+from Separated_model.functions import GradientReverseLayerF
 
 
 class FeatureExtractor(nn.Module):
@@ -14,7 +14,7 @@ class FeatureExtractor(nn.Module):
         return self.sharedNet(tensor)
 
 
-class GlobalAlign(nn.Module):
+class GlobalClassifier(nn.Module):
     def __init__(self, num_classes=65):
         super().__init__()
 
@@ -34,6 +34,16 @@ class GlobalAlign(nn.Module):
         self.classifier.add_module('fc3', nn.Linear(256, num_classes))
         self.classifier.add_module('classifier_out', nn.Softmax(dim=1))
 
+    def forward(self, X):
+        return self.classifier(X)
+
+
+class GlobalAlign(nn.Module):
+    def __init__(self):
+        super().__init__()
+
+        self.alpha = 0.0
+
         # discriminator
         self.discriminator = nn.Sequential()
         self.discriminator.add_module('fc1', nn.Linear(2048, 1024))
@@ -52,5 +62,4 @@ class GlobalAlign(nn.Module):
 
     def forward(self, X):
         dis_out = GradientReverseLayerF.apply(X, self.alpha)
-        return self.classifier(X), self.discriminator(dis_out)
-
+        return self.discriminator(dis_out)
