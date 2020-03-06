@@ -18,4 +18,3 @@ class GradientReverseLayerF(Function):
         output = grad_output.neg() * ctx.alpha
 
         return output, None
-

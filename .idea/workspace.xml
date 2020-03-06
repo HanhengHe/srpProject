@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0bd4023-0a56-423d-aa58-6eabf8e29a60" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Partical_approach/Unsupervised.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Partical_approach/GobalAdapt.py" beforeDir="false" afterPath="$PROJECT_DIR$/Partical_approach/GobalAdapt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Partical_approach/Unsupervised.py" beforeDir="false" afterPath="$PROJECT_DIR$/Partical_approach/Unsupervised.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Partical_approach/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Partical_approach/functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Partical_approach/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Partical_approach/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -288,14 +289,8 @@
       <workItem from="1583339197670" duration="1140000" />
       <workItem from="1583385145469" duration="393000" />
       <workItem from="1583386753938" duration="10203000" />
-      <workItem from="1583411453773" duration="8958000" />
-    </task>
-    <task id="LOCAL-00021" summary="利用iris数据集测试SVM.py">
-      <created>1568458787933</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1568458787933</updated>
+      <workItem from="1583411453773" duration="12966000" />
+      <workItem from="1583470067798" duration="10158000" />
     </task>
     <task id="LOCAL-00022" summary="利用Mnist数据集测试SVM.py">
       <created>1568475372172</created>
@@ -633,7 +628,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583400702180</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="a new try">
+      <created>1583422013326</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1583422013326</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -692,70 +694,71 @@
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579534044022" />
     <state x="478" y="182" key="#com.intellij.execution.impl.EditConfigurationsDialog/82.0.1838.1080@82.0.1838.1080" timestamp="1583416056978" />
-    <state x="618" y="97" key="CommitChangelistDialog2" timestamp="1583400700315">
+    <state x="618" y="97" key="CommitChangelistDialog2" timestamp="1583422010410">
       <screen x="82" y="0" width="1838" height="1080" />
     </state>
     <state x="560" y="93" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1579535624582" />
-    <state x="618" y="97" key="CommitChangelistDialog2/82.0.1838.1080@82.0.1838.1080" timestamp="1583400700315" />
-    <state width="1358" height="466" key="DebuggerActiveHint" timestamp="1579533004646">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="618" y="97" key="CommitChangelistDialog2/82.0.1838.1080@82.0.1838.1080" timestamp="1583422010410" />
+    <state width="1555" height="484" key="DebuggerActiveHint" timestamp="1583482706148">
+      <screen x="82" y="0" width="1838" height="1080" />
     </state>
     <state width="1358" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1579533004646" />
-    <state x="790" y="286" key="FileChooserDialogImpl" timestamp="1583419188745">
+    <state width="1555" height="484" key="DebuggerActiveHint/82.0.1838.1080@82.0.1838.1080" timestamp="1583482706148" />
+    <state x="790" y="286" key="FileChooserDialogImpl" timestamp="1583485028378">
       <screen x="82" y="0" width="1838" height="1080" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1580983032322" />
-    <state x="790" y="286" key="FileChooserDialogImpl/82.0.1838.1080@82.0.1838.1080" timestamp="1583419188745" />
-    <state width="1795" height="430" key="GridCell.Tab.0.bottom" timestamp="1583420192863">
+    <state x="790" y="286" key="FileChooserDialogImpl/82.0.1838.1080@82.0.1838.1080" timestamp="1583485028378" />
+    <state width="1795" height="647" key="GridCell.Tab.0.bottom" timestamp="1583485286158">
       <screen x="82" y="0" width="1838" height="1080" />
     </state>
     <state width="1877" height="496" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579535638954" />
-    <state width="1795" height="430" key="GridCell.Tab.0.bottom/82.0.1838.1080@82.0.1838.1080" timestamp="1583420192863" />
-    <state width="1795" height="430" key="GridCell.Tab.0.center" timestamp="1583420192863">
+    <state width="1795" height="647" key="GridCell.Tab.0.bottom/82.0.1838.1080@82.0.1838.1080" timestamp="1583485286158" />
+    <state width="1795" height="647" key="GridCell.Tab.0.center" timestamp="1583485286158">
       <screen x="82" y="0" width="1838" height="1080" />
     </state>
     <state width="1877" height="496" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579535638954" />
-    <state width="1795" height="430" key="GridCell.Tab.0.center/82.0.1838.1080@82.0.1838.1080" timestamp="1583420192863" />
-    <state width="1795" height="430" key="GridCell.Tab.0.left" timestamp="1583420192863">
+    <state width="1795" height="647" key="GridCell.Tab.0.center/82.0.1838.1080@82.0.1838.1080" timestamp="1583485286158" />
+    <state width="1795" height="647" key="GridCell.Tab.0.left" timestamp="1583485286158">
       <screen x="82" y="0" width="1838" height="1080" />
     </state>
     <state width="1877" height="496" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579535638954" />
-    <state width="1795" height="430" key="GridCell.Tab.0.left/82.0.1838.1080@82.0.1838.1080" timestamp="1583420192863" />
-    <state width="1795" height="430" key="GridCell.Tab.0.right" timestamp="1583420192863">
+    <state width="1795" height="647" key="GridCell.Tab.0.left/82.0.1838.1080@82.0.1838.1080" timestamp="1583485286158" />
+    <state width="1795" height="647" key="GridCell.Tab.0.right" timestamp="1583485286158">
       <screen x="82" y="0" width="1838" height="1080" />
     </state>
     <state width="1877" height="496" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579535638954" />
-    <state width="1795" height="430" key="GridCell.Tab.0.right/82.0.1838.1080@82.0.1838.1080" timestamp="1583420192863" />
-    <state width="1795" height="342" key="GridCell.Tab.1.bottom" timestamp="1583417068169">
+    <state width="1795" height="647" key="GridCell.Tab.0.right/82.0.1838.1080@82.0.1838.1080" timestamp="1583485286158" />
+    <state width="1795" height="342" key="GridCell.Tab.1.bottom" timestamp="1583483003952">
       <screen x="82" y="0" width="1838" height="1080" />
     </state>
     <state width="1877" height="327" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579533017528" />
-    <state width="1795" height="342" key="GridCell.Tab.1.bottom/82.0.1838.1080@82.0.1838.1080" timestamp="1583417068169" />
-    <state width="1795" height="342" key="GridCell.Tab.1.center" timestamp="1583417068169">
+    <state width="1795" height="342" key="GridCell.Tab.1.bottom/82.0.1838.1080@82.0.1838.1080" timestamp="1583483003952" />
+    <state width="1795" height="342" key="GridCell.Tab.1.center" timestamp="1583483003952">
       <screen x="82" y="0" width="1838" height="1080" />
     </state>
     <state width="1877" height="327" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579533017528" />
-    <state width="1795" height="342" key="GridCell.Tab.1.center/82.0.1838.1080@82.0.1838.1080" timestamp="1583417068169" />
-    <state width="1795" height="342" key="GridCell.Tab.1.left" timestamp="1583417068169">
+    <state width="1795" height="342" key="GridCell.Tab.1.center/82.0.1838.1080@82.0.1838.1080" timestamp="1583483003952" />
+    <state width="1795" height="342" key="GridCell.Tab.1.left" timestamp="1583483003951">
       <screen x="82" y="0" width="1838" height="1080" />
     </state>
     <state width="1877" height="327" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579533017528" />
-    <state width="1795" height="342" key="GridCell.Tab.1.left/82.0.1838.1080@82.0.1838.1080" timestamp="1583417068169" />
-    <state width="1795" height="342" key="GridCell.Tab.1.right" timestamp="1583417068169">
+    <state width="1795" height="342" key="GridCell.Tab.1.left/82.0.1838.1080@82.0.1838.1080" timestamp="1583483003951" />
+    <state width="1795" height="342" key="GridCell.Tab.1.right" timestamp="1583483003952">
       <screen x="82" y="0" width="1838" height="1080" />
     </state>
     <state width="1877" height="327" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579533017528" />
-    <state width="1795" height="342" key="GridCell.Tab.1.right/82.0.1838.1080@82.0.1838.1080" timestamp="1583417068169" />
+    <state width="1795" height="342" key="GridCell.Tab.1.right/82.0.1838.1080@82.0.1838.1080" timestamp="1583483003952" />
     <state x="523" y="168" key="SettingsEditor" timestamp="1583415893452">
       <screen x="82" y="0" width="1838" height="1080" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1579596094116" />
     <state x="523" y="168" key="SettingsEditor/82.0.1838.1080@82.0.1838.1080" timestamp="1583415893452" />
-    <state x="610" y="263" key="Vcs.Push.Dialog.v2" timestamp="1583400704393">
+    <state x="610" y="263" key="Vcs.Push.Dialog.v2" timestamp="1583422015788">
       <screen x="82" y="0" width="1838" height="1080" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579535627020" />
-    <state x="610" y="263" key="Vcs.Push.Dialog.v2/82.0.1838.1080@82.0.1838.1080" timestamp="1583400704393" />
+    <state x="610" y="263" key="Vcs.Push.Dialog.v2/82.0.1838.1080@82.0.1838.1080" timestamp="1583422015788" />
     <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1581742871723">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -805,7 +808,7 @@
     <SUITE FILE_PATH="coverage/srpProject$trSVM.coverage" NAME="trSVM Coverage Results" MODIFIED="1569660403861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
     <SUITE FILE_PATH="coverage/srpProject$transfrom.coverage" NAME="transfrom Coverage Results" MODIFIED="1567950126337" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/Mnist" />
     <SUITE FILE_PATH="coverage/srpProject$setup.coverage" NAME="setup Coverage Results" MODIFIED="1569822919313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
-    <SUITE FILE_PATH="coverage/srpProject$main.coverage" NAME="main Coverage Results" MODIFIED="1583420192857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Partical_approach" />
+    <SUITE FILE_PATH="coverage/srpProject$main.coverage" NAME="main Coverage Results" MODIFIED="1583485277242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Partical_approach" />
     <SUITE FILE_PATH="coverage/srpProject$test_trMnist.coverage" NAME="test_trMnist Coverage Results" MODIFIED="1569657498045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/test/2019-9-16" />
     <SUITE FILE_PATH="coverage/srpProject$mutiTrSVC_pyx.coverage" NAME="mutiTrSVC.pyx Coverage Results" MODIFIED="1569821282116" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfrom" />
     <SUITE FILE_PATH="coverage/srpProject$multiTrSVC_pyx.coverage" NAME="multiTrSVC.pyx Coverage Results" MODIFIED="1569850357347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SVM/transfromC" />

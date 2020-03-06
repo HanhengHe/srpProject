@@ -14,7 +14,7 @@ class FeatureExtractor(nn.Module):
         return self.sharedNet(tensor)
 
 
-class MixturePost(nn.Module):
+class GlobalAlign(nn.Module):
     def __init__(self, num_classes=65):
         super().__init__()
 
@@ -50,6 +50,7 @@ class MixturePost(nn.Module):
     def set_alpha(self, alpha_new):
         self.alpha = alpha_new
 
-    def forward(self, X, alpha=0.0):
-        dis_out = GradientReverseLayerF.apply(X, alpha)
+    def forward(self, X):
+        dis_out = GradientReverseLayerF.apply(X, self.alpha)
         return self.classifier(X), self.discriminator(dis_out)
+

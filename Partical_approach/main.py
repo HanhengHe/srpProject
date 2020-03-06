@@ -1,5 +1,4 @@
 import torch
-import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
 
@@ -8,7 +7,7 @@ import argparse
 import math
 
 from Partical_approach import data_loader
-from Partical_approach.GobalAdapt import FeatureExtractor, MixturePost
+from Partical_approach.GobalAdapt import FeatureExtractor, GlobalAlign
 
 import tqdm
 
@@ -16,8 +15,10 @@ import tqdm
 parser = argparse.ArgumentParser(description='PyTorch Domain Adapt')
 parser.add_argument('--batch_size', type=int, default=8, metavar='N',
                     help='input batch size for training (default: 8)')
-parser.add_argument('--epochs', type=int, default=5, metavar='N',
-                    help='number of epochs to train (default: 10)')
+parser.add_argument('--global_epochs', type=int, default=5, metavar='N',
+                    help='number of global epochs to train (default: 10)')
+parser.add_argument('--local_epochs', type=int, default=5, metavar='N',
+                    help='number of local epochs to train (default: 10)')
 parser.add_argument('--lr', type=float, default=0.01, metavar='LR',
                     help='learning rate (default: 0.01)')
 parser.add_argument('--momentum', type=float, default=0.9, metavar='M',
@@ -42,6 +43,8 @@ parser.add_argument('--gamma', type=int, default=1,
                     help='the fc layer and the sharenet have different or same learning rate')
 parser.add_argument('--num_class', default=65, type=int,
                     help='the number of classes')
+parser.add_argument('--global_D_step', default=2, type=int,
+                    help='number discriminator step')
 parser.add_argument('--gpu', default=0, type=int)
 
 args = parser.parse_args()
@@ -58,25 +61,105 @@ def load_data():
     return source_train_loader, target_train_loader, target_test_loader
 
 
-def train(epoch_, feS_model, feT_model, mp_model, sourceLoader, targetLoader):
-    # total_progress_bar = tqdm.tqdm(desc='Train iter', total=args.epochs)
-    LEARNING_RATE = args.lr / math.pow((1 + 10 * (epoch_ - 1) / args.epochs), 0.75)
+def train_global(epoch_, feS_model, feT_model, gA_model, sourceLoader, targetLoader):
+    LEARNING_RATE = args.lr / math.pow((1 + 10 * (epoch_ - 1) / args.global_epochs), 0.75)
 
     feS_optimizer = optim.SGD(feS_model.parameters(), lr=LEARNING_RATE,
                               momentum=args.momentum, weight_decay=args.l2_decay)
     feT_optimizer = optim.SGD(feT_model.parameters(), lr=LEARNING_RATE,
                               momentum=args.momentum, weight_decay=args.l2_decay)
-    mp_optimizer = optim.SGD(mp_model.parameters(), lr=LEARNING_RATE,
+    mp_optimizer = optim.SGD(gA_model.parameters(), lr=LEARNING_RATE,
                              momentum=args.momentum, weight_decay=args.l2_decay)
 
     len_dataLoader = len(sourceLoader)
 
     feS_model.train()
     feT_model.train()
-    mp_model.train()
+    gA_model.train()
 
-    label_source = torch.from_numpy(np.array([[0, 0]]*args.batch_size)).float().to(DEVICE)
-    label_target = torch.from_numpy(np.array([[1, 1]]*args.batch_size)).float().to(DEVICE)
+    label_source = torch.from_numpy(np.array([[0, 0]] * args.batch_size)).float().to(DEVICE)
+    label_target = torch.from_numpy(np.array([[1, 1]] * args.batch_size)).float().to(DEVICE)
+
+    for batch_idx, (source_data, source_label) in tqdm.tqdm(enumerate(sourceLoader),
+                                                            total=len_dataLoader,
+                                                            desc='Train epoch = {}'.format(epoch_),
+                                                            ncols=80,
+                                                            leave=False):
+        p = float(batch_idx + 1 + epoch_ * len_dataLoader) / args.global_epochs / len_dataLoader
+        alpha = 2. / (1. + np.exp(-10 * p)) - 1
+
+        source_data, source_label = source_data.to(DEVICE), source_label.to(DEVICE)
+        for t_data, t_label in targetLoader:
+            target_data, target_label = t_data.to(DEVICE), t_label.to(DEVICE)
+            break
+
+        # Discriminator
+        for _ in range(args.global_D_step):
+            feS_optimizer.zero_grad()
+            feT_optimizer.zero_grad()
+            mp_optimizer.zero_grad()
+
+            source_out = feS_model(source_data)
+            target_out = feT_model(target_data)
+
+            gA_model.set_alpha(alpha)
+
+            source_outC, source_outD = gA_model(source_out)
+            _, target_outD = gA_model(target_out)
+            lossC = F.cross_entropy(source_outC, source_label)
+            lossD = F.binary_cross_entropy(source_outD, label_source)
+            lossD += F.binary_cross_entropy(target_outD, label_target)
+            # ??
+            loss = lossC + lossD
+            loss.backward()
+            mp_optimizer.step()
+
+        # Feature extractor
+        feS_optimizer.zero_grad()
+        feT_optimizer.zero_grad()
+        mp_optimizer.zero_grad()
+
+        source_out = feS_model(source_data)
+        target_out = feT_model(target_data)
+
+        gA_model.set_alpha(alpha)
+
+        source_outC, source_outD = gA_model(source_out)
+        _, target_outD = gA_model(target_out)
+        # lossC = F.cross_entropy(source_outC, source_label)
+        lossD = F.binary_cross_entropy(source_outD, label_source)
+        lossD += F.binary_cross_entropy(target_outD, label_target)
+        # ??
+        # loss = alpha * lossC + (1 - alpha) * lossD
+        loss = lossD
+        loss.backward()
+        feS_optimizer.step()
+        feT_optimizer.step()
+
+        if batch_idx % args.log_interval == 0:
+            print(
+                '\nTotal Loss: {:.6f}, Discriminator Loss: {:.6f}'.format(
+                    loss.item(), lossD.item()))
+
+
+def train_local(epoch_, feS_model, feT_model, gA_model, sourceLoader, targetLoader):
+    LEARNING_RATE = args.lr / math.pow((1 + 10 * (epoch_ - 1) / args.local_epochs), 0.75)
+
+    feS_optimizer = optim.SGD(feS_model.parameters(), lr=LEARNING_RATE,
+                              momentum=args.momentum, weight_decay=args.l2_decay)
+    feT_optimizer = optim.SGD(feT_model.parameters(), lr=LEARNING_RATE,
+                              momentum=args.momentum, weight_decay=args.l2_decay)
+    mp_optimizer = optim.SGD(gA_model.parameters(), lr=LEARNING_RATE,
+                             momentum=args.momentum, weight_decay=args.l2_decay)
+
+    len_dataLoader = len(sourceLoader)
+
+    feS_model.train()
+    feT_model.train()
+    gA_model.train()
+
+    label_source = torch.from_numpy(np.array([[0, 0]] * args.batch_size)).float().to(DEVICE)
+    label_target = torch.from_numpy(np.array([[1, 1]] * args.batch_size)).float().to(DEVICE)
 
     for batch_idx, (source_data, source_label) in tqdm.tqdm(enumerate(sourceLoader),
                                                             total=len_dataLoader,
@@ -97,15 +180,15 @@ def train(epoch_, feS_model, feT_model, mp_model, sourceLoader, targetLoader):
         source_out = feS_model(source_data)
         target_out = feT_model(target_data)
 
-        mixturePost.set_alpha(alpha)
+        gA_model.set_alpha(alpha)
 
-        source_outC, source_outD = mixturePost(source_out)
-        _, target_outD = mixturePost(target_out)
+        source_outC, source_outD = gA_model(source_out)
+        _, target_outD = gA_model(target_out)
         lossC = F.cross_entropy(source_outC, source_label)
         lossD = F.binary_cross_entropy(source_outD, label_source)
         lossD += F.binary_cross_entropy(target_outD, label_target)
         # ??
-        loss = (1-alpha) * lossC + alpha * lossD
+        loss = (1 - alpha) * lossC + alpha * lossD
         loss.backward()
         feS_optimizer.step()
         feT_optimizer.step()
@@ -115,23 +198,19 @@ def train(epoch_, feS_model, feT_model, mp_model, sourceLoader, targetLoader):
             print(
                 '\nTotal Loss: {:.6f},  Classifier Loss: {:.6f},  Discriminator Loss: {:.6f}'.format(
                     loss.item(), lossC.item(), lossD.item()))
-        # total_progress_bar.update(1)
 
 
 def test(feT_model, mp_model, testLoader):
-    feT_model.eval()
-    mp_model.eval()
     test_loss = 0
     correct_ = 0
     with torch.no_grad():
-        for data, target in testLoader:
-            data, target = data.to(DEVICE), target.to(DEVICE)
+        for data, labels in testLoader:
+            data, labels = data.to(DEVICE), labels.to(DEVICE)
             out = feT_model(data)
             out, _ = mp_model(out)
-            test_loss += F.nll_loss(out, target,
-                                    size_average=False).item()  # sum up batch loss
+            test_loss += F.nll_loss(out, labels).item()  # sum up batch loss
             pred = out.data.max(1)[1]  # get the index of the max log-probability
-            correct_ += pred.eq(target.data.view_as(pred)).cpu().sum()
+            correct_ += pred.eq(labels.data.view_as(pred)).cpu().sum()
 
         test_loss /= len(testLoader.dataset)
         print(args.test_dir, '\nTest set: Average loss on classifier: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n'.format(
@@ -140,21 +219,52 @@ def test(feT_model, mp_model, testLoader):
     return correct_
 
 
-if __name__ == '__main__':
+def Global_align(fExtractor_S, fExtractor_T, gAlign):
 
     correct = 0
 
-    featureExtractor_S = FeatureExtractor(base_net='ResNet50').to(DEVICE)
-    featureExtractor_T = FeatureExtractor(base_net='ResNet50').to(DEVICE)
-    mixturePost = MixturePost(num_classes=args.num_class).to(DEVICE)
-
-    for epoch in range(1, args.epochs + 1):
+    for epoch_ in range(1, args.global_epochs + 1):
         source_loader, target_loader, test_loader = load_data()
 
-        train(epoch, featureExtractor_S, featureExtractor_T, mixturePost,
-              source_loader, target_loader)
-        t_correct = test(featureExtractor_T, mixturePost, test_loader)
+        train_global(epoch_, fExtractor_S, fExtractor_T, gAlign,
+                     source_loader, target_loader)
+        fExtractor_S.eval()
+        fExtractor_T.eval()
+        gAlign.eval()
+        t_correct = test(fExtractor_T, gAlign, test_loader)  # !
         if t_correct > correct:
             correct = t_correct
         print(args.source_dir, "to", args.test_dir, end='\t')
         print("%s max correct:" % args.test_dir, correct)
+
+
+def Local_align(fExtractor_S, fExtractor_T, gAlign):
+
+    correct = 0
+
+    for epoch_ in range(1, args.global_epochs + 1):
+        source_loader, target_loader, test_loader = load_data()
+
+        train_global(epoch_, fExtractor_S, fExtractor_T, gAlign,
+                     source_loader, target_loader)
+        fExtractor_S.eval()
+        fExtractor_T.eval()
+        gAlign.eval()
+        t_correct = test(fExtractor_T, gAlign, test_loader)  # !
+        if t_correct > correct:
+            correct = t_correct
+        print(args.source_dir, "to", args.test_dir, end='\t')
+        print("%s max correct:" % args.test_dir, correct)
+
+
+if __name__ == '__main__':
+
+    featureExtractor_S = FeatureExtractor(base_net='ResNet50').to(DEVICE)
+    featureExtractor_T = FeatureExtractor(base_net='ResNet50').to(DEVICE)
+    globalAlign = GlobalAlign(num_classes=args.num_class).to(DEVICE)
+
+    # global align
+    Global_align(featureExtractor_S, featureExtractor_T, globalAlign)
+
+    # local align
+    Local_align(featureExtractor_S, featureExtractor_T, globalAlign)
